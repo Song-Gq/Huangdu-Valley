@@ -4,6 +4,7 @@ public class Main_Song {
 
     public static void main(String[] args) throws Exception
     {
+        // composite and storage
         Storage storage = Storage.getInstance();
 
         storage.addItems("carrotSeed", 1);
@@ -26,6 +27,14 @@ public class Main_Song {
         //storage.deleteItems("noItems");
         storage.getBag("myLittleBag").getItems("testItems");
 
+
+        // decorator
+        IHarvest iHarvest = new BlackSoil(new Land());
+        iHarvest.harvest();
+        iHarvest = new MagicSoil(new Land());
+        iHarvest.harvest();
+        iHarvest = new Land();
+        iHarvest.harvest();
     }
 
 }
