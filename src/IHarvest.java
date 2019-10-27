@@ -9,4 +9,10 @@ public interface IHarvest {
     // or, call harvest() through an IHarvest implemented by
     // a concrete Soil whose iHarvest field is initialized with a Land Object
     public void harvest();
+
+    // for the convenience of calling these methods
+    // through one unified interface
+    // to be modified
+    public void plant(Object obj);
+    public Object getPlant();
 }

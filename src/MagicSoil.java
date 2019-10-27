@@ -14,7 +14,18 @@ public class MagicSoil extends Soil{
     public void harvest() {
         // magic
         // triple the production
+        System.out.println("production + 200!");
         // then
         iHarvest.harvest();
+    }
+
+    // simply call this method of class Land's
+    @Override
+    public Object getPlant() {
+        return iHarvest.getPlant();
+    }
+    @Override
+    public void plant(Object obj) {
+        iHarvest.plant(obj);
     }
 }

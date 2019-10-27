@@ -10,7 +10,7 @@ public class Items extends Package {
     // constructor
     public Items(String name, int count) throws Exception {
         // illegal count or name
-        if(count < 0)
+        if(count <= 0)
             throw new Exception("parameter \"count\" < 0");
         if(name == null)
             throw new Exception("parameter \"name\" null");
@@ -31,8 +31,8 @@ public class Items extends Package {
 
     public void setCount(int count) throws Exception {
         // illegal count
-        if(count < 0)
-            throw new Exception("parameter \"count\" < 0");
+        if(count <= 0)
+            throw new Exception("parameter \"count\" <= 0");
 
         this.count = count;
     }

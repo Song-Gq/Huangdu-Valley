@@ -10,7 +10,7 @@ public abstract class Soil implements IHarvest {
     // this way, when calling harvest() of a concrete Soil
     // the Land's harvest() is available through the field iHarvest
     // and in the meanwhile, the concrete Soil can do something to decorate it
-    public IHarvest iHarvest;
+    protected IHarvest iHarvest;
 
     // constructor
     // iHarvest should be implemented by a Land Object
@@ -20,4 +20,8 @@ public abstract class Soil implements IHarvest {
 
     // implemented by a concrete Soil
     public abstract void harvest();
+
+    // to be modified
+    public abstract void plant(Object obj);
+    public abstract Object getPlant();
 }

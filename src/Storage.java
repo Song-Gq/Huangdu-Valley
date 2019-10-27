@@ -1,4 +1,5 @@
 
+// part of "Facade" design pattern
 // a class to manage the storage system using Singleton
 // scene "The Farm", by Song Guanqun
 public class Storage {

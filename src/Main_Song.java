@@ -35,6 +35,13 @@ public class Main_Song {
         iHarvest.harvest();
         iHarvest = new Land();
         iHarvest.harvest();
+
+        // Facade
+        Manager manager = Manager.getInstance();
+        manager.doAll();
+        storage.addItems("Fertilizer", 1);
+        storage.addItems("Water", 100);
+        manager.doAll();
     }
 
 }
