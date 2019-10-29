@@ -1,4 +1,4 @@
-package huangduVally.house.iterator;
+package huangduVally.house.Furniture;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,11 +23,13 @@ public class FurnitureRoom implements Aggregate {
     		Furniture f=(Furniture)(iter.next());
     		if(f.getName().equals(name)&&f.getPrice()==price&&f.getColor().equals(color)&&f.getTexture().equals(texture)) {
     			furnitures.remove(f);
+    	        System.out.println("Successfully delete "+name+"(price:"+price+",color:"+color+",texture:"+texture+")");
     			exit=true;
     			break;
     		}
         }
-    	if(exit==false)    	System.out.println(name+" cannot be found!");
+    	if(exit==false)    	
+    		System.out.println("Delete "+name+"(price:"+price+",color:"+color+",texture:"+texture+")"+" cannot be found!");
     }
     public int getLength() {
         return furnitures.size();                    

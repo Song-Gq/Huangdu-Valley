@@ -1,9 +1,9 @@
 package huangduVally;
 
 import huangduVally.house.House;
-import huangduVally.house.iterator.Furniture;
-import huangduVally.house.iterator.FurnitureRoom;
-import huangduVally.house.iterator.MyIterator;
+import huangduVally.house.Furniture.Furniture;
+import huangduVally.house.Furniture.FurnitureRoom;
+import huangduVally.house.Furniture.MyIterator;
 import huangduVally.house.memento.CareTaker;
 import huangduVally.house.memento.Originator;
 import huangduVally.house.memento.Redo;
