@@ -1,6 +1,8 @@
 package Workshop.ConcreteMachine;
 
+import Workshop.Ingredients;
 import Workshop.Machine;
+import Workshop.Product.FineProduct;
 import Workshop.Product.Product;
 import Workshop.Visitor;
 
@@ -9,26 +11,19 @@ import java.util.Vector;
 /**
  *
  * @author Leepaangsang
- * @version 2019/10/27
+ * @version 2019/10/30
  */
 public class FineProMachine extends Machine {
     private String name;
 
-    private MachineType machineType;
 
     public FineProMachine(String name){
         this.name = name;
-        this.machineType = MachineType.FineProMachine;
     }
 
     @Override
     public String getName(){
         return this.name;
-    }
-
-    @Override
-    public MachineType getMachineType(){
-        return this.machineType;
     }
 
     @Override
@@ -42,14 +37,18 @@ public class FineProMachine extends Machine {
     }
 
     @Override
-    public Vector<Product> run(){
+    public Vector<Product> run(Vector<Ingredients> ingredientsVector){
         System.out.println("FineProMachine is running!");
         Vector<Product> productVector = new Vector<Product>();
+        for(Ingredients ingredients:ingredientsVector){
+            productVector.add(new FineProduct(ingredients.getClass().getSimpleName(), ingredients.getCount()));
+            System.out.println(String.format("Fine processing machine produces %d %s",ingredients.getCount(),ingredients.getClass().getSimpleName()));
+        }
         return productVector;
     }
 
     @Override
-    public void accept(Visitor v){
-        v.visit(this);
+    public Vector<Product> accept(Visitor v){
+        return v.visit(this);
     }
 }

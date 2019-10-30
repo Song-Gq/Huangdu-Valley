@@ -8,12 +8,20 @@ package Workshop.Product;
 public class CleanProduct extends Product {
     private String name;
 
-    public CleanProduct(String name){
+    private int count;
+
+    public CleanProduct(String name, int count){
         this.name = name;
+        this.count = count;
     }
 
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getCount() {
+        return count;
     }
 }

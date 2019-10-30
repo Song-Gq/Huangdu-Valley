@@ -1,9 +1,13 @@
 package Workshop.ConcreteVisitor;
 
+import Workshop.Ingredients;
+import Workshop.Product.Product;
 import Workshop.Visitor;
 import Workshop.ConcreteMachine.CleanMachine;
 import Workshop.ConcreteMachine.FineProMachine;
 import Workshop.ConcreteMachine.RoughProMachine;
+
+import java.util.Vector;
 
 /**
  *
@@ -11,40 +15,36 @@ import Workshop.ConcreteMachine.RoughProMachine;
  * @version 2019/10/27
  */
 public class NormalRunVisitor extends Visitor {
-    //private Vector<Ingredients> materialList;
-    private String rawMaterialType;
+    private Vector<Ingredients> ingredientsVector;
 
     /**
      * NormalRunVisitor defines the operation of machines (Visitor)
-     * @param type
-     * Type of the material to be processed
-     * @param materialList
-     * List of the material to be processed
+     * @param ingredientsVector
+     * Vector of the ingredients to be processed
      */
-    public NormalRunVisitor(String type/*, Vector<Plant> materialList*/){
-        this.rawMaterialType = type;
-        //this.materialList = materialList;
+    public NormalRunVisitor(Vector<Ingredients> ingredientsVector){
+        this.ingredientsVector = ingredientsVector;
     }
 
     @Override
-    public void visit(CleanMachine cm){
+    public Vector<Product> visit(CleanMachine cm){
         cm.switchOn();
-        cm.run();//传入Vector，需要根据不同的原料产出不同的产品，输出Vector
-        cm.stop();
+        return cm.run(ingredientsVector);//传入Vector，需要根据不同的原料产出不同的产品，输出Vector
+        //cm.stop();
     }
 
     @Override
-    public void visit(RoughProMachine rm){
+    public Vector<Product> visit(RoughProMachine rm){
         rm.switchOn();
-        rm.run();
-        rm.stop();
+        return rm.run(ingredientsVector);
+        //rm.stop();
     }
 
     @Override
-    public void visit(FineProMachine fm){
+    public Vector<Product> visit(FineProMachine fm){
         fm.switchOn();
-        fm.run();
-        fm.stop();
+        return fm.run(ingredientsVector);
+        //fm.stop();
     }
 
 }

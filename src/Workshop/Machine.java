@@ -14,8 +14,6 @@ import java.util.Vector;
 public abstract class Machine implements Acceptor{
     public abstract String getName();
 
-    public abstract MachineType getMachineType();
-
     /**
      * Machine on
      */
@@ -28,6 +26,8 @@ public abstract class Machine implements Acceptor{
 
     /**
      * Machine running
+     * @param ingredientsVector
      */
-    public abstract Vector<Product> run();
+    public abstract Vector<Product> run(Vector<Ingredients> ingredientsVector);
+
 }

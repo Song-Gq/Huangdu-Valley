@@ -8,7 +8,7 @@ import java.util.Vector;
 /**
  *
  * @author Leepaangsang
- * @version 2019/10/28
+ * @version 2019/10/30
  */
 public class WareHouse {
     private WareHouse(){
@@ -25,14 +25,24 @@ public class WareHouse {
     }
 
     public static WareHouse getInstance(){
-        System.out.println("Succeed getting instance");
+        System.out.println("Get warehouse instance!");
         return WareHouseHolder.INSTANCE;
     }
 
-    public Machine acquire(String name, MachineType machineType){
+    /**
+     * Acquire for the machine with name and machine type.
+     * @param name
+     * Name of the machine
+     * @param machineType
+     * Type of the machine, such as CleanMachine, RoughProMachine, FineProMachine
+     * @return
+     * Machine object if there is one machine matched with the name an machineType in the machineVector,
+     * else return null.
+     */
+    public Machine acquire(String name, String machineType){
         if(!machineVector.isEmpty()){
             for(Machine machine:machineVector){
-                if(machine.getName().equals(name) && machine.getMachineType() == machineType){
+                if(machine.getName().equals(name) && machine.getClass().getSimpleName().equals(machineType)){
                     System.out.println("Occupy one machine!");
                     machineVector.remove(machine);
                     return machine;
@@ -67,8 +77,16 @@ public class WareHouse {
         }
     }
 
+    /**
+     * Release idle machine to warehouse.
+     * @param machine
+     * Machine that is going to store in warehouse.
+     * @return
+     * True if warehouse has enough space to store,
+     * else return False.
+     */
     public boolean release(Machine machine){
-        if(machineVector.capacity() < this.poolSize){
+        if(machineVector.size() < this.poolSize){
             machineVector.add(machine);
             return true;
         }else{
@@ -79,6 +97,7 @@ public class WareHouse {
 
     public void setMaxSize(int size){
         this.poolSize = size;
+        System.out.println(String.format("Set the warehouse size to %d", size));
     }
 
     public int getPoolSize(){

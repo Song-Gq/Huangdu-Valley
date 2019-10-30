@@ -8,12 +8,20 @@ package Workshop.Product;
 public class FineProduct extends Product {
     private String name;
 
-    public FineProduct(String name){
+    private int count;
+
+    public FineProduct(String name, int count){
         this.name = name;
+        this.count = count;
     }
 
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getCount() {
+        return count;
     }
 }

@@ -7,4 +7,5 @@ package Workshop.Product;
  */
 public abstract class Product {
     public abstract String getName();
+    public abstract int getCount();
 }
