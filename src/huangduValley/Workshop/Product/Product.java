@@ -16,7 +16,17 @@ public class Product extends Items {
      * Number of product
      * @throws Exception
      */
+    private float price;
+
     public Product(String name, int count)throws Exception{
         super(name, count);
+    }
+
+    public void setPrice(float price){
+        this.price = price;
+    }
+
+    public float getPrice(){
+        return this.price;
     }
 }
