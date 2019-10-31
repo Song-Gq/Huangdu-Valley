@@ -1,7 +1,6 @@
-package Workshop.WareHouse;
+package huangduValley.Workshop.WareHouse;
 
-import Workshop.ConcreteMachine.MachineType;
-import Workshop.Machine;
+import huangduValley.Workshop.Machine;
 
 import java.util.Vector;
 

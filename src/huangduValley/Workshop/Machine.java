@@ -1,15 +1,16 @@
-package Workshop;
+package huangduValley.Workshop;
 
 
-import Workshop.ConcreteMachine.MachineType;
-import Workshop.Product.Product;
+import huangduValley.Workshop.Product.Product;
+import huangduValley.farm.storage.Ingredients;
+import huangduValley.farm.storage.Items;
 
 import java.util.Vector;
 
 /**
  *
  * @author Leepaangsang
- * @version 2019/10/28
+ * @version 2019/10/31
  */
 public abstract class Machine implements Acceptor{
     public abstract String getName();
@@ -28,6 +29,5 @@ public abstract class Machine implements Acceptor{
      * Machine running
      * @param ingredientsVector
      */
-    public abstract Vector<Product> run(Vector<Ingredients> ingredientsVector);
-
+    public abstract Vector<Items> run(Vector<Items> ingredientsVector) throws Exception;
 }
