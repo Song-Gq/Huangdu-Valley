@@ -54,8 +54,8 @@ public class CleanMachine extends Machine {
         System.out.println("CleanMachine is running!");
         Vector<Items> productVector = new Vector<>();
         for(Items items:materialVector){
-            productVector.add(new CleanProduct(items.getClass().getSimpleName(), items.getCount()));
-            System.out.println(String.format("Clean machine produces %d %s",items.getCount(),items.getClass().getSimpleName()));
+            productVector.add(new CleanProduct(items.getName(), items.getCount()));
+            System.out.println(String.format("Clean machine produces %d %s",items.getCount(),items.getName()));
         }
         return productVector;
     }

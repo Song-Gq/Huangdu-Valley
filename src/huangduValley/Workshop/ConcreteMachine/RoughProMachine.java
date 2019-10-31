@@ -55,8 +55,8 @@ public class RoughProMachine extends Machine {
         System.out.println("RoughProMachine is running!");
         Vector<Items> productVector = new Vector<>();
         for(Items items:materialVector){
-            productVector.add(new RoughProduct(items.getClass().getSimpleName(), items.getCount()));
-            System.out.println(String.format("Rough processing machine produces %d %s",items.getCount(),items.getClass().getSimpleName()));
+            productVector.add(new RoughProduct(items.getName(), items.getCount()));
+            System.out.println(String.format("Rough processing machine produces %d %s",items.getCount(),items.getName()));
         }
         return productVector;
     }
