@@ -7,6 +7,7 @@ import huangduValley.Workshop.Product.Product;
 import huangduValley.Workshop.Visitor;
 import huangduValley.farm.storage.Items;
 
+import java.util.TreeMap;
 import java.util.Vector;
 
 /**
@@ -54,6 +55,7 @@ public class CleanMachine extends Machine {
         System.out.println("CleanMachine is running!");
         Vector<Items> productVector = new Vector<>();
         for(Items items:materialVector){
+            Thread.sleep(100*items.getCount());
             productVector.add(new CleanProduct(items.getName(), items.getCount()));
             System.out.println(String.format("Clean machine produces %d %s",items.getCount(),items.getName()));
         }
