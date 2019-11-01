@@ -1,7 +1,6 @@
 package huangduValley.Workshop.processFactory.factory;
 
 import huangduValley.Workshop.WareHouse.WareHouse;
-import huangduValley.Workshop.processFactory.workSpace.SequentialProcessing;
 import huangduValley.Workshop.processFactory.workSpace.WorkSpace;
 import huangduValley.farm.storage.Items;
 
@@ -20,15 +19,20 @@ public class NormalFactory implements FactoryState{
 
     private Vector<WorkSpace> processVector;
 
+    private Vector<Vector<Items>> productsVector = new Vector<>();
+
     @Override
-    public Vector<Vector<Items>> runFactory() throws Exception {
+    public void runFactory() throws Exception {
         System.out.println("the Processing factory now is working .");
-        Vector<Vector<Items>> products = new Vector<>();
         for(WorkSpace workSpace:processVector){
-            products.add(workSpace.doProcess());
+            workSpace.doProcess();
+            productsVector.add(workSpace.getIngredients());
             workSpace.doExit();
         }
-        return products;
+    }
+
+    public Vector<Vector<Items>> getProductsVector() {
+        return productsVector;
     }
 
     public WareHouse getWareHouse(){

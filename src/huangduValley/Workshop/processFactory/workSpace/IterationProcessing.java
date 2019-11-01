@@ -4,15 +4,16 @@ import huangduValley.Workshop.ConcreteMachine.CleanMachine;
 import huangduValley.Workshop.ConcreteMachine.FineProMachine;
 import huangduValley.Workshop.ConcreteMachine.RoughProMachine;
 import huangduValley.Workshop.Machine;
-import huangduValley.farm.storage.Ingredients;
 import huangduValley.farm.storage.Items;
 
 import java.util.Vector;
 
 /**
- * Template Method and Strategy design pattern
+ *
+ * @author Leepaangsang
+ * @version 2019/11/1
  */
-public abstract class SequentialProcessing implements WorkSpace{
+public abstract class IterationProcessing implements WorkSpace {
     Vector<CleanMachine> cleanMachines;
 
     Vector<RoughProMachine> roughProMachines;
@@ -21,15 +22,23 @@ public abstract class SequentialProcessing implements WorkSpace{
 
     protected Vector<Items> ingredients;
 
+    private int iterationTimes = 1;
+    /**
+     * @throws Exception
+     */
     @Override
-    public void doProcess() throws Exception {
-        preProcess();
-        roughProcess();
-        fineProcess();
+    public void doProcess() throws Exception{
+        for (int i = 0; i < iterationTimes; i++) {
+            preProcess();
+            roughProcess();
+        }
+        for (int i = 0; i < iterationTimes; i++) {
+            fineProcess();
+        }
     }
 
     /**
-     * Initialize processing with vector of machine and vector of ingredients
+     *
      * @param items
      * Materials to be processed
      * @param machineVector
@@ -65,7 +74,6 @@ public abstract class SequentialProcessing implements WorkSpace{
 
     @Override
     public void doExit(){
-        exit();
     }
 
     @Override
@@ -77,13 +85,14 @@ public abstract class SequentialProcessing implements WorkSpace{
     protected abstract void roughProcess() throws Exception;
     protected abstract void fineProcess() throws Exception;
 
+    protected abstract Vector<Items> process() throws Exception;
     protected abstract void exit();
 
     private void addCleanMachine(Vector<Machine> machines){
-    for(Machine machine:machines){
-        cleanMachines.add((CleanMachine) machine);
+        for(Machine machine:machines){
+            cleanMachines.add((CleanMachine) machine);
+        }
     }
-}
     private void addRoughProMachine(Vector<Machine> machines){
         for(Machine machine:machines){
             roughProMachines.add((RoughProMachine) machine);
@@ -94,5 +103,9 @@ public abstract class SequentialProcessing implements WorkSpace{
         for(Machine machine:machines){
             fineProMachines.add((FineProMachine) machine);
         }
+    }
+
+    public void setIterationTimes(int iterationTimes) {
+        this.iterationTimes = iterationTimes;
     }
 }

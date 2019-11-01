@@ -9,6 +9,7 @@ import java.util.Vector;
 public interface WorkSpace{
     //使用策略模式
     void doInit(Vector<Items> ingredients, Vector<Machine>... machineVector) throws Exception;
-    Vector<Items> doProcess() throws Exception;
+    void doProcess() throws Exception;
     void doExit();
+    public abstract Vector<Items> getIngredients();
 }
