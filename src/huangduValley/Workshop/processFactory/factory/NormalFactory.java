@@ -9,10 +9,15 @@ import java.util.Vector;
 //继承状态
 public class NormalFactory implements FactoryState{
     //单例模式
-    private static NormalFactory factory=new NormalFactory();
+    //private static NormalFactory INSTANCE=new NormalFactory();
     private NormalFactory(){}
+
+    private static class NormalFactoryHolder{
+        private static final NormalFactory INSTANCE = new NormalFactory();
+    }
+
     public static NormalFactory getInstance(){
-        return factory;
+        return NormalFactoryHolder.INSTANCE;
     }
 
     private WareHouse wareHouse = WareHouse.getInstance();

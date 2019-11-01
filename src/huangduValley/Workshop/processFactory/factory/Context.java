@@ -8,5 +8,5 @@ public class Context{
         this.state=state;
     }
     public FactoryState getState(){return this.state;}
-    public void runState(){this.state.runFactory();}
+    public void runState() throws Exception {this.state.runFactory();}
 }
