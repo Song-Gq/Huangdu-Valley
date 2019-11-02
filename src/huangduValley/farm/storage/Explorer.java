@@ -3,22 +3,22 @@ package huangduValley.farm.storage;
 // part of "Facade" design pattern
 // a class to manage the storage system using Singleton
 // scene "Farm", by Song Guanqun
-public class Storage {
+public class Explorer {
     // current farm.storage.Bag which the player is in
     private Bag curBag;
     // the singleton instance
-    private static Storage instance;
+    private static Explorer instance;
 
     // private constructor
-    private Storage() {
+    private Explorer() {
         // initialize curBag with farm.storage.RootBag
         curBag = RootBag.getInstance();
     }
 
     // get the singleton instance
-    public static Storage getInstance() {
+    public static Explorer getInstance() {
         if(instance == null) {
-            instance = new Storage();
+            instance = new Explorer();
         }
         return instance;
     }

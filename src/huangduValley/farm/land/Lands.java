@@ -1,8 +1,5 @@
 package huangduValley.farm.land;
 
-import huangduValley.farm.storage.Items;
-import huangduValley.farm.storage.RootBag;
-
 import java.util.ArrayList;
 
 // part of "Facade" design pattern
@@ -13,7 +10,7 @@ public class Lands {
     // Singleton instance
     private static Lands instance;
     // all your lands
-    private ArrayList<IHarvest> lands;
+    private ArrayList<ILand> lands;
 
     // private constructor
     private Lands() {
@@ -49,7 +46,7 @@ public class Lands {
             throw new Exception("index out of range");
         }
 
-        IHarvest iLand = lands.get(index);
+        ILand iLand = lands.get(index);
         // already Black Soil
         if(iLand instanceof BlackSoil) {
             System.out.println("Land "+ index +
@@ -58,7 +55,7 @@ public class Lands {
         // upgrade to Black Soil
         else if(iLand instanceof RedSoil) {
             lands.set(index, new BlackSoil(
-                    ((RedSoil) iLand).iHarvest));
+                    ((RedSoil) iLand).iLand));
         }
         // upgrade to Red Soil
         else {
@@ -68,15 +65,15 @@ public class Lands {
 
     // print info of all the lands
     public void printList() throws Exception {
-        for(IHarvest iLand: lands) {
+        for(ILand iLand: lands) {
             // print index
             System.out.print(lands.indexOf(iLand));
             // print grade and plant
             if(iLand instanceof BlackSoil) {
                 // print dry or fertile
-                if(((BlackSoil) iLand).iHarvest instanceof DryLand)
+                if(((BlackSoil) iLand).iLand instanceof DryLand)
                     System.out.print(" Dry Land with");
-                else if(((BlackSoil) iLand).iHarvest instanceof FertileLand)
+                else if(((BlackSoil) iLand).iLand instanceof FertileLand)
                     System.out.print(" Fertile Land with");
                 else
                     throw new Exception("unknown land type");
@@ -84,9 +81,9 @@ public class Lands {
                 System.out.print(" Black Soil ");
             }
             else if(iLand instanceof RedSoil){
-                if(((RedSoil) iLand).iHarvest instanceof DryLand)
+                if(((RedSoil) iLand).iLand instanceof DryLand)
                     System.out.print(" Dry Land with");
-                else if(((RedSoil) iLand).iHarvest instanceof FertileLand)
+                else if(((RedSoil) iLand).iLand instanceof FertileLand)
                     System.out.print(" Fertile Land with");
                 else
                     throw new Exception("unknown land type");
@@ -116,7 +113,7 @@ public class Lands {
 
     // harvest all mature plants
     public void harvestAll() throws Exception {
-        for (IHarvest iLand: lands) {
+        for (ILand iLand: lands) {
             // check if plant matured
             iLand.harvest();
         }
@@ -124,7 +121,7 @@ public class Lands {
 
     // seed on all empty lands
     public void plantAll() throws Exception {
-        for (IHarvest iLand: lands) {
+        for (ILand iLand: lands) {
             // land empty, plant carrot
             if(iLand.getPlant() == null)
                 iLand.plantCarrot();
@@ -135,7 +132,7 @@ public class Lands {
     public void waterAll() throws Exception {
         // this will not consume water
         // manager will
-        for (IHarvest iLand: lands) {
+        for (ILand iLand: lands) {
             iLand.water();
         }
     }
@@ -144,7 +141,7 @@ public class Lands {
     public void fertilizeAll() {
         // this will not consume fertilizer
         // manager will
-        for (IHarvest iLand: lands) {
+        for (ILand iLand: lands) {
             iLand.fertilize();
         }
     }

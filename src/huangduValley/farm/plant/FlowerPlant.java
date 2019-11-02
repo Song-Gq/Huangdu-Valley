@@ -14,12 +14,23 @@ public class FlowerPlant extends Plant {
         super(landType,time);
     }
 
+    @Override
     public void growUp()
     {
-        this.sprout();
-        this.growLeaves();
-        this.growBud();
+        // not matured
+        if(!this.isMature()) {
+            // already has leaves
+            if(this.hasLeaves()) {
+                this.growBud();
+                this.blossom();
+            }
+            // just seeds
+            else {
+                this.sprout();
+                this.growLeaves();
+            }
+        }
 
-        this.blossom();
+        // matured, do nothing
     }
 }

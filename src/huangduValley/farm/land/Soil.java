@@ -1,6 +1,5 @@
 package huangduValley.farm.land;
 
-import huangduValley.farm.land.IHarvest;
 import huangduValley.farm.plant.Carrot;
 import huangduValley.farm.plant.Plant;
 import huangduValley.farm.plant.Potato;
@@ -9,19 +8,19 @@ import huangduValley.farm.plant.Potato;
 // representing an abstract "decorator" of class farm.land.Land
 // inherited by farm.land.BlackSoil and farm.land.RedSoil
 // scene "Farm", by Song Guanqun
-public abstract class Soil implements IHarvest {
+public abstract class Soil implements ILand {
 
     // when constructing a concrete farm.land.Soil
     // this interface should be implemented by a farm.land.Land Object
     // this way, when calling harvest() of a concrete farm.land.Soil
-    // the farm.land.Land's harvest() is available through the field iHarvest
+    // the farm.land.Land's harvest() is available through the field iLand
     // and in the meanwhile, the concrete farm.land.Soil can do something to decorate it
-    protected IHarvest iHarvest;
+    protected ILand iLand;
 
     // constructor
-    // iHarvest should be implemented by a farm.land.Land Object
-    public Soil(IHarvest iHarvest) {
-        this.iHarvest = iHarvest;
+    // iLand should be implemented by a farm.land.Land Object
+    public Soil(ILand iLand) {
+        this.iLand = iLand;
     }
 
     // implemented by a concrete farm.land.Soil

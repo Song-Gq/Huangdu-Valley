@@ -14,12 +14,23 @@ public class FruitPlant extends Plant {
         super(landType, time);
     }
 
-    public void growToFruit()
+    @Override
+    public void growUp()
     {
-        this.sprout();
-        this.growLeaves();
-        this.growBud();
+        // not matured
+        if(!this.isMature()) {
+            // already has leaves
+            if(this.hasLeaves()) {
+                this.growBud();
+                this.bearFruit();
+            }
+            // just seeds
+            else {
+                this.sprout();
+                this.growLeaves();
+            }
+        }
 
-        this.bearFruit();
+        // matured, do nothing
     }
 }

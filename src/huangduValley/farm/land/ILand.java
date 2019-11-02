@@ -7,12 +7,12 @@ import huangduValley.farm.plant.Potato;
 // part of "Decorator" design pattern
 // implemented by class farm.land.Land and farm.land.Soil
 // scene "Farm", by Song Guanqun
-public interface IHarvest {
+public interface ILand {
 
-    // you can call it through an farm.land.IHarvest implemented by a farm.land.Land Object
+    // you can call it through an farm.land.ILand implemented by a farm.land.Land Object
     // without decorations of farm.land.Soil
-    // or, call harvest() through an farm.land.IHarvest implemented by
-    // a concrete farm.land.Soil whose iHarvest field is initialized with a farm.land.Land Object
+    // or, call harvest() through an farm.land.ILand implemented by
+    // a concrete farm.land.Soil whose iLand field is initialized with a farm.land.Land Object
     public void harvest() throws Exception;
 
     // for the convenience of calling these methods

@@ -2,14 +2,13 @@ package huangduValley.farm.land;
 
 import huangduValley.farm.plant.*;
 import huangduValley.farm.storage.Ingredients;
-import huangduValley.farm.storage.Items;
 import huangduValley.farm.storage.RootBag;
 
 // part of "Decorator" design pattern
 // representing a piece of field
 // inherited by DryLand and FertileLand
 // scene "Farm", by Song Guanqun
-public abstract class Land implements IHarvest {
+public abstract class Land implements ILand {
 
     // to be replaced by class Plant
     protected Plant plant;
@@ -26,7 +25,7 @@ public abstract class Land implements IHarvest {
 
             // check if plant matured
             if(plant.isMature()){
-                plant.harvest();
+                // plant.harvest();
 
                 // harvest with normal production
                 // ingredients doubled if plant strong
@@ -63,17 +62,30 @@ public abstract class Land implements IHarvest {
     }
 
     public Plant getPlant() { return plant; }
+
     public void water() {
-        System.out.println("Watering...");
+        // not matured
+        if(!plant.isMature()) {
+            System.out.println("Watering...");
+            plant.growUp();
+        }
+
+        // matured, do nothing
     }
     public void fertilize() {
-        System.out.println("Fertilizng...");
+        // not matured
+        if(!plant.isMature()) {
+            System.out.println("Fertilizng...");
+            plant.growUp();
+        }
+
+        // matured, do nothing
     }
 
     public abstract Carrot plantCarrot() throws Exception;
     public abstract Potato plantPotato() throws Exception;
 
-    // called by RedSoil or BlackSoil through their iHarvest
+    // called by RedSoil or BlackSoil through their iLand
     // to create plants of proper land type
     protected abstract Carrot plantCarrot(String landType) throws Exception;
     protected abstract Potato plantPotato(String landType) throws Exception;

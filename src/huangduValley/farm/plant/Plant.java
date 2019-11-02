@@ -5,7 +5,7 @@ package huangduValley.farm.plant;
  * implement function by calling methods of PlantImp.
  * @author :zdy
  */
-public class Plant {
+public abstract class Plant {
     private PlantImp impl;
 
     /**
@@ -69,4 +69,7 @@ public class Plant {
     }
 
     public boolean isMature() { return impl.isMature; }
+    public boolean hasLeaves() { return impl.stage == "leaves" ? true : false; }
+
+    public abstract void growUp();
 }
