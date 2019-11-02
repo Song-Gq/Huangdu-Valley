@@ -14,6 +14,6 @@ public class Rectangle {
      * @param y2
      */
     public void display(int x1,int y1,int x2,int y2){
-        System.out.println("Rectangle shape with left-down point ("+x1+","+y1+") and right-upper point ("+x2+","+y2+")");
+        System.out.print("Rectangle shape with left-down point ("+x1+","+y1+") and right-upper point ("+x2+","+y2+")");
     }
 }
