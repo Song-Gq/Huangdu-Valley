@@ -15,6 +15,7 @@ public class RectangleAdapter implements FenceShape {
         int x1=x+width;
         int y1=y+height;
 
+        System.out.print("We have built a fence in ");
         adaptee.display(x, y, x1, y1);
     }
 }
