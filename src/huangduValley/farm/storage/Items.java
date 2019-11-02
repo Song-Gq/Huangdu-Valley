@@ -2,7 +2,7 @@ package huangduValley.farm.storage;
 
 // this is part of "Composite" design pattern
 // representing items (like files) in the player's storage
-// scene "The huangduValley.farm.Farm", by Song Guanqun
+// scene "Farm", by Song Guanqun
 public class Items extends Package {
 
     private String name;

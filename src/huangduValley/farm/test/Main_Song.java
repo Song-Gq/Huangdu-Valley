@@ -4,7 +4,7 @@ import huangduValley.farm.land.*;
 import huangduValley.farm.manager.Manager;
 import huangduValley.farm.storage.Storage;
 
-// this includes main method for testing scene "The huangduValley.farm.Farm" by Song Guanqun
+// this includes main method for testing scene "Farm" by Song Guanqun
 public class Main_Song {
 
     public static void main(String[] args) throws Exception
@@ -34,9 +34,9 @@ public class Main_Song {
 
 
         // decorator
-        IHarvest iHarvest = new BlackSoil(new DryLand());
+        IHarvest iHarvest = new RedSoil(new DryLand());
         iHarvest.harvest();
-        iHarvest = new MagicSoil(new FertileLand());
+        iHarvest = new BlackSoil(new FertileLand());
         iHarvest.harvest();
         iHarvest = new DryLand();
         iHarvest.harvest();

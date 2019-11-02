@@ -2,7 +2,7 @@ package huangduValley.farm.manager;
 
 // part of "Facade" design pattern
 // a Singleton role that prevents you from being stolen when awake
-// scene "The huangduValley.farm.Farm", by Song Guanqun
+// scene "Farm", by Song Guanqun
 public class Guard {
 
     // Singleton instance
@@ -23,7 +23,7 @@ public class Guard {
 
     public void wakeup() {
         sleeping = false;
-        System.out.println("huangduValley.farm.manager.Guard wakes up.");
+        System.out.println("Guard wakes up.");
     }
 
     public void stopTheft() {
@@ -32,8 +32,9 @@ public class Guard {
             sleeping = true;
         }
         else {
-            System.out.println("huangduValley.farm.manager.Guard sleeping. Plants stolen!");
-            System.out.println("Production - 100.");
+            System.out.println("Guard sleeping. Money stolen!");
+
+            // money--
         }
     }
 }

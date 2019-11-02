@@ -2,16 +2,16 @@ package huangduValley.farm.storage;
 
 // part of "Facade" design pattern
 // a class to manage the storage system using Singleton
-// scene "The huangduValley.farm.Farm", by Song Guanqun
+// scene "Farm", by Song Guanqun
 public class Storage {
-    // current huangduValley.farm.storage.Bag which the player is in
+    // current farm.storage.Bag which the player is in
     private Bag curBag;
     // the singleton instance
     private static Storage instance;
 
     // private constructor
     private Storage() {
-        // initialize curBag with huangduValley.farm.storage.RootBag
+        // initialize curBag with farm.storage.RootBag
         curBag = RootBag.getInstance();
     }
 
@@ -26,9 +26,9 @@ public class Storage {
     // change curBag into a new one
     public void into(String name) throws Exception {
         Bag bag = curBag.getBag(name);
-        // huangduValley.farm.storage.Bag not found
+        // farm.storage.Bag not found
         if(bag == null) {
-            throw new Exception("huangduValley.farm.storage.Bag not found");
+            throw new Exception("Bag not found");
         }
 
         curBag = bag;
@@ -43,43 +43,39 @@ public class Storage {
         curBag = curBag.getOuterBag();
     }
 
-    // add a new huangduValley.farm.storage.Items Object in the current bag
+    // add a new farm.storage.Items Object in the current bag
     public void addItems(String name, int count) throws Exception {
         curBag.add(new Items(name, count));
     }
 
-    // add a new huangduValley.farm.storage.Bag Object in the current bag
+    // add a new farm.storage.Bag Object in the current bag
     public void addBag(String name) throws Exception {
         curBag.add(new Bag(name, curBag));
     }
 
-    // delete huangduValley.farm.storage.Items in the current bag by name
+    // delete farm.storage.Items in the current bag by name
     public void deleteItems(String name) throws Exception {
         curBag.deleteItems(name);
     }
 
-    // delete huangduValley.farm.storage.Bag in the current bag by name
+    // delete farm.storage.Bag in the current bag by name
     public void deleteBag(String name) throws Exception {
         curBag.deleteBag(name);
     }
 
-    // returns current huangduValley.farm.storage.Bag
+    // returns current farm.storage.Bag
     public Bag getCurBag() {
         return curBag;
     }
 
-    // returns an huangduValley.farm.storage.Items Object by name in the current bag
+    // returns an farm.storage.Items Object by name in the current bag
     public Items getItems(String name) {
         return curBag.getItems(name);
     }
 
-    // returns a huangduValley.farm.storage.Bag Object by name in the current bag
+    // returns a farm.storage.Bag Object by name in the current bag
     public Bag getBag(String name) {
         return curBag.getBag(name);
     }
 
-    // collect seeds of the given count
-/*    public ArrayList<huangduValley.farm.storage.Items> collectSeed(int count) {
-
-    }*/
 }

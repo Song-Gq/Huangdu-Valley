@@ -1,10 +1,14 @@
 # Huangdu-Valley  
 Design Pattern Course Project  
-**Scene "huangduValley.farm.land.Lands"**  
-**Branch By Song Guanqun**  
+**Scene "Farm"**  
+**Branch By Song Guanqun, Zhang Dongya, Cui Yanshen**  
 ## Todo  
-* 需要Plant植物类  
+* 植物需要进行合并，种植需要跟土地对应  
+* Main函数  
+* UML待更新  
 ## Commits  
+* 11/2  
+一些合并工作  
 * 10/27  
 设计模式Facade  
 更新了类图  

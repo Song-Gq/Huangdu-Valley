@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 // this class is part of "Composite" design patter
 // representing bags (like folders) in the player's storage
-// scene "The huangduValley.farm.Farm", by Song Guanqun
+// scene "Farm", by Song Guanqun
 public class Bag extends Package {
 
     protected String name;
@@ -26,7 +26,7 @@ public class Bag extends Package {
         itemList = new ArrayList<>();
     }
 
-    // constructor for huangduValley.farm.storage.RootBag
+    // constructor for farm.storage.RootBag
     protected Bag() {
         this.name = "root";
         this.outerBag = null;
@@ -84,16 +84,16 @@ public class Bag extends Package {
         for (Package p: itemList) {
             // package of the same name already exists
             if(p.getName().equals(newPack.getName())) {
-                // huangduValley.farm.storage.Items with the same name
+                // farm.storage.Items with the same name
                 // add up the count
                 if(newPack instanceof Items && p instanceof Items) {
                     ((Items) p).setCount(p.getCount() + newPack.getCount());
                 }
 
-                // huangduValley.farm.storage.Bag with the same name
+                // farm.storage.Bag with the same name
                 // throw an exception
                 else if(newPack instanceof Bag && p instanceof Bag) {
-                    throw new Exception("huangduValley.farm.storage.Bag name already exists");
+                    throw new Exception("Bag name already exists");
                 }
             }
         }
@@ -111,7 +111,7 @@ public class Bag extends Package {
         }
 
         // not found
-        throw new Exception("huangduValley.farm.storage.Items not found");
+        throw new Exception("Items not found");
     }
 
     public void deleteBag(String name) throws Exception {
@@ -128,10 +128,10 @@ public class Bag extends Package {
         }
 
         // not found
-        throw new Exception("huangduValley.farm.storage.Bag not found");
+        throw new Exception("Bag not found");
     }
 
-    // returns an huangduValley.farm.storage.Items Object by name
+    // returns an farm.storage.Items Object by name
     public Items getItems(String name) {
         for (Package p: itemList) {
             if(p instanceof Items && p.getName().equals(name)) {
@@ -144,7 +144,7 @@ public class Bag extends Package {
         return null;
     }
 
-    // returns a huangduValley.farm.storage.Bag Object by name
+    // returns a farm.storage.Bag Object by name
     public Bag getBag(String name) {
         for (Package p: itemList) {
             if(p instanceof Bag && p.getName().equals(name)) {

@@ -6,6 +6,6 @@ package huangduValley.farm.plant;
  * @author CuiYanshen
  */
 
-public abstract class Carrot {
+public abstract class Carrot extends FruitPlant {
 	//just a carrot
 }

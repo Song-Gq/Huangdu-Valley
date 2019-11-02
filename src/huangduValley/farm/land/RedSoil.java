@@ -7,15 +7,15 @@ import huangduValley.farm.storage.RootBag;
 // part of "Decorator" design pattern
 // representing a concrete "decorator" of class farm.land.Land
 // scene "Farm", by Song Guanqun
-public class BlackSoil extends Soil {
+public class RedSoil extends Soil {
 
     // constructor
     // refer to farm.land.Soil
-    public BlackSoil(IHarvest iHarvest) {
+    public RedSoil(IHarvest iHarvest) {
         super(iHarvest);
     }
     // extra production
-    public final static int production = 200;
+    public final static int production = 100;
 
     @Override
     public void harvest() throws Exception {
@@ -23,7 +23,7 @@ public class BlackSoil extends Soil {
         Plant plant = iHarvest.getPlant();
 
         if(plant != null && plant.isMature()) {
-            // triple the production
+            // double the production
             if(plant instanceof StrongCarrot) {
                 rootBag.add(new Ingredients("Carrot", production * 2));
                 System.out.println("You get Carrot X" + production * 2);

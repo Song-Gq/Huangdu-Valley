@@ -1,51 +1,78 @@
 package huangduValley.farm.land;
 
-import huangduValley.farm.plant.Carrot;
-import huangduValley.farm.plant.Potato;
+import huangduValley.farm.plant.*;
+import huangduValley.farm.storage.Ingredients;
+import huangduValley.farm.storage.Items;
+import huangduValley.farm.storage.RootBag;
 
 // part of "Decorator" design pattern
 // representing a piece of field
-// to be inherited by DryLand and FertileLand
-// scene "The huangduValley.farm.Farm", by Song Guanqun
+// inherited by DryLand and FertileLand
+// scene "Farm", by Song Guanqun
 public abstract class Land implements IHarvest {
 
     // to be replaced by class Plant
-    private Object plant;
+    protected Plant plant;
+    // default production
+    public final static int production = 100;
 
-    public void harvest() {
-        // check if the plant exists and has matured
+    // do nothing if plant null
+    // remove plant if it not matured
+    // get ingredients and money
+    public void harvest() throws Exception{
+        // check if the plant exists
         if(plant != null) {
-            // harvest!
-            // with normal production
-            System.out.println("production + 100!");
+            RootBag rootBag = RootBag.getInstance();
+
+            // check if plant matured
+            if(plant.isMature()){
+                plant.harvest();
+
+                // harvest with normal production
+                // ingredients doubled if plant strong
+                if(plant instanceof StrongCarrot) {
+                    rootBag.add(new Ingredients("Carrot", production * 2));
+                    System.out.println("You get Carrot X" + production * 2);
+                }
+                else if(plant instanceof CommonCarrot) {
+                    rootBag.add(new Ingredients("Carrot", production));
+                    System.out.println("You get Carrot X" + production);
+                }
+                else if(plant instanceof StrongPotato) {
+                    rootBag.add(new Ingredients("Potato", production * 2));
+                    System.out.println("You get Potato X" + production * 2);
+                }
+                else if(plant instanceof CommonPotato) {
+                    rootBag.add(new Ingredients("Potato", production));
+                    System.out.println("You get Potato X" + production);
+                }
+                // unknown plant
+                else {
+                    throw new Exception("unknown plant when harvest()");
+                }
+
+                // get money
+
+            }
+            // if not matured, get nothing
+
+            // remove plant
             plant = null;
         }
+        // plant null, do nothing
     }
 
-    public Object getPlant() {
-        plant = "testPlant";    // to be removed
-        return plant;
-    }
+    public Plant getPlant() { return plant; }
 
-    public void plant(Object obj) {
-        if(plant == null) {
-            plant = obj;
-        }
-        // field not empty!
-        else {
+    public abstract Carrot plantCarrot() throws Exception;
 
-        }
-    }
-
-    public abstract Carrot plantCarrot();
-
-    public abstract Potato plantPotato();
+    public abstract Potato plantPotato() throws Exception;
 
     public void water() {
         System.out.println("Watering...");
     }
 
     public void fertilize() {
-        System.out.println("Fertiling...");
+        System.out.println("Fertilizng...");
     }
 }

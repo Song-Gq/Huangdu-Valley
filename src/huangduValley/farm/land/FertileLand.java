@@ -1,9 +1,6 @@
 package huangduValley.farm.land;
 
-import huangduValley.farm.plant.Carrot;
-import huangduValley.farm.plant.Potato;
-import huangduValley.farm.plant.StrongCarrot;
-import huangduValley.farm.plant.StrongPotato;
+import huangduValley.farm.plant.*;
 
 /**
  * @ClassName:FertileLand
@@ -17,13 +14,29 @@ public class FertileLand extends Land {
 	}
 	
 	@Override
-	public Carrot plantCarrot() {
-		return new StrongCarrot();
+	public Carrot plantCarrot() throws Exception {
+		if(this.plant == null) {
+			this.plant = new StrongCarrot();
+			return (Carrot) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
 	}
 
 	@Override
-	public Potato plantPotato() {
-		return new StrongPotato();
+	public Potato plantPotato() throws Exception {
+		if(this.plant == null) {
+			this.plant = new StrongPotato();
+			return (Potato) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
 	}
 
 }

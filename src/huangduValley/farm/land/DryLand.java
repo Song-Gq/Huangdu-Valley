@@ -17,13 +17,29 @@ public class DryLand extends Land {
 	}
 	
 	@Override
-	public Carrot plantCarrot() {
-		return new CommonCarrot();
+	public Carrot plantCarrot() throws Exception {
+		if(this.plant == null) {
+			this.plant =  new CommonCarrot();
+			return (Carrot) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
 	}
 
 	@Override
-	public Potato plantPotato() {
-		return new CommonPotato();
+	public Potato plantPotato() throws Exception {
+		if(this.plant == null) {
+			this.plant = new CommonPotato();
+			return (Potato) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
 	}
 	
 }

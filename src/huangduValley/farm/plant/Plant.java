@@ -59,7 +59,7 @@ public class Plant {
     {
         impl.impBearFruit();
     }
-    protected void harvest()
+    public void harvest()
     {
         impl.harvest();
     }
@@ -67,4 +67,6 @@ public class Plant {
     {
         impl.showStage();
     }
+
+    public boolean isMature() { return impl.isMature; }
 }

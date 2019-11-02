@@ -1,10 +1,13 @@
 package huangduValley.farm.land;
 
+import huangduValley.farm.storage.Items;
+import huangduValley.farm.storage.RootBag;
+
 import java.util.ArrayList;
 
 // part of "Facade" design pattern
 // a Singleton class that manages all your lands
-// scene "The huangduValley.farm.Farm", by Song Guanqun
+// scene "Farm", by Song Guanqun
 public class Lands {
 
     // Singleton instance
@@ -16,7 +19,8 @@ public class Lands {
     private Lands() {
         lands = new ArrayList<>();
         for(int i = 0; i < 3; i++) {
-            this.addLand();
+            this.addDryLand();
+            this.addFertileLand();
         }
     }
 
@@ -27,9 +31,13 @@ public class Lands {
         return instance;
     }
 
-    // add a piece of ordinary land
-    public void addLand() {
-        lands.add(new DryLand());   // to be modified
+    // add a piece of ordinary dry land
+    public void addDryLand() {
+        lands.add(new DryLand());
+    }
+
+    // add a piece of ordinary fertile land
+    public void addFertileLand() {
         lands.add(new FertileLand());
     }
 
@@ -42,65 +50,102 @@ public class Lands {
         }
 
         IHarvest iLand = lands.get(index);
-        // already Magic huangduValley.farm.land.Soil
-        if(iLand instanceof MagicSoil) {
-            System.out.println("huangduValley.farm.land.Land "+ index +
-                    " is already made up of Magic huangduValley.farm.land.Soil!");
+        // already Black Soil
+        if(iLand instanceof BlackSoil) {
+            System.out.println("Land "+ index +
+                    " is already made up of Black Soil!");
         }
-        // upgrade to Magic huangduValley.farm.land.Soil
-        else if(iLand instanceof BlackSoil) {
-            lands.set(index, new MagicSoil(
-                    ((BlackSoil) iLand).iHarvest));
+        // upgrade to Black Soil
+        else if(iLand instanceof RedSoil) {
+            lands.set(index, new BlackSoil(
+                    ((RedSoil) iLand).iHarvest));
         }
-        // upgrade to Black huangduValley.farm.land.Soil
+        // upgrade to Red Soil
         else {
-            lands.set(index, new BlackSoil(iLand));
+            lands.set(index, new RedSoil(iLand));
         }
     }
 
     // print info of all the lands
-    public void printList() {
+    public void printList() throws Exception {
         for(IHarvest iLand: lands) {
             // print index
             System.out.print(lands.indexOf(iLand));
             // print grade and plant
-            if(iLand instanceof MagicSoil) {
-                System.out.print(" Magic huangduValley.farm.land.Soil ");
+            if(iLand instanceof BlackSoil) {
+                // print dry or fertile
+                if(((BlackSoil) iLand).iHarvest instanceof DryLand)
+                    System.out.print(" Dry Land with");
+                else if(((BlackSoil) iLand).iHarvest instanceof FertileLand)
+                    System.out.print(" Fertile Land with");
+                else
+                    throw new Exception("unknown land type");
+
+                System.out.print(" Black Soil ");
             }
-            else if(iLand instanceof BlackSoil){
-                System.out.print(" Black huangduValley.farm.land.Soil ");
+            else if(iLand instanceof RedSoil){
+                if(((RedSoil) iLand).iHarvest instanceof DryLand)
+                    System.out.print(" Dry Land with");
+                else if(((RedSoil) iLand).iHarvest instanceof FertileLand)
+                    System.out.print(" Fertile Land with");
+                else
+                    throw new Exception("unknown land type");
+
+                System.out.print(" Red Soil ");
             }
             else {
-                System.out.print(" Ordinary huangduValley.farm.land.Soil ");
+                if(iLand instanceof DryLand)
+                    System.out.print(" Dry Land with");
+                else if(iLand instanceof FertileLand)
+                    System.out.print(" Fertile Land with");
+                else
+                    throw new Exception("unknown land type");
+
+                System.out.print(" Ordinary Soil ");
             }
             // print plant
-            System.out.println(iLand.getPlant());
+            if(iLand.getPlant() == null)
+                System.out.println("No Plant");
+            else {
+                String className = iLand.getPlant().getClass().getName();
+                int dotIndex = className.lastIndexOf(".");
+                System.out.println(className.substring(dotIndex+1));
+            }
         }
     }
 
     // harvest all mature plants
-    public void harvestAll() {
+    public void harvestAll() throws Exception {
         for (IHarvest iLand: lands) {
+            // check if plant matured
             iLand.harvest();
         }
     }
 
     // seed on all empty lands
-    public void plantAll() {
+    public void plantAll() throws Exception {
         for (IHarvest iLand: lands) {
-            iLand.plant("Sample");
+            // land empty, plant carrot
+            if(iLand.getPlant() == null)
+                iLand.plantCarrot();
         }
     }
 
     // water all the plants
-    public void waterAll() {
-        // consume water
-        System.out.println("huangduValley.farm.land.Land all watered.");
+    public void waterAll() throws Exception {
+        // this will not consume water
+        // manager will
+        for (IHarvest iLand: lands) {
+            iLand.water();
+        }
     }
 
     // fertilize all the plants
     public void fertilizeAll() {
-        // consume water
-        System.out.println("huangduValley.farm.land.Land all fertilized.");
+        // this will not consume fertilizer
+        // manager will
+        for (IHarvest iLand: lands) {
+            iLand.fertilize();
+        }
     }
 }

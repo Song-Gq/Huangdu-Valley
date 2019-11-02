@@ -42,15 +42,8 @@ public class Manager {
     public void doAll() throws Exception {
         lands.plantAll();
 
-        if(fetch("Water")) {
-            lands.waterAll();
-            putback("Water");
-        }
-
-        if(fetch("Fertilizer")) {
-            lands.fertilizeAll();
-            putback("Fertilizer");
-        }
+        waterAll();
+        fertilizeAll();
 
         lands.harvestAll();
 
@@ -59,7 +52,24 @@ public class Manager {
         lands.printList();
         lands.upgradeLand(1);
         lands.printList();
-        lands.addLand();
+        lands.addDryLand();
+        lands.addFertileLand();
+    }
+
+    // this consumes water
+    public void waterAll() throws Exception{
+        if(fetch("Water")) {
+            lands.waterAll();
+            putback("Water");
+        }
+    }
+
+    // this consumes fertilizer
+    public void fertilizeAll() throws Exception{
+        if(fetch("Fertilizer")) {
+            lands.fertilizeAll();
+            putback("Fertilizer");
+        }
     }
 
     // take something, like Water or Fertilizer

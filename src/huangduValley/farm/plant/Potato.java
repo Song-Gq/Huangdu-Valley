@@ -6,6 +6,6 @@ package huangduValley.farm.plant;
  * @author CuiYanshen
  */
 
-public class Potato {
+public class Potato extends FruitPlant {
 	//just a potato
 }
