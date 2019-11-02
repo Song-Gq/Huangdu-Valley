@@ -2,6 +2,7 @@ package huangduValley.farm.test;
 
 import huangduValley.farm.land.DryLand;
 import huangduValley.farm.land.FertileLand;
+import huangduValley.farm.land.IHarvest;
 import huangduValley.farm.plant.Carrot;
 import huangduValley.farm.plant.Potato;
 
@@ -13,15 +14,21 @@ import huangduValley.farm.plant.Potato;
 
 public class AbstractFactoryTest {
 	public static void main(String[] args) throws Exception {
-		DryLand dryLand = new DryLand();
+		IHarvest dryLand = new DryLand();
 		
 		Carrot commonCarrot = dryLand.plantCarrot();
-		Potato commonPotato = dryLand.plantPotato();
+		dryLand.harvest();
 		
-		FertileLand fertileLand = new FertileLand();
+		Potato commonPotato = dryLand.plantPotato();
+		dryLand.harvest();
+		
+		IHarvest fertileLand = new FertileLand();
 		
 		Carrot strongCarrot = fertileLand.plantCarrot();
+		fertileLand.harvest();
+		
 		Potato strongPotato = fertileLand.plantPotato();
-    	
+		fertileLand.harvest();
+		
 	}
 }
