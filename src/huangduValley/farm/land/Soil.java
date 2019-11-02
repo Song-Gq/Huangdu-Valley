@@ -27,7 +27,6 @@ public abstract class Soil implements IHarvest {
     // implemented by a concrete farm.land.Soil
     public abstract void harvest() throws Exception;
 
-    // to be modified
     public abstract Plant getPlant();
     public abstract Carrot plantCarrot() throws Exception;
     public abstract Potato plantPotato() throws Exception;

@@ -55,8 +55,9 @@ public class BlackSoil extends Soil {
     public Plant getPlant() {
         return iHarvest.getPlant();
     }
-    public Carrot plantCarrot() throws Exception { return iHarvest.plantCarrot(); }
-    public Potato plantPotato() throws Exception { return iHarvest.plantPotato(); }
     public void water() { iHarvest.water(); }
     public void fertilize() {iHarvest.fertilize(); }
+
+    public Carrot plantCarrot() throws Exception { return ((Land) iHarvest).plantCarrot("black"); }
+    public Potato plantPotato() throws Exception { return ((Land) iHarvest).plantPotato("black"); }
 }

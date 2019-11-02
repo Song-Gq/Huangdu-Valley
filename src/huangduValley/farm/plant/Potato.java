@@ -8,4 +8,7 @@ package huangduValley.farm.plant;
 
 public class Potato extends FruitPlant {
 	//just a potato
+    public Potato(String landType) {
+        super(landType);
+    }
 }

@@ -20,8 +20,9 @@ public interface IHarvest {
     // to be modified
     // public void plant(Plant plant);
     public Plant getPlant();
-    public Carrot plantCarrot() throws Exception;
-    public Potato plantPotato() throws Exception;
     public void water();
     public void fertilize();
+
+    public Carrot plantCarrot() throws Exception;
+    public Potato plantPotato() throws Exception;
 }

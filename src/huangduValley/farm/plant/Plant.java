@@ -12,10 +12,10 @@ public class Plant {
      * constructor of Plant: three types
      * @param :none or the type of land or both land type and growing time of per stage
      */
-    public Plant()
+/*    public Plant()
     {
         this.impl=new YellowLandPlant();//Default:to plant on the yellow land.
-    }
+    }*/
     public Plant(String landType)
     {
         if(landType=="yellow")

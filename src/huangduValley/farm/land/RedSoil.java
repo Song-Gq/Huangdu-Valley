@@ -52,11 +52,10 @@ public class RedSoil extends Soil {
 
     // simply call this method of class farm.land.Land's
     @Override
-    public Plant getPlant() {
-        return iHarvest.getPlant();
-    }
-    public Carrot plantCarrot() throws Exception { return iHarvest.plantCarrot(); }
-    public Potato plantPotato() throws Exception { return iHarvest.plantPotato(); }
+    public Plant getPlant() { return iHarvest.getPlant(); }
     public void water() { iHarvest.water(); }
     public void fertilize() {iHarvest.fertilize(); }
+
+    public Carrot plantCarrot() throws Exception { return ((Land) iHarvest).plantCarrot("red"); }
+    public Potato plantPotato() throws Exception { return ((Land) iHarvest).plantPotato("red"); }
 }

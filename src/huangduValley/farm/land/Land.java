@@ -63,16 +63,18 @@ public abstract class Land implements IHarvest {
     }
 
     public Plant getPlant() { return plant; }
-
-    public abstract Carrot plantCarrot() throws Exception;
-
-    public abstract Potato plantPotato() throws Exception;
-
     public void water() {
         System.out.println("Watering...");
     }
-
     public void fertilize() {
         System.out.println("Fertilizng...");
     }
+
+    public abstract Carrot plantCarrot() throws Exception;
+    public abstract Potato plantPotato() throws Exception;
+
+    // called by RedSoil or BlackSoil through their iHarvest
+    // to create plants of proper land type
+    protected abstract Carrot plantCarrot(String landType) throws Exception;
+    protected abstract Potato plantPotato(String landType) throws Exception;
 }

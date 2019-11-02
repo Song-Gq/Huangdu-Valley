@@ -8,7 +8,8 @@ package huangduValley.farm.plant;
 
 public class CommonPotato extends Potato {
 	
-	public CommonPotato() {
+	public CommonPotato(String landType) {
+		super(landType);
 		System.out.println("CommonPotato is planted.");
 	}
 	

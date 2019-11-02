@@ -16,7 +16,7 @@ public class FertileLand extends Land {
 	@Override
 	public Carrot plantCarrot() throws Exception {
 		if(this.plant == null) {
-			this.plant = new StrongCarrot();
+			this.plant = new StrongCarrot("yellow");
 			return (Carrot) plant;
 		}
 		// field not empty!
@@ -29,7 +29,7 @@ public class FertileLand extends Land {
 	@Override
 	public Potato plantPotato() throws Exception {
 		if(this.plant == null) {
-			this.plant = new StrongPotato();
+			this.plant = new StrongPotato("yellow");
 			return (Potato) plant;
 		}
 		// field not empty!
@@ -39,4 +39,27 @@ public class FertileLand extends Land {
 		}
 	}
 
+	protected Carrot plantCarrot(String landType) throws Exception {
+		if(this.plant == null) {
+			this.plant = new StrongCarrot(landType);
+			return (Carrot) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
+	}
+
+	protected Potato plantPotato(String landType) throws Exception {
+		if(this.plant == null) {
+			this.plant = new StrongPotato(landType);
+			return (Potato) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
+	}
 }

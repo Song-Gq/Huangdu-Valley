@@ -19,7 +19,7 @@ public class DryLand extends Land {
 	@Override
 	public Carrot plantCarrot() throws Exception {
 		if(this.plant == null) {
-			this.plant =  new CommonCarrot();
+			this.plant =  new CommonCarrot("yellow");
 			return (Carrot) plant;
 		}
 		// field not empty!
@@ -32,7 +32,31 @@ public class DryLand extends Land {
 	@Override
 	public Potato plantPotato() throws Exception {
 		if(this.plant == null) {
-			this.plant = new CommonPotato();
+			this.plant = new CommonPotato("yellow");
+			return (Potato) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
+	}
+
+	protected Carrot plantCarrot(String landType) throws Exception {
+		if(this.plant == null) {
+			this.plant =  new CommonCarrot(landType);
+			return (Carrot) plant;
+		}
+		// field not empty!
+		// harvest() first and then plant a new one
+		else {
+			throw new Exception("plant already exists");
+		}
+	}
+
+	protected Potato plantPotato(String landType) throws Exception {
+		if(this.plant == null) {
+			this.plant = new CommonPotato(landType);
 			return (Potato) plant;
 		}
 		// field not empty!

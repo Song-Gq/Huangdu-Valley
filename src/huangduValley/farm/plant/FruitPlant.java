@@ -1,10 +1,10 @@
 package huangduValley.farm.plant;
 
 public class FruitPlant extends Plant {
-    public FruitPlant()
+/*    public FruitPlant()
     {
         super();
-    }
+    }*/
     public FruitPlant(String landType)
     {
         super(landType);

@@ -7,7 +7,8 @@ package huangduValley.farm.plant;
  */
 
 public class StrongCarrot extends Carrot {
-	public StrongCarrot() {
+	public StrongCarrot(String landType) {
+		super(landType);
 		System.out.println("StrongCarrot is planted.");
 	}
 }
