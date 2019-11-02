@@ -119,8 +119,8 @@ public class Lands {
         }
     }
 
-    // seed on all empty lands
-    public void plantAll() throws Exception {
+    // plant carrots on all empty lands
+    public void plantCarrotAll() throws Exception {
         for (ILand iLand: lands) {
             // land empty, plant carrot
             if(iLand.getPlant() == null)
@@ -128,8 +128,17 @@ public class Lands {
         }
     }
 
+    // plant potatoes on all empty lands
+    public void plantPotatoAll() throws Exception {
+        for (ILand iLand: lands) {
+            // land empty, plant potato
+            if(iLand.getPlant() == null)
+                iLand.plantPotato();
+        }
+    }
+
     // water all the plants
-    public void waterAll() throws Exception {
+    public void waterAll() {
         // this will not consume water
         // manager will
         for (ILand iLand: lands) {

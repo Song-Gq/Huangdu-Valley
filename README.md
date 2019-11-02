@@ -8,6 +8,10 @@ Design Pattern Course Project
 * Main函数  
 * UML待更新  
 ## Commits  
+* 11/3  
+增加了一个CalculateProduction类以简化代码  
+增加了一个Stdout类以简化规范输出  
+增加了部分Main的实现  
 * 11/2  
 一些合并工作  
 IHarvest更名为ILand  

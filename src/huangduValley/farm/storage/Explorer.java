@@ -78,4 +78,9 @@ public class Explorer {
         return curBag.getBag(name);
     }
 
+    // back to the root
+    public void backRoot() {
+        curBag = RootBag.getInstance();
+    }
+
 }

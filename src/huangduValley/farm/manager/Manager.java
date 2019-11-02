@@ -40,20 +40,62 @@ public class Manager {
     // plant, water, fertilize, harvest the plants,
     // and wake up the guard for you
     public void doAll() throws Exception {
-        lands.plantAll();
+        // plant potato by default
+        plantPotatoAll();
 
         waterAll();
         fertilizeAll();
 
-        lands.harvestAll();
+        harvestAll();
 
+        wakeupGuard();
+
+        stopTheft();
+
+        // lands.printList();
+    }
+
+    // wake up the guard
+    public void wakeupGuard() {
         guard.wakeup();
+    }
 
-        lands.printList();
-        lands.upgradeLand(1);
-        lands.printList();
+    // try to stop theft
+    public void stopTheft() throws Exception {
+        guard.stopTheft();
+    }
+
+    // harvest all mature plants
+    public void harvestAll() throws Exception {
+        lands.harvestAll();
+    }
+
+    // plant carrots on all lands
+    public void plantCarrotAll() throws Exception {
+        lands.plantCarrotAll();
+    }
+
+    // plant potatoes on all lands
+    public void plantPotatoAll() throws Exception {
+        lands.plantPotatoAll();
+    }
+
+    // add a piece of dry land
+    public void addDryLand() {
         lands.addDryLand();
+    }
+
+    // add a piece of fertile land
+    public void addFertileLand() {
         lands.addFertileLand();
+    }
+
+    // upgrade a piece of land by index by one grade
+    // index starts from 0
+    public void upgradeLand(int... index) throws Exception {
+        for(int i: index) {
+            lands.upgradeLand(i);
+        }
     }
 
     // this consumes water

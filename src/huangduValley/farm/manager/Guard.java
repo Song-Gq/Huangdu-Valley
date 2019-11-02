@@ -1,5 +1,9 @@
 package huangduValley.farm.manager;
 
+import huangduValley.farm.Stdout;
+import huangduValley.farm.storage.Items;
+import huangduValley.farm.storage.RootBag;
+
 // part of "Facade" design pattern
 // a Singleton role that prevents you from being stolen when awake
 // scene "Farm", by Song Guanqun
@@ -11,7 +15,7 @@ public class Guard {
 
     // private constructor
     private Guard() {
-        sleeping = false;
+        sleeping = true;
     }
 
     public static Guard getInstance() {
@@ -23,18 +27,36 @@ public class Guard {
 
     public void wakeup() {
         sleeping = false;
-        System.out.println("Guard wakes up.");
+        Stdout.print(this, "Guard wakes up");
     }
 
-    public void stopTheft() {
+    public void stopTheft() throws Exception {
         if(!sleeping) {
-            System.out.println("Theft stopped!");
+            Stdout.print(this, "Theft was stopped");
             sleeping = true;
         }
         else {
-            System.out.println("Guard sleeping. Money stolen!");
+            RootBag rootBag = RootBag.getInstance();
+            // steal carrot by default
+            Items carrot = rootBag.getItems("Carrot");
+            if(carrot != null) {
+                if(carrot.getCount() > 100) {
+                    Stdout.print(this, "Guard is sleeping, " +
+                        "100" + " carrots were stolen");
+                    carrot.setCount(carrot.getCount() - 100);
+                }
+                else {
+                    Stdout.print(this, "Guard is sleeping, " +
+                            carrot.getCount() + " carrots were stolen");
+                    rootBag.deleteItems("Carrot");
+                }
 
-            // money--
+            }
+            // no carrot left in root bag
+            else {
+                Stdout.print(this, "Guard is sleeping, " +
+                        "but no carrot left, so no carrot was thieved");
+            }
         }
     }
 }

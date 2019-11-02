@@ -1,5 +1,6 @@
 package huangduValley.farm.land;
 
+import huangduValley.farm.Stdout;
 import huangduValley.farm.plant.*;
 import huangduValley.farm.storage.Ingredients;
 import huangduValley.farm.storage.RootBag;
@@ -21,7 +22,6 @@ public abstract class Land implements ILand {
     public void harvest() throws Exception{
         // check if the plant exists
         if(plant != null) {
-            RootBag rootBag = RootBag.getInstance();
 
             // check if plant matured
             if(plant.isMature()){
@@ -29,26 +29,7 @@ public abstract class Land implements ILand {
 
                 // harvest with normal production
                 // ingredients doubled if plant strong
-                if(plant instanceof StrongCarrot) {
-                    rootBag.add(new Ingredients("Carrot", production * 2));
-                    System.out.println("You get Carrot X" + production * 2);
-                }
-                else if(plant instanceof CommonCarrot) {
-                    rootBag.add(new Ingredients("Carrot", production));
-                    System.out.println("You get Carrot X" + production);
-                }
-                else if(plant instanceof StrongPotato) {
-                    rootBag.add(new Ingredients("Potato", production * 2));
-                    System.out.println("You get Potato X" + production * 2);
-                }
-                else if(plant instanceof CommonPotato) {
-                    rootBag.add(new Ingredients("Potato", production));
-                    System.out.println("You get Potato X" + production);
-                }
-                // unknown plant
-                else {
-                    throw new Exception("unknown plant when harvest()");
-                }
+                CalculateProduction.cal(plant, production, this);
 
                 // get money
 
@@ -66,7 +47,8 @@ public abstract class Land implements ILand {
     public void water() {
         // not matured
         if(plant != null && !plant.isMature()) {
-            System.out.println("Watering...");
+            Stdout.print(this, "A piece of land is watered");
+
             plant.growUp();
         }
 
@@ -75,7 +57,8 @@ public abstract class Land implements ILand {
     public void fertilize() {
         // not matured
         if(plant != null && !plant.isMature()) {
-            System.out.println("Fertilizng...");
+            Stdout.print(this, "A piece of land is fertilized");
+
             plant.growUp();
         }
 

@@ -24,26 +24,7 @@ public class RedSoil extends Soil {
 
         if(plant != null && plant.isMature()) {
             // double the production
-            if(plant instanceof StrongCarrot) {
-                rootBag.add(new Ingredients("Carrot", production * 2));
-                System.out.println("You get Carrot X" + production * 2);
-            }
-            else if(plant instanceof CommonCarrot) {
-                rootBag.add(new Ingredients("Carrot", production));
-                System.out.println("You get Carrot X" + production);
-            }
-            else if(plant instanceof StrongPotato) {
-                rootBag.add(new Ingredients("Potato", production * 2));
-                System.out.println("You get Potato X" + production * 2);
-            }
-            else if(plant instanceof CommonPotato) {
-                rootBag.add(new Ingredients("Potato", production));
-                System.out.println("You get Potato X" + production);
-            }
-            // unknown plant
-            else {
-                throw new Exception("unknown plant when harvest()");
-            }
+            CalculateProduction.cal(plant, production, this);
 
             // then, call harvest() of normal Land's
             iLand.harvest();
