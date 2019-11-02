@@ -65,7 +65,7 @@ public abstract class Land implements ILand {
 
     public void water() {
         // not matured
-        if(!plant.isMature()) {
+        if(plant != null && !plant.isMature()) {
             System.out.println("Watering...");
             plant.growUp();
         }
@@ -74,7 +74,7 @@ public abstract class Land implements ILand {
     }
     public void fertilize() {
         // not matured
-        if(!plant.isMature()) {
+        if(plant != null && !plant.isMature()) {
             System.out.println("Fertilizng...");
             plant.growUp();
         }
