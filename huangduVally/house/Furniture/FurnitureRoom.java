@@ -9,6 +9,7 @@ public class FurnitureRoom implements Aggregate {
 //    public PrimitiveCommandNode primitiveCommandNode;
     public FurnitureRoom(int initialsize) {         
         this.furnitures = new ArrayList(initialsize);   
+        System.out.println("You successfully rent a house!");
     }                                           
     public Furniture getFurnitureAt(int index) {
         return (Furniture)furnitures.get(index);          

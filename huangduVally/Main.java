@@ -4,6 +4,10 @@ import huangduVally.house.House;
 import huangduVally.house.Furniture.Furniture;
 import huangduVally.house.Furniture.FurnitureRoom;
 import huangduVally.house.Furniture.MyIterator;
+import huangduVally.house.Rent.HouseMediator;
+import huangduVally.house.Rent.Mediator;
+import huangduVally.house.Rent.Person;
+import huangduVally.house.Rent.Renter;
 import huangduVally.house.memento.CareTaker;
 import huangduVally.house.memento.Originator;
 import huangduVally.house.memento.Redo;
@@ -21,6 +25,12 @@ public class Main {
         Originator originator=new Originator();
         CareTaker careTaker=new CareTaker();
 
+        Mediator mediator = new HouseMediator();
+		Person renter = new Renter("DP",mediator);
+		if(renter.getsendBool()==false) {
+			System.out.println("Send message to HouseMediator first to rent a house!");
+			renter.sendMessage("Near land, $3115/month");
+		}
         FurnitureRoom furnitureroom = new FurnitureRoom(4); //3
 
 

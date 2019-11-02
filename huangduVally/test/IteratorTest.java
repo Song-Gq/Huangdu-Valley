@@ -5,11 +5,23 @@ import java.util.*;
 import huangduVally.house.Furniture.Furniture;
 import huangduVally.house.Furniture.FurnitureRoom;
 import huangduVally.house.Furniture.MyIterator;
+import huangduVally.house.Rent.HouseMediator;
+import huangduVally.house.Rent.Mediator;
+import huangduVally.house.Rent.Person;
+import huangduVally.house.Rent.Renter;
 
 public class IteratorTest {
     public static void main(String[] args) {
-        FurnitureRoom furnitureroom = new FurnitureRoom(4);
     	System.out.println("***************************  Test Iterator  ***************************");
+    	Mediator mediator = new HouseMediator();
+		Person renter = new Renter("DP",mediator);
+		if(renter.getsendBool()==false) {
+			System.out.println("Send message to HouseMediator first to rent a house!");
+			renter.sendMessage("Near land, $3115/month");
+		}
+
+		FurnitureRoom furnitureroom = new FurnitureRoom(4);
+
 //    	String command="build repeat 4 repeat 3 desk chair sofa desk cabinet bed end end end";
 //    	System.out.println("text = \"" + command + "\"");
 //    	furnitureroom.node.parse(command);
