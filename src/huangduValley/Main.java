@@ -1,5 +1,10 @@
 package huangduValley;
 
+import huangduValley.farm.fence.Fence;
+import huangduValley.farm.fence.FenceBuilder;
+import huangduValley.farm.fence.ShortFenceBuilder;
+import huangduValley.farm.fence.TallFenceBuilder;
+import huangduValley.farm.fence.Worker;
 import huangduValley.farm.manager.Manager;
 import huangduValley.farm.storage.Explorer;
 import huangduValley.farm.taskHandler.PlantTaskHandler;
@@ -107,7 +112,15 @@ public class Main {
                     "随后，警卫安心地睡着了");
             manager.doAll();
             skip();
-
+            
+            System.out.println("你找了一个工人，准备为农场建一个栅栏\n" +
+            		"由于资金的原因，我们建一个木制矮栅栏");
+    		Worker worker = new Worker();
+    		FenceBuilder shortfb = new ShortFenceBuilder();
+    		worker.setFenceBuilder(shortfb);
+    		worker.buildFence();
+    		Fence fence = worker.getFence();
+    		skip();
         }
         catch (Exception e) {
             e.printStackTrace();

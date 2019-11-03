@@ -9,8 +9,10 @@ import huangduValley.Stdout;
  */
 
 public class CommonCarrot extends Carrot {
+	
 	public CommonCarrot(String landType) {
 		super(landType);
 		Stdout.print(this, "CommonCarrot is created");
 	}
+	
 }
