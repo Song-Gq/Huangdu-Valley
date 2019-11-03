@@ -35,6 +35,5 @@ public class CompleteProcessing extends SequentialProcessing {
     @Override
     protected void exit() {
         Stdout.print(this, "Exit processing");
-        System.out.println("HuangduValley.Workshop.factory.processTable welcome back again :)");
     }
 }

@@ -63,12 +63,12 @@ public class FineProMachine extends Machine {
      */
     @Override
     public Vector<Items> run(Vector<Items> materialVector) throws Exception {
-        System.out.println("FineProMachine is running!");
+        Stdout.print(this, "FineProMachine is running!");
         Vector<Items> productVector = new Vector<>();
         for(Items items:materialVector){
             Thread.sleep(100*items.getCount());
             productVector.add(new FineProduct(items.getName(), items.getCount()));
-            System.out.println(String.format("Fine processing machine produces %d %s",items.getCount(),items.getName()));
+            Stdout.print(this, String.format("Fine processing machine produces %d %s",items.getCount(),items.getName()));
         }
         return productVector;
     }

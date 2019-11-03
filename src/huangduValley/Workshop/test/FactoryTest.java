@@ -30,7 +30,7 @@ public class FactoryTest {
         /**
          * Create machine
          */
-        CleanMachine cm = new CleanMachine("1st CM");
+        CleanMachine cm = new CleanMachine("1st cm");
         RoughProMachine rm = new RoughProMachine("1st rm");
         FineProMachine fm = new FineProMachine("1st fm");
         /**
@@ -49,9 +49,13 @@ public class FactoryTest {
          */
         Vector<WorkSpace> processVector = new Vector<>();
         CompleteProcessing processing1 = new CompleteProcessing();
-        Vector<Machine> machineVector = new Vector<>();
-        machineVector.add(cm);
-        processing1.doInit(ingredientsVector, machineVector);
+        Vector<Machine> machineVector1 = new Vector<>();
+        machineVector1.add(cm);
+        Vector<Machine> machineVector2 = new Vector<>();
+        machineVector2.add(rm);
+        Vector<Machine> machineVector3 = new Vector<>();
+        machineVector3.add(fm);
+        processing1.doInit(ingredientsVector, machineVector1, machineVector2, machineVector3);
         processVector.add(processing1);
         ((NormalFactory) factory).setProcessVector(processVector);
         /**
