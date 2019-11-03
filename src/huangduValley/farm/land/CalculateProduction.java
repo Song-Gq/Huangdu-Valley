@@ -1,6 +1,6 @@
 package huangduValley.farm.land;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 import huangduValley.farm.plant.*;
 import huangduValley.farm.storage.Ingredients;
 import huangduValley.farm.storage.RootBag;

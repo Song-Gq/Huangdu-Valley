@@ -1,4 +1,4 @@
-package huangduValley.farm;
+package huangduValley;
 
 // used to print
 // pass "this" and description

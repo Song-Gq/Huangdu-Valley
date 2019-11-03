@@ -1,4 +1,4 @@
-package huangduValley.farm;
+package huangduValley;
 
 import huangduValley.farm.manager.Manager;
 import huangduValley.farm.storage.Explorer;
