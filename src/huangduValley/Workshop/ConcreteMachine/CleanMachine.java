@@ -67,4 +67,10 @@ public class CleanMachine extends Machine {
 
         return v.visit(this);
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        System.out.println("Clone a clean machine");
+        return super.clone();
+    }
 }

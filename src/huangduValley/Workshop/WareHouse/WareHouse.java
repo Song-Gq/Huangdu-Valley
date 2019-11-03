@@ -1,6 +1,9 @@
 package huangduValley.Workshop.WareHouse;
 
 import huangduValley.Workshop.Machine;
+import huangduValley.Workshop.Product.Product;
+import huangduValley.Workshop.processFactory.factory.Observer;
+import huangduValley.farm.storage.Items;
 
 import java.util.Vector;
 
@@ -9,13 +12,17 @@ import java.util.Vector;
  * @author Leepaangsang
  * @version 2019/10/30
  */
-public class WareHouse {
+public class WareHouse implements Observer, Proxy {
     private WareHouse(){
         System.out.println("Warehouse create");
         this.machineVector = new Vector<Machine>();
     }
 
+    private Vector<Vector<Items>> productsVector = new Vector<>();
+
     private Vector<Machine> machineVector;
+
+    private Wallet wallet = Wallet.getInstance();
 
     private int poolSize;
 
@@ -26,6 +33,36 @@ public class WareHouse {
     public static WareHouse getInstance(){
         System.out.println("Get warehouse instance!");
         return WareHouseHolder.INSTANCE;
+    }
+
+    @Override
+    public void update(Vector<Vector<Items>> products) {
+        productsVector = products;
+    }
+
+    public Vector<Vector<Items>> getProductsVector() {
+        return productsVector;
+    }
+
+    public boolean buy(Product product) throws Exception {
+        int length = productsVector.size();
+        boolean flag = false;
+        int indexA = -1, indexB = -1;
+        for (indexA = 0; indexA < length; indexA++) {
+            indexB = productsVector.elementAt(indexA).indexOf(product);
+            if (indexB != -1) {
+                flag = true;
+                break;
+            }
+        }
+
+        int count = productsVector.elementAt(indexA).elementAt(indexB).getCount();
+
+        productsVector.elementAt(indexA).elementAt(indexB).setCount(count - 1);
+
+        wallet.increaseBalance(product.getPrice());
+
+        return flag;
     }
 
     /**

@@ -65,4 +65,10 @@ public class FineProMachine extends Machine {
     public Vector<Items> accept(Visitor v) throws Exception {
         return v.visit(this);
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        System.out.println("Clone a fine process machine");
+        return super.clone();
+    }
 }

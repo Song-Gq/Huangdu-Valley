@@ -22,6 +22,7 @@ public class Main {
         wareHouse.setMaxSize(10);
 
         CleanMachine cm = new CleanMachine("1st CM");
+        CleanMachine cm2 = (CleanMachine) cm.clone();
         RoughProMachine rm = new RoughProMachine("1st rm");
         FineProMachine fm = new FineProMachine("1st fm");
 
@@ -35,5 +36,13 @@ public class Main {
 
         cm.accept(new NormalRunVisitor(ingredientsVector));
 
+        int leng = wareHouse.getProductsVector().size();
+        for (int i = 0; i < leng; i++) {
+            Vector vector = wareHouse.getProductsVector().elementAt(i);
+            for (int j = 0; j < vector.size(); j++) {
+                System.out.print(vector.elementAt(j)+" ");
+            }
+            System.out.println();
+        }
     }
 }

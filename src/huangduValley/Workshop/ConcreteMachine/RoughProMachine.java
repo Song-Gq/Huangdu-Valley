@@ -66,4 +66,10 @@ public class RoughProMachine extends Machine {
     public Vector<Items> accept(Visitor v) throws Exception {
         return v.visit(this);
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        System.out.println("Clone a rough processs machine");
+        return super.clone();
+    }
 }
