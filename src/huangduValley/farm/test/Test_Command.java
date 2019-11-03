@@ -13,7 +13,7 @@ import huangduValley.farm.land.LandCommand;
  * @author CuiYanshen
  */
 
-public class CommandTest {
+public class Test_Command {
 	
 	public static void excuteCommand(List<LandCommand> queue) {
 		for (LandCommand lc:queue) {
