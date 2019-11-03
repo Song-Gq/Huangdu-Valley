@@ -1,5 +1,7 @@
 package huangduValley.farm.storage;
 
+import huangduValley.Stdout;
+
 // this is part of "Composite" design pattern
 // representing items (like files) in the player's storage
 // scene "Farm", by Song Guanqun
@@ -41,6 +43,6 @@ public class Items extends Package {
     // here the item list contains only the item itself
     @Override
     public void printList() {
-        System.out.println(name);
+        Stdout.print(this, name);
     }
 }

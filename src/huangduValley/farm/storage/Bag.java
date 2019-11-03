@@ -1,6 +1,6 @@
 package huangduValley.farm.storage;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 import java.util.ArrayList;
 
@@ -73,7 +73,7 @@ public class Bag extends Package {
     @Override
     public void printList() {
         for (Package p: itemList) {
-            System.out.println(p.getName());
+            Stdout.print(this, p.getName());
         }
     }
 

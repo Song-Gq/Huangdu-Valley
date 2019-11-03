@@ -1,6 +1,6 @@
 package huangduValley.farm.plant;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * implementation of plants on RedLand whose growing time is eighty percent of normal ones.

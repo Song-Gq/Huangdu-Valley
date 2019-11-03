@@ -1,6 +1,6 @@
 package huangduValley.farm.manager;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 import huangduValley.farm.land.Lands;
 import huangduValley.farm.storage.Bag;
 import huangduValley.farm.storage.Items;

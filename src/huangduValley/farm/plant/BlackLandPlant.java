@@ -1,6 +1,6 @@
 package huangduValley.farm.plant;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * implementation of plants on BlackLand whose growing time is sixty percent of normal ones.

@@ -1,6 +1,6 @@
 package huangduValley.farm.storage;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 // part of "Facade" design pattern
 // a class to manage the storage system using Singleton

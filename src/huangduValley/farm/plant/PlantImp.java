@@ -1,6 +1,6 @@
 package huangduValley.farm.plant;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * the implementation of Plant
