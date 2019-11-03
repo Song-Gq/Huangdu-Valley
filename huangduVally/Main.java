@@ -1,45 +1,60 @@
 package huangduVally;
 
-import huangduVally.house.House;
 import huangduVally.house.Furniture.Furniture;
+import huangduVally.house.House;
 import huangduVally.house.Furniture.FurnitureRoom;
 import huangduVally.house.Furniture.MyIterator;
 import huangduVally.house.Rent.HouseMediator;
+import huangduVally.house.Rent.Landlord;
 import huangduVally.house.Rent.Mediator;
 import huangduVally.house.Rent.Person;
 import huangduVally.house.Rent.Renter;
 import huangduVally.house.memento.CareTaker;
 import huangduVally.house.memento.Originator;
-import huangduVally.house.memento.Redo;
-import huangduVally.house.memento.Undo;
+import huangduVally.house.renovation.brick.Floorboard;
 
-import static huangduVally.house.House.setHouseName;
-import static huangduVally.house.House.showHouseName;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import static huangduVally.house.House.*;
+import static huangduVally.house.renovation.brick.FlyweightBrick.*;
+
 public class Main {
     public static void main(String[] args) {
-        int index=-1;
-        Originator originator=new Originator();
-        CareTaker careTaker=new CareTaker();
-
+        // Flyweight 创建地砖
+        ArrayList<Floorboard> floorboardList = new ArrayList<Floorboard>();
+        for(int i=1;i<3;i++) {
+            for (int j = 1; j < 3; j++){
+                Floorboard floorboard = new Floorboard(textures[0]); // 初始地砖为木质
+                floorboard.setX(i);
+                floorboard.setY(j);
+                floorboardList.add(floorboard);
+            }
+        }
+        // Mediator
         Mediator mediator = new HouseMediator();
-		Person renter = new Renter("DP",mediator);
-		if(renter.getsendBool()==false) {
-			System.out.println("Send message to HouseMediator first to rent a house!");
-			renter.sendMessage("Near land, $3115/month");
-		}
-        FurnitureRoom furnitureroom = new FurnitureRoom(4); //3
+        Person renter = new Renter("DP",mediator);
+        Person landlordA = new Landlord("Python", mediator);
+        Person landlordB = new Landlord("Java", mediator);
+        Person landlordC = new Landlord("C++", mediator);
+        mediator.registerLandlord(landlordA);
+        mediator.registerLandlord(landlordB);
+        mediator.registerLandlord(landlordC);
+        mediator.registerRenter(renter);
+        if(renter.getsendBool()==false) {
+            System.out.println("Send message to HouseMediator first to rent a house!");
+            renter.sendMessage("Near land, $3115/month");
+        }
+        FurnitureRoom furnitureroom = new FurnitureRoom(20); //3
 
 
         System.out.println("Welcome home!");
         for (; ; ) {
             System.out.println("----------------------------------");
             System.out.println("你想要做什么呢？(请输入以下数字进行选择)");
-            System.out.println("[1]查看房屋名称 [2]修改房屋名称 [3]查看当前展示家具" +
-                    "[4]增加/移除家具 [5]查看当前装修 [6]修改当前装修 [7]离开房屋");
+            System.out.println("[1]查看房屋名称 [2]修改房屋名称 [3]展示家具" +
+                    "[4]增添/移除家具 [5]展示地砖 [6]修改地砖材质 [7]离开房屋");
 
             Scanner scanner = new Scanner(System.in);
             String key = scanner.nextLine();
@@ -50,51 +65,11 @@ public class Main {
                         showHouseName();
                         break;
                     case "2":
-                        System.out.println("请输入修改后房屋名称:");
-                        Scanner input1 = new Scanner(System.in);
-                        String newHouseName = input1.nextLine();
-//                      setHouseName(newHouseName);
-
-                        setHouseName(newHouseName);
-//                        System.out.println("The current HouseName are \""+ House.getHouseName()+"\"");
-                        System.out.println("MementoPattern:originator:setHouseName:Save HouseName to originator");
-                        originator.setHouseName(House.getHouseName());
-                        System.out.println("MementoPattern:careTaker:add:add originator'HouseName to careTaker, careTaker[1] is " + originator.getHouseName());
-                        careTaker.addMemento(originator.saveHouseNameToMemento());
-                        System.out.println("setHouseName");
-                        index++;
-
-                        for(;;){
-                            System.out.println("是否需要[1]Undo [2]Redo [输入其他]No");
-                            Scanner input2 = new Scanner(System.in);
-                            String command = input2.nextLine();
-                        if (command.matches("1")) {
-                            System.out.println("Undo");
-                            Undo undo = new Undo();
-
-                            System.out.println(" .we are in careTaker[" + index + "] ");
-                            undo.Undo(careTaker, index);
-                            if (index > 0)
-                                index--;
-                            showHouseName();
-                        } else if (command.matches("2")) {
-                            System.out.println("Redo");
-                            Redo redo = new Redo();
-
-                            System.out.println(" .we are in careTaker[" + index + "] ");
-                            redo.Redo(careTaker, index);
-                            if (index < careTaker.length() - 1)
-                                index++;
-                            showHouseName();
-
-                        } else {
-                            break;
-                        }
-                }
+                        changeHouseName();
                         break;
 
                     case "3":
-                        System.out.println("查看当前展示家具");
+                        System.out.println("查看当前已有家具");
                         furnitureroom.appendFurniture(new Furniture("Bed",123,"Red","Wood"));
                         furnitureroom.appendFurniture(new Furniture("Desk",123,"Red","Wood"));
                         furnitureroom.appendFurniture(new Furniture("Chair",123,"Red","Wood"));
@@ -112,25 +87,29 @@ public class Main {
                         }
                         break;
                     case "4":
-//                        for(;;) {
-//                            System.out.println("请选择以下家具： ");
-//                            Scanner input2 = new Scanner(System.in);
-//                            String command = input2.nextLine();
-//                            if (command.matches("1")) {
-//
-//                            }
-//                        }
-//////////////////////////////////// 增加/删除家具
-//                        furnitureroom.deleteFurniture("Chair",123,"Red","Wood");
-//                        changeFurniture();
+                        System.out.println("增加家具：");
+                        furnitureroom.appendFurniture(new Furniture("Desk",439,"Yellow","Wood"));
+                        furnitureroom.appendFurniture(new Furniture("Bed",456,"Red","Wood"));
+                        System.out.println("删除家具");
+                        furnitureroom.deleteFurniture("Chair", 123, "Yellow", "Wood");
+                        furnitureroom.deleteFurniture("Chair", 123, "Red", "Wood");
+                        System.out.println("查看当前已有家具");
+                        MyIterator it2 = furnitureroom.furIterator();
+                        while (it2.hasNext()) {
+                            Furniture furniture = (Furniture)it2.next();
+                            System.out.println("This is a "+furniture.getName());
+                            System.out.println("It worth "+furniture.getPrice());
+                            System.out.println("The color is "+furniture.getColor());
+                            System.out.println("It is made of "+furniture.getTexture()+"\n");
+
+                        }
                         break;
                     case "5":
-                        System.out.println("查看当前装修");
-//                        displayRenovation();
+                        System.out.println("展示地砖：");
+                        dispalyFlyweightBrick(floorboardList);
                         break;
                     case "6":
-                        System.out.println("修改当前装修");
-//                        changeRenovation();
+                        changeFlyweightBrick(floorboardList);
                         break;
                     case "7":
                         System.out.println("离开房屋");

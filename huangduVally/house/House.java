@@ -1,6 +1,11 @@
 package huangduVally.house;
 
+import huangduVally.house.memento.CareTaker;
+import huangduVally.house.memento.Originator;
+import huangduVally.house.memento.UndoOrRedo;
+
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  * @project: HappyFarm
@@ -8,6 +13,16 @@ import java.io.Serializable;
  * @designPattern: CompositeEntity, Visitor, Singleton, DoubleCheckLocking,Proxy
  **/
 public class House implements Serializable {
+
+    // Memento
+    private static int index=-1;
+    private static Originator originator=new Originator();
+    private static CareTaker careTaker=new CareTaker();
+//
+//    public int index=-1;
+//    public Originator originator=new Originator();
+//    public CareTaker careTaker=new CareTaker();
+
     private static House instance;
     public static House getInstance() {
         if (instance == null) {
@@ -37,71 +52,26 @@ public class House implements Serializable {
        houseName = newHouseName;
        showHouseName();
     }
+    public static void setHouseName(){  // for mementoTest
+        System.out.println("请输入修改后房屋名称:");
+        Scanner input1 = new Scanner(System.in);
+        String newHouseName = input1.nextLine();
+        houseName = newHouseName;
+        showHouseName();
+    }
 
+    public static void changeHouseName(){
+        System.out.println("请输入修改后房屋名称:");
+        Scanner input1 = new Scanner(System.in);
+        String newHouseName = input1.nextLine();
+        setHouseName(newHouseName);
+        System.out.println("MementoPattern:originator:setHouseName:Save HouseName to originator");
+        originator.setHouseName(House.getHouseName());
+        System.out.println("MementoPattern:careTaker:add:add originator'HouseName to careTaker, careTaker[1] is " + originator.getHouseName());
+        careTaker.addMemento(originator.saveHouseNameToMemento());
+        System.out.println("成功修改房屋名称！");
+        index++;
 
-
-//    Memento memento = new Memento();
-//    memento.setState(clonedRurnitureList);
-//    Memento.addState(memento);
-
-    //空调
-//    private building.house.airconditioner.AirConditioner airConditioner = (building.house.airconditioner.AirConditioner) new building.house.airconditioner.ProxyConditioner();
-
-    // Adds furniture in the room
-//    private ArrayList<AbstractFurniture> furnitures = new ArrayList<>();
-
-//    public void addFurniture(AbstractFurniture abstractFurniture) {
-//        if (null == furnitures) {
-//            furnitures = new ArrayList<>();
-//        }
-//        furnitures.add(abstractFurniture);
-//        System.out.println("Success to add the " + abstractFurniture.getName() + " to the " + getName());
-//    }
-
-//    public void showFurnitures(){
-//        System.out.println("the furnitures are:");
-//        for(AbstractFurniture f:furnitures){
-//            System.out.println(f.getName());
-//        }
-//        if(furnitures.size()==0)
-//            System.out.println("nothing");
-//        System.out.println("**********");
-//    }
-//    public void addFurniture(AbstractFurniture furniture){
-//        furnitures.add(furniture);
-//    }
-//    public void removeFuniture(Furniture furniture){
-//        for(int i=furnitures.size()-1;i>=0;i--){
-//
-//            if(furnitures.get(i).getName()==furniture.getName()){
-//                furnitures.remove(i);
-//            }
-//        }
-//    }
-
-//    public void showFurnitures(){
-//        System.out.println("the furnitures are:");
-//        for(Furniture f:furnitures){
-//            System.out.println(f.getName());
-//        }
-//        if(furnitures.size()==0)
-//            System.out.println("nothing");
-//        System.out.println("**********");
-//    }
-////    public void addFurniture(AbstractFurniture furniture){
-////        furnitures.add(furniture);
-////    }
-//    public void removeFuniture(Furniture furniture){
-//        for(int i=furnitures.size()-1;i>=0;i--){
-//
-//            if(furnitures.get(i).getName()==furniture.getName()){
-//                furnitures.remove(i);
-//            }
-//        }
-//    }
-//
-
-
-
-
+        UndoOrRedo.undoOrRedo(index,originator,careTaker);
+    }
 }
