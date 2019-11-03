@@ -6,7 +6,7 @@ import huangduValley.farm.taskHandler.*;
  * class to test the pattern
  * @author zdy
  */
-public class Test_chainOfResponsibility {
+public class Test_ChainOfResponsibility {
     public static void main(String[] args) throws Exception {
         Request request1=new Request("harvest the plant");
         Request request2=new Request("feed the Animal");

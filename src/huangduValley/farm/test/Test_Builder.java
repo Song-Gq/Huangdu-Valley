@@ -8,7 +8,7 @@ import huangduValley.farm.fence.*;
  * @author CuiYanshen
  */
 
-public class BuilderTest {
+public class Test_Builder {
 	
 	public static void main(String[] args) {
 		

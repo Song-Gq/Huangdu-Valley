@@ -5,7 +5,7 @@ import huangduValley.farm.manager.Manager;
 import huangduValley.farm.storage.Explorer;
 
 // this includes main method for testing scene "Farm" by Song Guanqun
-public class Main_Song {
+public class Test_Composite_Decorator_Facade {
 
     public static void main(String[] args) throws Exception
     {

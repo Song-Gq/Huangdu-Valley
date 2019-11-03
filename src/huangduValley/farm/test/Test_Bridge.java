@@ -2,7 +2,7 @@ package huangduValley.farm.test;
 
 import huangduValley.farm.plant.FlowerPlant;
 
-public class Test_bridge {
+public class Test_Bridge {
 
     public static void main(String[] args)
     {
