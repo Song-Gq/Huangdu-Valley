@@ -32,6 +32,10 @@ public class CleanMachine extends Machine {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public void switchOn(){
         System.out.println("CleanMachine on!");

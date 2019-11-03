@@ -23,6 +23,7 @@ public class MachineTest {
         wareHouse.setMaxSize(10);
 
         CleanMachine cm = new CleanMachine("1st CM");
+        CleanMachine cm2 = (CleanMachine) cm.clone();
         RoughProMachine rm = new RoughProMachine("1st rm");
         FineProMachine fm = new FineProMachine("1st fm");
 

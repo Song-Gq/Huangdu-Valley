@@ -18,7 +18,7 @@ public class WareHouse implements Observer, Proxy {
         this.machineVector = new Vector<Machine>();
     }
 
-    private Vector<Vector<Items>> productsVector = new Vector<>();
+    private Vector<Vector<Items>> productsVector = new Vector<Vector<Items>>();
 
     private Vector<Machine> machineVector;
 
@@ -44,25 +44,42 @@ public class WareHouse implements Observer, Proxy {
         return productsVector;
     }
 
-    public boolean buy(Product product) throws Exception {
+    public boolean buy(String name) throws Exception {
         int length = productsVector.size();
         boolean flag = false;
+        
+        Product product = null;
+        
         int indexA = -1, indexB = -1;
         for (indexA = 0; indexA < length; indexA++) {
-            indexB = productsVector.elementAt(indexA).indexOf(product);
+            indexB = -1;
+            Vector<Items> vector = productsVector.elementAt(indexA);
+            for (int i = 0; i < vector.size(); i++) {
+                if (vector.elementAt(i).getName() == name) {
+                    indexB = i;
+                    product = (Product) vector.elementAt(i);
+                }
+            }
+            
             if (indexB != -1) {
                 flag = true;
                 break;
             }
         }
+        if (flag) {
 
-        int count = productsVector.elementAt(indexA).elementAt(indexB).getCount();
+            int count = productsVector.elementAt(indexA).elementAt(indexB).getCount();
 
-        productsVector.elementAt(indexA).elementAt(indexB).setCount(count - 1);
+            productsVector.elementAt(indexA).elementAt(indexB).setCount(count - 1);
 
-        wallet.increaseBalance(product.getPrice());
+            wallet.increaseBalance(product.getPrice());
+            
+            return flag;
+        }
+        else {
+            return flag;
+        }
 
-        return flag;
     }
 
     /**

@@ -15,6 +15,8 @@ import java.util.Vector;
 public abstract class Machine implements Acceptor, Cloneable{
     public abstract String getName();
 
+    public abstract void setName(String name);
+
     /**
      * Machine on
      */

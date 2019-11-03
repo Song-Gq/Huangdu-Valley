@@ -1,5 +1,6 @@
 package huangduValley.Workshop.processFactory.factory;
 
+import huangduValley.Workshop.WareHouse.Store;
 import huangduValley.Workshop.WareHouse.WareHouse;
 import huangduValley.Workshop.processFactory.workSpace.WorkSpace;
 import huangduValley.farm.storage.Items;
@@ -12,7 +13,10 @@ import java.util.Vector;
 public class NormalFactory implements FactoryState{
     //单例模式
     //private static NormalFactory INSTANCE=new NormalFactory();
-    private NormalFactory(){}
+    private NormalFactory(){
+        addObservers(wareHouse);
+        addObservers(store);
+    }
 
     private static class NormalFactoryHolder{
         private static final NormalFactory INSTANCE = new NormalFactory();
@@ -23,6 +27,8 @@ public class NormalFactory implements FactoryState{
     }
 
     private WareHouse wareHouse = WareHouse.getInstance();
+
+    private Store store = Store.getInstance();
 
     private Vector<WorkSpace> processVector;
 
