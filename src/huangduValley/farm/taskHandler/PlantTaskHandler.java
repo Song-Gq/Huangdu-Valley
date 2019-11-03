@@ -1,6 +1,6 @@
 package huangduValley.farm.taskHandler;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * PlantTaskHandler:the handler to handle the task in plant domain.

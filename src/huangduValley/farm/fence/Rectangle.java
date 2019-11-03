@@ -1,6 +1,6 @@
 package huangduValley.farm.fence;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * the rectangle shape: display using coordinates of two points on the diagonal.
