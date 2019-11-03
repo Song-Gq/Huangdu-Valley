@@ -4,30 +4,30 @@ import huangduValley.farm.Stdout;
 import huangduValley.farm.storage.Explorer;
 
 /**
- * WareHouseTaskHandler:the handler to handle the task in WareHouse domain.
+ * StorageTaskHandler:the handler to handle the task in storage domain.
  */
-public class WareHouseTaskHandler extends TaskHandler {
+public class StorageTaskHandler extends TaskHandler {
     @Override
     protected String getType() {
-        return "WareHouse";
+        return "storage";
     }
 
     @Override
     protected void handle(Request request) throws Exception {
         switch (request.requestText()) {
-            case "put a private bag named Balala into warehouse": {
+            case "put a private bag named Balala into storage": {
                 Explorer explorer = Explorer.getInstance();
                 explorer.backRoot();
                 explorer.addBag("Balala");
                 break;
             }
-            case "add a trophy into warehouse": {
+            case "add a trophy into storage": {
                 Explorer explorer = Explorer.getInstance();
                 explorer.into("Balala");
                 explorer.addItems("Trophy", 1);
                 break;
             }
-            case "add 100 tons of water and 100 tons of fertilizer into MAIN space of warehouse": {
+            case "add 100 tons of water and 100 tons of fertilizer into MAIN space of storage": {
                 Explorer explorer = Explorer.getInstance();
                 explorer.back();
                 explorer.addItems("Water", 100);
@@ -36,6 +36,6 @@ public class WareHouseTaskHandler extends TaskHandler {
             }
         }
 
-        Stdout.print(this, "The task of -"+request.requestType()+"- has been handled by WareHouseTaskHandler.");
+        Stdout.print(this, "The task of -"+request.requestType()+"- has been handled by StorageTaskHandler.");
     }
 }

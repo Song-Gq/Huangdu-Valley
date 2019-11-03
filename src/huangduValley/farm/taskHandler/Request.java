@@ -31,8 +31,8 @@ public class Request {
             this.type="Plant";
         else if(text.contains("shop") || text.contains("Shop"))
             this.type="Shop";
-        else if(text.contains("warehouse") || text.contains("WareHouse"))
-            this.type="WareHouse";
+        else if(text.contains("storage") || text.contains("Storage"))
+            this.type="storage";
         else if(text.contains("Tools") || text.contains("tools"))
             this.type="Tools";
         else

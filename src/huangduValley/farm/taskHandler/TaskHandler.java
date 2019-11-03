@@ -27,7 +27,7 @@ public abstract class TaskHandler {
         this.setNextHandler(new AnimalTaskHandler());
         this.setNextHandler(new ShopTaskHandler());
         this.setNextHandler(new ToolsTaskHandler());
-        this.setNextHandler(new WareHouseTaskHandler());
+        this.setNextHandler(new StorageTaskHandler());
         this.setNextHandler(new PlantTaskHandler());
     }
     /**
