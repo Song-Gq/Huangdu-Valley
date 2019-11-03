@@ -2,16 +2,22 @@
 Design Pattern Course Project  
 **Scene "Farm"**  
 **Branch By Song Guanqun, Zhang Dongya, Cui Yanshen**  
+**Scene "WorkShop"**
+**Branch By Li Pengsheng, Yu Weihong, Chang Guying**
+**Scene "House"**
+**Branch By Huang Yulin, Fan Siqi**
 ## Todo  
-* 中介者设计模式  
-* 金钱相关  
+* (done)中介者设计模式  
+* (done)金钱相关  
 * Main函数  
-* UML待更新  
+* (done)UML待更新  
+* 完善文档  
 ## Commits  
 * 11/3  
 增加了一个CalculateProduction类以简化代码  
 增加了一个Stdout类以简化规范输出  
 增加了部分Main的实现  
+现在经理会花钱了  
 * 11/2  
 一些合并工作  
 IHarvest更名为ILand  

@@ -16,7 +16,7 @@ public abstract class Land implements ILand {
 
     // do nothing if plant null
     // remove plant if it not matured
-    // get ingredients and money
+    // get ingredients
     public void harvest() throws Exception{
         // check if the plant exists
         if(plant != null) {
@@ -29,9 +29,6 @@ public abstract class Land implements ILand {
                 // ingredients doubled if plant strong
                 Stdout.print(this, "Invoke static methods in CalculateProduction");
                 CalculateProduction.cal(plant, production, this);
-
-                // get money
-
             }
             // if not matured, get nothing
 

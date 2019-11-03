@@ -1,6 +1,7 @@
 package huangduValley.farm.manager;
 
 import huangduValley.Stdout;
+import huangduValley.Workshop.WareHouse.Wallet;
 import huangduValley.farm.land.Lands;
 import huangduValley.farm.storage.Bag;
 import huangduValley.farm.storage.Items;
@@ -76,14 +77,22 @@ public class Manager {
 
     // plant carrots on all lands
     public void plantCarrotAll() throws Exception {
+        // decrease balance by one
+        Wallet wallet = Wallet.getInstance();
+        wallet.decreaseBalance(1);
+
         lands.plantCarrotAll();
-        Stdout.print(this, "Succeeds");
+        Stdout.print(this, "Succeeds. Wallet balance - 1");
     }
 
     // plant potatoes on all lands
     public void plantPotatoAll() throws Exception {
+        // decrease balance by one
+        Wallet wallet = Wallet.getInstance();
+        wallet.decreaseBalance(1);
+
         lands.plantPotatoAll();
-        Stdout.print(this, "Succeeds");
+        Stdout.print(this, "Succeeds. Wallet balance - 1");
     }
 
     // add a piece of dry land
@@ -103,8 +112,13 @@ public class Manager {
     public void upgradeLand(int... index) throws Exception {
         for(int i: index) {
             lands.upgradeLand(i);
-            Stdout.print(this, "Succeeds");
         }
+
+        // decrease balance by one
+        Wallet wallet = Wallet.getInstance();
+        wallet.decreaseBalance(1);
+
+        Stdout.print(this, "Succeeds. Wallet balance - 1");
     }
 
     // this consumes water
