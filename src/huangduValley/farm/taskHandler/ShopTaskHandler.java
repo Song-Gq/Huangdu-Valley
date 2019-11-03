@@ -1,5 +1,7 @@
 package huangduValley.farm.taskHandler;
 
+import huangduValley.farm.Stdout;
+
 /**
  * ShopTaskHandler:the handler to handle the task in shop domain.
  */
@@ -11,6 +13,6 @@ public class ShopTaskHandler extends TaskHandler {
 
     @Override
     protected void handle(Request request) {
-        System.out.println("The task of -"+request.requestType()+"- has been handled by ShopTaskHandler.");
+        Stdout.print(this, "The task of -"+request.requestType()+"- has been handled by ShopTaskHandler.");
     }
 }

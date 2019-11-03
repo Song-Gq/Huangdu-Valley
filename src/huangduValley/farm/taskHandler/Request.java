@@ -1,5 +1,7 @@
 package huangduValley.farm.taskHandler;
 
+import huangduValley.farm.Stdout;
+
 /**
  * the Request class:each task will be expressed as a request
  * before the request is parsed,nobody knows its type so that we cannot be ware of the handler
@@ -12,7 +14,7 @@ public class Request {
 
     /**
      * constructor
-     * @param command
+     * @param command:concrete command sentence
      */
     public Request(String command){
         this.text=command;
@@ -22,21 +24,21 @@ public class Request {
     /**
      * method:parse the request to get its type
      */
-    public void parse(){
-        if(text.indexOf("animal")!=-1||text.indexOf("Animal")!=-1)
+    void parse(){
+        if(text.contains("animal") || text.contains("Animal"))
             this.type="Animal";
-        else if(text.indexOf("Plant")!=-1||text.indexOf("plant")!=-1)
+        else if(text.contains("Plant") || text.contains("plant"))
             this.type="Plant";
-        else if(text.indexOf("shop")!=-1||text.indexOf("Shop")!=-1)
+        else if(text.contains("shop") || text.contains("Shop"))
             this.type="Shop";
-        else if(text.indexOf("warehouse")!=-1||text.indexOf("WareHouse")!=-1)
-            this.type="WareHouse";
-        else if(text.indexOf("Tools")!=-1||text.indexOf("tools")!=-1)
+        else if(text.contains("storage") || text.contains("Storage"))
+            this.type="storage";
+        else if(text.contains("Tools") || text.contains("tools"))
             this.type="Tools";
         else
         {
             this.type="Unknown";
-            System.out.println("This request has something wrong.We can not handle it!");
+            Stdout.print(this, "This request has something wrong.We can not handle it!");
         }
 
         this.isParsed=true;
@@ -46,7 +48,7 @@ public class Request {
      * get the parsing type of request
      * @return isParsed
      */
-    public boolean isParsed(){
+    boolean isParsed(){
         return this.isParsed;
     }
 
@@ -54,7 +56,13 @@ public class Request {
      * get the type of request
      * @return request type
      */
-    public String requestType(){
+    String requestType(){
         return this.type;
     }
+
+    /**
+     * get the concrete information of request
+     * @return request text
+     */
+    String requestText(){return this.text;}
 }
