@@ -44,8 +44,9 @@ public abstract class IterationProcessing implements WorkSpace {
      * @param machineVector
      * Vector of machine to be used to doProcess()
      */
+    @SafeVarargs
     @Override
-    public void doInit(Vector<Items> items, Vector<Machine>... machineVector)throws Exception{
+    public final void doInit(Vector<Items> items, Vector<Machine>... machineVector)throws Exception{
         this.ingredients = items;
 
         cleanMachines = new Vector<>();

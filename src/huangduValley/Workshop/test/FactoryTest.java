@@ -9,7 +9,7 @@ import huangduValley.Workshop.processFactory.factory.ClosedFactory;
 import huangduValley.Workshop.processFactory.factory.Context;
 import huangduValley.Workshop.processFactory.factory.FactoryState;
 import huangduValley.Workshop.processFactory.factory.NormalFactory;
-import huangduValley.Workshop.processFactory.workSpace.CompletelProcessing;
+import huangduValley.Workshop.processFactory.workSpace.CompleteProcessing;
 import huangduValley.Workshop.processFactory.workSpace.WorkSpace;
 import huangduValley.farm.storage.Ingredients;
 import huangduValley.farm.storage.Items;
@@ -48,7 +48,7 @@ public class FactoryTest {
          * Create processing
          */
         Vector<WorkSpace> processVector = new Vector<>();
-        CompletelProcessing processing1 = new CompletelProcessing();
+        CompleteProcessing processing1 = new CompleteProcessing();
         Vector<Machine> machineVector = new Vector<>();
         machineVector.add(cm);
         processing1.doInit(ingredientsVector, machineVector);

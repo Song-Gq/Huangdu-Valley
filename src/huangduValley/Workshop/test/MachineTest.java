@@ -5,6 +5,7 @@ import huangduValley.Workshop.ConcreteMachine.CleanMachine;
 import huangduValley.Workshop.ConcreteMachine.FineProMachine;
 import huangduValley.Workshop.ConcreteMachine.RoughProMachine;
 import huangduValley.Workshop.WareHouse.WareHouse;
+import huangduValley.Workshop.processFactory.workSpace.SequentialProcessing;
 import huangduValley.farm.storage.Ingredients;
 import huangduValley.farm.storage.Items;
 
@@ -34,6 +35,7 @@ public class MachineTest {
         ingredientsVector.add(new Ingredients("potato", 20));
 
         cm.accept(new NormalRunVisitor(ingredientsVector));
+
 
     }
 }
