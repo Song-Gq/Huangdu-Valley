@@ -18,6 +18,7 @@ public class FertileLand extends Land {
 	public Carrot plantCarrot() throws Exception {
 		if(this.plant == null) {
 			this.plant = new StrongCarrot("yellow");
+			Stdout.print(this, "This Fertile Land is planted with carrots");
 			return (Carrot) plant;
 		}
 		// field not empty!
@@ -31,6 +32,7 @@ public class FertileLand extends Land {
 	public Potato plantPotato() throws Exception {
 		if(this.plant == null) {
 			this.plant = new StrongPotato("yellow");
+			Stdout.print(this, "This Fertile Land is planted with potatoes");
 			return (Potato) plant;
 		}
 		// field not empty!
@@ -43,6 +45,7 @@ public class FertileLand extends Land {
 	protected Carrot plantCarrot(String landType) throws Exception {
 		if(this.plant == null) {
 			this.plant = new StrongCarrot(landType);
+			Stdout.print(this, "This Fertile Land is planted with carrots");
 			return (Carrot) plant;
 		}
 		// field not empty!
@@ -55,6 +58,7 @@ public class FertileLand extends Land {
 	protected Potato plantPotato(String landType) throws Exception {
 		if(this.plant == null) {
 			this.plant = new StrongPotato(landType);
+			Stdout.print(this, "This Fertile Land is planted with potatoes");
 			return (Potato) plant;
 		}
 		// field not empty!

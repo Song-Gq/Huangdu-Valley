@@ -17,10 +17,10 @@ public class Lands {
     // private constructor
     private Lands() {
         lands = new ArrayList<>();
-        for(int i = 0; i < 3; i++) {
+/*        for(int i = 0; i < 3; i++) {
             this.addDryLand();
             this.addFertileLand();
-        }
+        }*/
     }
 
     public static Lands getInstance() {
@@ -125,6 +125,7 @@ public class Lands {
             // check if plant matured
             iLand.harvest();
         }
+        Stdout.print(this, "Succeeds");
     }
 
     // plant carrots on all empty lands
@@ -144,7 +145,7 @@ public class Lands {
             if(iLand.getPlant() == null)
                 iLand.plantPotato();
         }
-        Stdout.print(this, "All empty land is planted with carrots");
+        Stdout.print(this, "All empty land is planted with potatoes");
     }
 
     // water all the plants
@@ -154,6 +155,7 @@ public class Lands {
         for (ILand iLand: lands) {
             iLand.water();
         }
+        Stdout.print(this, "Succeeds");
     }
 
     // fertilize all the plants
@@ -163,5 +165,6 @@ public class Lands {
         for (ILand iLand: lands) {
             iLand.fertilize();
         }
+        Stdout.print(this, "Succeeds");
     }
 }

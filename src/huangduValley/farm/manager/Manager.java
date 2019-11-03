@@ -58,17 +58,20 @@ public class Manager {
 
     // wake up the guard
     public void wakeupGuard() {
+        Stdout.print(this, "Invoke Guard's wakeup()");
         guard.wakeup();
     }
 
     // try to stop theft
     public void stopTheft() throws Exception {
+        Stdout.print(this, "Invoke Guard's stopTheft()");
         guard.stopTheft();
     }
 
     // harvest all mature plants
     public void harvestAll() throws Exception {
         lands.harvestAll();
+        Stdout.print(this, "Succeeds");
     }
 
     // plant carrots on all lands
@@ -86,13 +89,13 @@ public class Manager {
     // add a piece of dry land
     public void addDryLand() {
         lands.addDryLand();
-        Stdout.print(this, "Addition of Dry land succeeds");
+        Stdout.print(this, "Succeeds");
     }
 
     // add a piece of fertile land
     public void addFertileLand() {
         lands.addFertileLand();
-        Stdout.print(this, "Addition of Fertile land succeeds");
+        Stdout.print(this, "Succeeds");
     }
 
     // upgrade a piece of land by index by one grade
@@ -100,7 +103,7 @@ public class Manager {
     public void upgradeLand(int... index) throws Exception {
         for(int i: index) {
             lands.upgradeLand(i);
-            Stdout.print(this, "Upgrade of land succeeds");
+            Stdout.print(this, "Succeeds");
         }
     }
 
@@ -108,6 +111,8 @@ public class Manager {
     public void waterAll() throws Exception{
         if(fetch("Water")) {
             lands.waterAll();
+            Stdout.print(this, "Succeeds");
+
             putback("Water");
         }
     }
@@ -116,6 +121,8 @@ public class Manager {
     public void fertilizeAll() throws Exception{
         if(fetch("Fertilizer")) {
             lands.fertilizeAll();
+            Stdout.print(this, "Succeeds");
+
             putback("Fertilizer");
         }
     }
@@ -127,11 +134,14 @@ public class Manager {
         Items items = rootBag.getItems(name);
         // none left
         if(items == null) {
-            System.out.println("No " + name + " left in the root bag.");
+            Stdout.print(this, "No " + name + " left in root bag");
             return false;
         }
         // take away all
         else {
+            Stdout.print(this, "Manager takes away " +
+                    items.getCount() + " " + "\"" + name + "\" into his bag");
+
             rootBag.deleteItems(name);
             managerBag.add(items);
             return true;
@@ -145,6 +155,9 @@ public class Manager {
             items.setCount(items.getCount() - 1);
             RootBag rootBag = RootBag.getInstance();
             rootBag.add(items);
+
+            Stdout.print(this, "Manager put back " +
+                    items.getCount() + " " + "\"" + name + "\"");
         }
     }
 

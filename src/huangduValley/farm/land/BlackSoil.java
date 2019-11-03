@@ -38,9 +38,21 @@ public class BlackSoil extends Soil {
     public Plant getPlant() {
         return iLand.getPlant();
     }
-    public void water() { iLand.water(); }
-    public void fertilize() { iLand.fertilize(); }
+    public void water() {
+        iLand.water();
+        Stdout.print(this, "Invoke iLand's water()");
+    }
+    public void fertilize() {
+        iLand.fertilize();
+        Stdout.print(this, "Invoke iLand's fertilize()");
+    }
 
-    public Carrot plantCarrot() throws Exception { return ((Land) iLand).plantCarrot("black"); }
-    public Potato plantPotato() throws Exception { return ((Land) iLand).plantPotato("black"); }
+    public Carrot plantCarrot() throws Exception {
+        Stdout.print(this, "Invoke iLand's plantCarrot()");
+        return ((Land) iLand).plantCarrot("black");
+    }
+    public Potato plantPotato() throws Exception {
+        Stdout.print(this, "Invoke iLand's plantPotato()");
+        return ((Land) iLand).plantPotato("black");
+    }
 }

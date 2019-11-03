@@ -21,6 +21,7 @@ public class DryLand extends Land {
 	public Carrot plantCarrot() throws Exception {
 		if(this.plant == null) {
 			this.plant =  new CommonCarrot("yellow");
+			Stdout.print(this, "This Dry Land is planted with carrots");
 			return (Carrot) plant;
 		}
 		// field not empty!
@@ -34,6 +35,7 @@ public class DryLand extends Land {
 	public Potato plantPotato() throws Exception {
 		if(this.plant == null) {
 			this.plant = new CommonPotato("yellow");
+			Stdout.print(this, "This Dry Land is planted with potatoes");
 			return (Potato) plant;
 		}
 		// field not empty!
@@ -46,6 +48,7 @@ public class DryLand extends Land {
 	protected Carrot plantCarrot(String landType) throws Exception {
 		if(this.plant == null) {
 			this.plant =  new CommonCarrot(landType);
+			Stdout.print(this, "This Dry Land is planted with carrots");
 			return (Carrot) plant;
 		}
 		// field not empty!
@@ -58,6 +61,7 @@ public class DryLand extends Land {
 	protected Potato plantPotato(String landType) throws Exception {
 		if(this.plant == null) {
 			this.plant = new CommonPotato(landType);
+			Stdout.print(this, "This Dry Land is planted with potatoes");
 			return (Potato) plant;
 		}
 		// field not empty!

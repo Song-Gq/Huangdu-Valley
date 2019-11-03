@@ -32,16 +32,19 @@ public class CalculateProduction {
     // add the production into the storage
     // and print
     private static void exec(String name, int production, ILand iLand) throws Exception {
-        RootBag rootBag = RootBag.getInstance();
-        rootBag.add(new Ingredients(name, production));
-
         if(iLand instanceof Land)
-            Stdout.print(iLand, "Get " + production + " " + name + " during harvest");
+            Stdout.print("huangduValley.farm.land.CalculateProduction@static",
+                    "Get " + production + " " + name + " during harvest");
         else if(iLand instanceof RedSoil)
-            Stdout.print(iLand, "Get extra " + production +
+            Stdout.print("huangduValley.farm.land.CalculateProduction@static",
+                    "Get extra " + production +
                     " " + name + " during harvest");
         else
-            Stdout.print(iLand, "Get extra " + production +
+            Stdout.print("huangduValley.farm.land.CalculateProduction@static",
+                    "Get extra " + production +
                     " " + name + " during harvest");
+
+        RootBag rootBag = RootBag.getInstance();
+        rootBag.add(new Ingredients(name, production));
     }
 }
