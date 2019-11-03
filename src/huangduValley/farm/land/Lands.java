@@ -1,5 +1,7 @@
 package huangduValley.farm.land;
 
+import huangduValley.farm.Stdout;
+
 import java.util.ArrayList;
 
 // part of "Facade" design pattern
@@ -31,11 +33,13 @@ public class Lands {
     // add a piece of ordinary dry land
     public void addDryLand() {
         lands.add(new DryLand());
+        Stdout.print(this, "A piece of Dry land is added");
     }
 
     // add a piece of ordinary fertile land
     public void addFertileLand() {
         lands.add(new FertileLand());
+        Stdout.print(this, "A piece of Dry land is added");
     }
 
     // upgrade a piece of land
@@ -49,17 +53,21 @@ public class Lands {
         ILand iLand = lands.get(index);
         // already Black Soil
         if(iLand instanceof BlackSoil) {
-            System.out.println("Land "+ index +
+            Stdout.print(this, "Land "+ index +
                     " is already made up of Black Soil!");
         }
         // upgrade to Black Soil
         else if(iLand instanceof RedSoil) {
             lands.set(index, new BlackSoil(
                     ((RedSoil) iLand).iLand));
+            Stdout.print(this, "Land "+ index +
+                    " is now made up of Black Soil");
         }
         // upgrade to Red Soil
         else {
             lands.set(index, new RedSoil(iLand));
+            Stdout.print(this, "Land "+ index +
+                    " is now made up of Red Soil");
         }
     }
 
@@ -126,6 +134,7 @@ public class Lands {
             if(iLand.getPlant() == null)
                 iLand.plantCarrot();
         }
+        Stdout.print(this, "All empty land is planted with carrots");
     }
 
     // plant potatoes on all empty lands
@@ -135,6 +144,7 @@ public class Lands {
             if(iLand.getPlant() == null)
                 iLand.plantPotato();
         }
+        Stdout.print(this, "All empty land is planted with carrots");
     }
 
     // water all the plants

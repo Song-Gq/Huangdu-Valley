@@ -1,5 +1,7 @@
 package huangduValley.farm.plant;
 
+import huangduValley.farm.Stdout;
+
 /**
  * base class of abstract hierarchy
  * implement function by calling methods of PlantImp.
@@ -25,7 +27,7 @@ public abstract class Plant {
         else if(landType=="black")
             this.impl=new BlackLandPlant();
         else
-            System.out.println("Sorry,there isn't land of this type.");
+            Stdout.print(this, "Sorry,there isn't land of this type");
     }
     public Plant(String landType,double time)
     {
@@ -36,7 +38,7 @@ public abstract class Plant {
         else if(landType=="black")
             this.impl=new BlackLandPlant(time);
         else
-            System.out.println("Sorry,there isn't land of this type.");
+            Stdout.print(this, "Sorry,there isn't land of this type");
     }
 
     protected void sprout()

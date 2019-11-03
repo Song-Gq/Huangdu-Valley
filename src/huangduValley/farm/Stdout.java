@@ -8,10 +8,16 @@ public class Stdout {
         int firstDotIndex = str.indexOf(".");
         int atIndex = str.lastIndexOf("@");
 
+        // class name
         System.out.print(str.substring(firstDotIndex + 1, atIndex) + ": ");
 
-        System.out.print(str.substring(atIndex + 1) + ": ");
+        // object address
+        System.out.print(str.substring(atIndex) + ": ");
 
+        // method name
+        System.out.print(Thread.currentThread().getStackTrace()[2].getMethodName() + "(): ");
+
+        // action description
         System.out.println(description);
     }
 }

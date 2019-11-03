@@ -1,5 +1,6 @@
 package huangduValley.farm.land;
 
+import huangduValley.farm.Stdout;
 import huangduValley.farm.plant.*;
 
 /**
@@ -10,7 +11,7 @@ import huangduValley.farm.plant.*;
 
 public class FertileLand extends Land {
 	public FertileLand() {
-		System.out.println("FertileLand is created.");
+		Stdout.print(this, "FertileLand is created");
 	}
 	
 	@Override

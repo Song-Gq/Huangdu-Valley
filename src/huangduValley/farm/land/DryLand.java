@@ -1,5 +1,6 @@
 package huangduValley.farm.land;
 
+import huangduValley.farm.Stdout;
 import huangduValley.farm.plant.Carrot;
 import huangduValley.farm.plant.CommonCarrot;
 import huangduValley.farm.plant.CommonPotato;
@@ -13,7 +14,7 @@ import huangduValley.farm.plant.Potato;
 
 public class DryLand extends Land {
 	public DryLand() {
-		System.out.println("DryLand is Created.");
+		Stdout.print(this, "DryLand is created");
 	}
 	
 	@Override

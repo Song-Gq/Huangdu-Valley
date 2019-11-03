@@ -1,5 +1,7 @@
 package huangduValley.farm.plant;
 
+import huangduValley.farm.Stdout;
+
 /**
  * implementation of plants on BlackLand whose growing time is sixty percent of normal ones.
  */
@@ -18,7 +20,8 @@ public class BlackLandPlant extends PlantImp{
         double growTime=timePerStage*0.6;
         //TimeUnit.HOURS.sleep(growTime);
         this.stage="bud";
-        System.out.println("The plant sprouts after "+growTime+"hours.Black land is best!");
+        Stdout.print(this, "The plant sprouts after "
+                + growTime + " hours");
     }
 
     @Override
@@ -27,7 +30,8 @@ public class BlackLandPlant extends PlantImp{
         double growTime=timePerStage*0.6;
         //TimeUnit.HOURS.sleep(growTime);
         this.stage="leaves";
-        System.out.println("The plant grows leaves after "+growTime+"hours.Black land is best!");
+        Stdout.print(this, "The plant grows leaves after "
+                + growTime + " hours");
     }
 
     @Override
@@ -36,7 +40,8 @@ public class BlackLandPlant extends PlantImp{
         double growTime=timePerStage*0.6;
         //TimeUnit.HOURS.sleep(growTime);
         this.stage="flower bud";
-        System.out.println("The plant grows buds after "+growTime+"hours.Black land is best!");
+        Stdout.print(this, "The plant grows buds after "
+                + growTime + " hours");
     }
 
     @Override
@@ -46,7 +51,8 @@ public class BlackLandPlant extends PlantImp{
         //TimeUnit.HOURS.sleep(growTime);
         this.stage="blossom";
         this.isMature=true;
-        System.out.println("The plant begins to put forth their blossoms after "+growTime+"hours.It's mature and can be harvest.Black land is best!");
+        Stdout.print(this, "The plant begins to put forth their blossoms after "
+                + growTime + " hours. It's mature and can be harvested");
     }
 
     @Override
@@ -56,6 +62,7 @@ public class BlackLandPlant extends PlantImp{
         //TimeUnit.HOURS.sleep(growTime);
         this.stage="fruit";
         this.isMature=true;
-        System.out.println("The plant has born fruit after "+growTime+"hours.It's mature and can be harvest.Black land is best!\n");
+        Stdout.print(this, "The plant has born fruit after "
+                + growTime + " hours. It's mature and can be harvested");
     }
 }

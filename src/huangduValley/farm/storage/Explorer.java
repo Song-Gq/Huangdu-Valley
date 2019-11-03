@@ -1,5 +1,7 @@
 package huangduValley.farm.storage;
 
+import huangduValley.farm.Stdout;
+
 // part of "Facade" design pattern
 // a class to manage the storage system using Singleton
 // scene "Farm", by Song Guanqun
@@ -32,6 +34,8 @@ public class Explorer {
         }
 
         curBag = bag;
+        Stdout.print(this, "Explorer is now into Bag \"" +
+                curBag.getName() + "\"");
     }
 
     // back to the parent bag
@@ -41,6 +45,8 @@ public class Explorer {
             throw new Exception("back() at root");
 
         curBag = curBag.getOuterBag();
+        Stdout.print(this, "Explorer is now back to Bag \"" +
+                curBag.getName() + "\"");
     }
 
     // add a new farm.storage.Items Object in the current bag
@@ -51,6 +57,7 @@ public class Explorer {
     // add a new farm.storage.Bag Object in the current bag
     public void addBag(String name) throws Exception {
         curBag.add(new Bag(name, curBag));
+        Stdout.print(this, "Addition of Bag \"" + name + "\" succeeds");
     }
 
     // delete farm.storage.Items in the current bag by name
@@ -81,6 +88,7 @@ public class Explorer {
     // back to the root
     public void backRoot() {
         curBag = RootBag.getInstance();
+        Stdout.print(this, "Explorer is now at root");
     }
 
 }

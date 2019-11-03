@@ -1,5 +1,7 @@
 package huangduValley.farm.storage;
 
+import huangduValley.farm.Stdout;
+
 import java.util.ArrayList;
 
 // this class is part of "Composite" design patter
@@ -88,6 +90,9 @@ public class Bag extends Package {
                 // add up the count
                 if(newPack instanceof Items && p instanceof Items) {
                     ((Items) p).setCount(p.getCount() + newPack.getCount());
+                    Stdout.print(this, "Count of Items \"" +
+                            p.getName() + "\" is now " + p.getCount());
+                    return;
                 }
 
                 // farm.storage.Bag with the same name
@@ -99,6 +104,8 @@ public class Bag extends Package {
         }
 
         itemList.add(newPack);
+        Stdout.print(this, "Package \"" +
+                newPack.getName() + "\" is added");
     }
 
     public void deleteItems(String name) throws Exception {

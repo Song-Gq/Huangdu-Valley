@@ -1,5 +1,7 @@
 package huangduValley.farm.plant;
 
+import huangduValley.farm.Stdout;
+
 /**
  * the implementation of Plant
  * @author :zdy
@@ -41,10 +43,10 @@ public abstract class PlantImp {
         if(this.isMature)
         {
             this.stage="dead";
-            System.out.println("Harvest! and the plant is dead after harvest");
+            Stdout.print(this, "Harvest! And the plant is dead after harvest");
         }
         else
-            System.out.println("The plant is not mature enough to be harvest!");
+            Stdout.print(this, "The plant is not mature enough to be harvested!");
     }
 
     /**

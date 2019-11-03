@@ -1,5 +1,6 @@
 package huangduValley.farm.land;
 
+import huangduValley.farm.Stdout;
 import huangduValley.farm.plant.*;
 import huangduValley.farm.storage.Ingredients;
 import huangduValley.farm.storage.RootBag;
@@ -24,6 +25,7 @@ public class RedSoil extends Soil {
 
         if(plant != null && plant.isMature()) {
             // double the production
+            Stdout.print(this, "Invoke static methods in CalculateProduction");
             CalculateProduction.cal(plant, production, this);
 
             // then, call harvest() of normal Land's

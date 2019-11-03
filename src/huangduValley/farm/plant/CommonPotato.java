@@ -1,5 +1,7 @@
 package huangduValley.farm.plant;
 
+import huangduValley.farm.Stdout;
+
 /**
  * @ClassName:CommonPotato
  * @Description:used for abstract factory, planted by dry land
@@ -10,7 +12,7 @@ public class CommonPotato extends Potato {
 	
 	public CommonPotato(String landType) {
 		super(landType);
-		System.out.println("CommonPotato is planted.");
+		Stdout.print(this, "CommonPotato is planted");
 	}
 	
 }

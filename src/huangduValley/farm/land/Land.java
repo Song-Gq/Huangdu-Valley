@@ -29,6 +29,7 @@ public abstract class Land implements ILand {
 
                 // harvest with normal production
                 // ingredients doubled if plant strong
+                Stdout.print(this, "Invoke static methods in CalculateProduction");
                 CalculateProduction.cal(plant, production, this);
 
                 // get money

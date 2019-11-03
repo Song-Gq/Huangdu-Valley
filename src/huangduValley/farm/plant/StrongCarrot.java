@@ -1,5 +1,7 @@
 package huangduValley.farm.plant;
 
+import huangduValley.farm.Stdout;
+
 /**
  * @ClassName:StrongPotato
  * @Description:used for abstract factory, planted by fertile land
@@ -9,6 +11,6 @@ package huangduValley.farm.plant;
 public class StrongCarrot extends Carrot {
 	public StrongCarrot(String landType) {
 		super(landType);
-		System.out.println("StrongCarrot is planted.");
+		Stdout.print(this, "StrongCarrot is planted");
 	}
 }

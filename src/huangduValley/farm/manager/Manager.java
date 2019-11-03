@@ -1,5 +1,6 @@
 package huangduValley.farm.manager;
 
+import huangduValley.farm.Stdout;
 import huangduValley.farm.land.Lands;
 import huangduValley.farm.storage.Bag;
 import huangduValley.farm.storage.Items;
@@ -73,21 +74,25 @@ public class Manager {
     // plant carrots on all lands
     public void plantCarrotAll() throws Exception {
         lands.plantCarrotAll();
+        Stdout.print(this, "Succeeds");
     }
 
     // plant potatoes on all lands
     public void plantPotatoAll() throws Exception {
         lands.plantPotatoAll();
+        Stdout.print(this, "Succeeds");
     }
 
     // add a piece of dry land
     public void addDryLand() {
         lands.addDryLand();
+        Stdout.print(this, "Addition of Dry land succeeds");
     }
 
     // add a piece of fertile land
     public void addFertileLand() {
         lands.addFertileLand();
+        Stdout.print(this, "Addition of Fertile land succeeds");
     }
 
     // upgrade a piece of land by index by one grade
@@ -95,6 +100,7 @@ public class Manager {
     public void upgradeLand(int... index) throws Exception {
         for(int i: index) {
             lands.upgradeLand(i);
+            Stdout.print(this, "Upgrade of land succeeds");
         }
     }
 

@@ -10,18 +10,18 @@ import huangduValley.farm.storage.RootBag;
 public class CalculateProduction {
 
     // calculate production by plant type
-    public static void cal (Plant plant, int production, Object obj) throws Exception {
+    public static void cal (Plant plant, int production, ILand iLand) throws Exception {
         if(plant instanceof StrongCarrot) {
-            exec("Carrot", production * 2, obj);
+            exec("Carrot", production * 2, iLand);
         }
         else if(plant instanceof CommonCarrot) {
-            exec("Carrot", production, obj);
+            exec("Carrot", production, iLand);
         }
         else if(plant instanceof StrongPotato) {
-            exec("Potato", production * 2, obj);
+            exec("Potato", production * 2, iLand);
         }
         else if(plant instanceof CommonPotato) {
-            exec("Potato", production, obj);
+            exec("Potato", production, iLand);
         }
         // unknown plant
         else {
@@ -31,17 +31,17 @@ public class CalculateProduction {
 
     // add the production into the storage
     // and print
-    private static void exec(String name, int production, Object obj) throws Exception {
+    private static void exec(String name, int production, ILand iLand) throws Exception {
         RootBag rootBag = RootBag.getInstance();
         rootBag.add(new Ingredients(name, production));
 
-        if(obj instanceof Land)
-            Stdout.print(obj, "Get " + production + " " + name + " during harvest");
-        else if(obj instanceof RedSoil)
-            Stdout.print(obj, "Get extra " + production +
+        if(iLand instanceof Land)
+            Stdout.print(iLand, "Get " + production + " " + name + " during harvest");
+        else if(iLand instanceof RedSoil)
+            Stdout.print(iLand, "Get extra " + production +
                     " " + name + " during harvest");
         else
-            Stdout.print(obj, "Get extra " + production +
+            Stdout.print(iLand, "Get extra " + production +
                     " " + name + " during harvest");
     }
 }
