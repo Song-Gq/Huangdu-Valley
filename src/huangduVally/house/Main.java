@@ -1,4 +1,4 @@
-package huangduVally;
+package huangduVally.house;
 
 import huangduVally.house.Furniture.Furniture;
 import huangduVally.house.House;
