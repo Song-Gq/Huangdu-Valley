@@ -1,6 +1,6 @@
 package huangduValley.farm.taskHandler;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * the Request class:each task will be expressed as a request

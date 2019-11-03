@@ -2,6 +2,9 @@ package huangduValley;
 
 import huangduValley.farm.manager.Manager;
 import huangduValley.farm.storage.Explorer;
+import huangduValley.farm.taskHandler.PlantTaskHandler;
+import huangduValley.farm.taskHandler.Request;
+import huangduValley.farm.taskHandler.TaskHandler;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -23,21 +26,25 @@ public class Main {
             // storage
             System.out.println("你有一个仓库，存放着水、化肥、收获的产物等等\n" +
                     "对于有强迫症的你来说，一定要把这些杂物分门别类地排放好\n" +
-                    "所以，你通知合伙人们，在仓库里放置一个私密格子，并称之为巴啦啦格子");
-            Explorer explorer = Explorer.getInstance();
-            explorer.backRoot();
-            explorer.addBag("Balala");
+                    "所以，你通知合伙人们，在仓库里放置一个私密格子，并称之为巴啦啦格子\n"+
+                    "于是，任务发出[put a private bag named Balala into storage]\n"+
+                    "合伙人将会传递任务直到处理");
+            TaskHandler rootHandler=new PlantTaskHandler();
+            rootHandler.setHandlerChain();
+            Request request1=new Request("put a private bag named Balala into storage");
+            rootHandler.handleRequest(request1);
             skip();
 
-            System.out.println("并把你心爱的奖杯放在了里面");
-            explorer.into("Balala");
-            explorer.addItems("Trophy", 1);
+            System.out.println("并把你心爱的奖杯放在了里面\n" +
+                    "于是，任务发出[add a trophy into storage]");
+            Request request2=new Request("add a trophy into storage");
+            rootHandler.handleRequest(request2);
             skip();
 
-            System.out.println("此外，你在仓库的主空间里还有100吨的水和100吨的化肥");
-            explorer.back();
-            explorer.addItems("Water", 100);
-            explorer.addItems("Fertilizer", 100);
+            System.out.println("此外，你在仓库的主空间里还有100吨的水和100吨的化肥\n" +
+                    "于是，任务发出[add 100 tons of water and 100 tons of fertilizer into MAIN space of storage]");
+            Request request3=new Request("add 100 tons of water and 100 tons of fertilizer into MAIN space of storage");
+            rootHandler.handleRequest(request3);
             skip();
 
             // manager, land

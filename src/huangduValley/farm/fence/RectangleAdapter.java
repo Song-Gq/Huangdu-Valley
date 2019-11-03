@@ -1,6 +1,6 @@
 package huangduValley.farm.fence;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * the adapter to adapter a Rectangle method to FenceShape method

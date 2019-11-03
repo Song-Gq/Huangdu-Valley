@@ -1,6 +1,6 @@
 package huangduValley.farm.taskHandler;
 
-import huangduValley.farm.Stdout;
+import huangduValley.Stdout;
 
 /**
  * ShopTaskHandler:the handler to handle the task in shop domain.
