@@ -9,3 +9,7 @@ Design Pattern Course Project, Huangdu Valley
   - Class `Visitor` use to implement `Machine` operation
 - Object Pool
   - Class `Warehouse` use to store `Machine` object
+  
+ - Observer
+ - Proxy
+ - Prototype
