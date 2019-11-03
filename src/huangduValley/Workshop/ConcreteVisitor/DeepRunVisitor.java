@@ -25,6 +25,14 @@ public class DeepRunVisitor extends Visitor {
         this.ingredientsVector = ingredientsVector;
     }
 
+    /**
+     * Deep running of clean machine.
+     * @param cm
+     * Clean machine object.
+     * @return
+     * Vector of items that the clean machine produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> visit(CleanMachine cm) throws Exception {
         cm.switchOn();
@@ -35,6 +43,14 @@ public class DeepRunVisitor extends Visitor {
         return products;
     }
 
+    /**
+     * Deep running of rough processing machine.
+     * @param rm
+     * Rough processing machine object.
+     * @return
+     * Vector of items that the rough processing machine.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> visit(RoughProMachine rm) throws Exception {
         rm.switchOn();
@@ -45,6 +61,14 @@ public class DeepRunVisitor extends Visitor {
         return products;
     }
 
+    /**
+     * Deep running of fine processing machine.
+     * @param fm
+     * Fine processing machine object.
+     * @return
+     * Vector of items that the Fine processing machine.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> visit(FineProMachine fm) throws Exception {
         fm.switchOn();

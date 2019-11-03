@@ -10,12 +10,6 @@ import huangduValley.Workshop.ConcreteVisitor.NormalRunVisitor;
  * @version 2019/10/31
  */
 public class CompleteProcessing extends SequentialProcessing {
-    /**
-     * Processing in order of CleanMachine, RoughProMachine, FineProMachine
-     * @return
-     * Vector of products
-     * @throws Exception
-     */
     @Override
     protected void preProcess() throws Exception {
         for(CleanMachine cleanMachine:cleanMachines){

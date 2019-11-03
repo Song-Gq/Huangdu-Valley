@@ -27,16 +27,27 @@ public class RoughProMachine extends Machine {
         this.name = name;
     }
 
+    /**
+     * Get name of fine processing machine
+     * @return
+     * name of fine processing machine
+     */
     @Override
     public String getName(){
         return this.name;
     }
 
+    /**
+     * Switch on machine.
+     */
     @Override
     public void switchOn(){
         System.out.println("RoughProMachine on!");
     }
 
+    /**
+     * Turn off machine.
+     */
     @Override
     public void stop(){
         System.out.println("RoughProMachine off!");
@@ -62,6 +73,14 @@ public class RoughProMachine extends Machine {
         return productVector;
     }
 
+    /**
+     *
+     * @param v
+     * Visitor operation object.
+     * @return
+     * Vector of items that the operation produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> accept(Visitor v) throws Exception {
         return v.visit(this);

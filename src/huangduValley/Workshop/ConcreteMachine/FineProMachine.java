@@ -26,16 +26,27 @@ public class FineProMachine extends Machine {
         this.name = name;
     }
 
+    /**
+     * Get name of rough processing machine
+     * @return
+     * name of rough processing machine
+     */
     @Override
     public String getName(){
         return this.name;
     }
 
+    /**
+     * Switch on machine.
+     */
     @Override
     public void switchOn(){
         System.out.println("FineProMachine on!");
     }
 
+    /**
+     * Turn off machine.
+     */
     @Override
     public void stop(){
         System.out.println("FineProMachine off!");
@@ -61,6 +72,14 @@ public class FineProMachine extends Machine {
         return productVector;
     }
 
+    /**
+     *
+     * @param v
+     * Visitor operation object.
+     * @return
+     * Vector of items that the operation produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> accept(Visitor v) throws Exception {
         return v.visit(this);

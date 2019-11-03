@@ -23,7 +23,9 @@ public abstract class IterationProcessing implements WorkSpace {
     protected Vector<Items> ingredients;
 
     private int iterationTimes = 1;
+
     /**
+     * Start Processing.
      * @throws Exception
      */
     @Override
@@ -73,10 +75,18 @@ public abstract class IterationProcessing implements WorkSpace {
         }
     }
 
+    /**
+     * End processing
+     */
     @Override
     public void doExit(){
     }
 
+    /**
+     * Get process items at the current.
+     * @return
+     * Vector of items.
+     */
     @Override
     public Vector<Items> getIngredients() {
         return ingredients;

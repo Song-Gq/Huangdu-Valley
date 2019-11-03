@@ -11,7 +11,7 @@ import java.util.TreeMap;
 import java.util.Vector;
 
 /**
- *
+ * Machine that do cleaning
  * @author Leepaangsang
  * @version 2019/10/31
  */
@@ -27,16 +27,27 @@ public class CleanMachine extends Machine {
         this.name = name;
     }
 
+    /**
+     * Get name of clean machine
+     * @return
+     * name of clean machine
+     */
     @Override
     public String getName(){
         return this.name;
     }
 
+    /**
+     * Switch on machine.
+     */
     @Override
     public void switchOn(){
         System.out.println("CleanMachine on!");
     }
 
+    /**
+     * Turn off machine.
+     */
     @Override
     public void stop(){
         System.out.println("CleanMachine off!");
@@ -62,6 +73,14 @@ public class CleanMachine extends Machine {
         return productVector;
     }
 
+    /**
+     *
+     * @param v
+     * Visitor operation object.
+     * @return
+     * Vector of items that the operation produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> accept(Visitor v) throws Exception {
 

@@ -10,6 +10,7 @@ import java.util.Vector;
  * @version 2019/10/30
  */
 public class WareHouse {
+
     private WareHouse(){
         System.out.println("Warehouse create");
         this.machineVector = new Vector<Machine>();
@@ -19,10 +20,18 @@ public class WareHouse {
 
     private int poolSize;
 
+    /**
+     * Singleton Object
+     */
     private static class WareHouseHolder{
         private static final WareHouse INSTANCE = new WareHouse();
     }
 
+    /**
+     * Get singleton object warehouse.
+     * @return
+     * WareHouse
+     */
     public static WareHouse getInstance(){
         System.out.println("Get warehouse instance!");
         return WareHouseHolder.INSTANCE;
@@ -94,11 +103,21 @@ public class WareHouse {
         }
     }
 
+    /**
+     * Set the pool size
+     * @param size
+     * Max size of the object pool
+     */
     public void setMaxSize(int size){
         this.poolSize = size;
         System.out.println(String.format("Set the warehouse size to %d", size));
     }
 
+    /**
+     * Get the pool size
+     * @return
+     * Max size of the object pool
+     */
     public int getPoolSize(){
         return this.poolSize;
     }

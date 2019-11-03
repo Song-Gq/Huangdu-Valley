@@ -1,5 +1,6 @@
 package huangduValley.Workshop.processFactory.factory;
 
+import huangduValley.Workshop.Product.Product;
 import huangduValley.Workshop.WareHouse.WareHouse;
 import huangduValley.Workshop.processFactory.workSpace.WorkSpace;
 import huangduValley.farm.storage.Items;

@@ -11,5 +11,5 @@ public interface WorkSpace{
     void doInit(Vector<Items> ingredients, Vector<Machine>... machineVector) throws Exception;
     void doProcess() throws Exception;
     void doExit();
-    public abstract Vector<Items> getIngredients();
+    Vector<Items> getIngredients();
 }
