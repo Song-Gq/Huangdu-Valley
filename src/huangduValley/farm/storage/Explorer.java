@@ -52,6 +52,8 @@ public class Explorer {
     // add a new farm.storage.Items Object in the current bag
     public void addItems(String name, int count) throws Exception {
         curBag.add(new Items(name, count));
+        Stdout.print(this, "Addition of Items \"" +
+                name + "\" with count " + count + " succeeds");
     }
 
     // add a new farm.storage.Bag Object in the current bag

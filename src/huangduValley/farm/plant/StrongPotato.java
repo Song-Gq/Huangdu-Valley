@@ -11,6 +11,6 @@ import huangduValley.farm.Stdout;
 public class StrongPotato extends Potato {
 	public StrongPotato(String landType) {
 		super(landType);
-		Stdout.print(this, "StrongPotato is planted");
+		Stdout.print(this, "StrongPotato is created");
 	}
 }

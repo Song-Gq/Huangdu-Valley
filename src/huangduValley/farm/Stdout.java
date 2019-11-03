@@ -9,15 +9,20 @@ public class Stdout {
         int atIndex = str.lastIndexOf("@");
 
         // class name
-        System.out.print(str.substring(firstDotIndex + 1, atIndex) + ": ");
+        fillSpace(str.substring(firstDotIndex + 1, atIndex) + ": ", 35);
 
         // object address
-        System.out.print(str.substring(atIndex) + ": ");
+        fillSpace(str.substring(atIndex) + ": ", 15);
 
         // method name
-        System.out.print(Thread.currentThread().getStackTrace()[2].getMethodName() + "(): ");
+        fillSpace(Thread.currentThread().getStackTrace()[2].getMethodName() + "(): ", 20);
 
         // action description
         System.out.println(description);
+    }
+
+    // fill the output with space
+    private static void fillSpace(String str, int maxLength) {
+        System.out.printf("%-" + maxLength + "s", str);
     }
 }

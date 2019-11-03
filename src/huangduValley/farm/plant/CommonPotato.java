@@ -12,7 +12,7 @@ public class CommonPotato extends Potato {
 	
 	public CommonPotato(String landType) {
 		super(landType);
-		Stdout.print(this, "CommonPotato is planted");
+		Stdout.print(this, "CommonPotato is created");
 	}
 	
 }
