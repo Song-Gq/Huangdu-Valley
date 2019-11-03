@@ -1,4 +1,4 @@
-package huangduVally.test;
+package huangduVally.house.test;
 
 import huangduVally.house.Rent.HouseMediator;
 import huangduVally.house.Rent.Landlord;

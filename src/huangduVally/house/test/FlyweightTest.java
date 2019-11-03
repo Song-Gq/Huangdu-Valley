@@ -1,4 +1,4 @@
-package huangduVally.test;
+package huangduVally.house.test;
 
 import huangduVally.house.renovation.brick.Floorboard;
 
