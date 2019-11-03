@@ -1,5 +1,6 @@
 package huangduValley.Workshop.processFactory.workSpace;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.ConcreteMachine.CleanMachine;
 import huangduValley.Workshop.ConcreteMachine.FineProMachine;
 import huangduValley.Workshop.ConcreteMachine.RoughProMachine;
@@ -33,6 +34,7 @@ public class CompleteProcessing extends SequentialProcessing {
 
     @Override
     protected void exit() {
+        Stdout.print(this, "Exit processing");
         System.out.println("HuangduValley.Workshop.factory.processTable welcome back again :)");
     }
 }

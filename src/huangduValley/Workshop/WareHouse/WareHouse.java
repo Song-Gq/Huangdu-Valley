@@ -1,5 +1,6 @@
 package huangduValley.Workshop.WareHouse;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.Machine;
 
 import java.util.Vector;
@@ -12,7 +13,7 @@ import java.util.Vector;
 public class WareHouse {
 
     private WareHouse(){
-        System.out.println("Warehouse create");
+        Stdout.print(this, "Warehouse create!");
         this.machineVector = new Vector<Machine>();
     }
 
@@ -33,7 +34,7 @@ public class WareHouse {
      * WareHouse
      */
     public static WareHouse getInstance(){
-        System.out.println("Get warehouse instance!");
+        Stdout.print(WareHouseHolder.INSTANCE.toString(), "Get warehouse instance!");
         return WareHouseHolder.INSTANCE;
     }
 
@@ -51,7 +52,7 @@ public class WareHouse {
         if(!machineVector.isEmpty()){
             for(Machine machine:machineVector){
                 if(machine.getName().equals(name) && machine.getClass().getSimpleName().equals(machineType)){
-                    System.out.println("Occupy one machine!");
+                    Stdout.print(this, "Occupy one machine!");
                     machineVector.remove(machine);
                     return machine;
                 }
@@ -80,7 +81,7 @@ public class WareHouse {
             return null;
         }
         else{
-            System.out.println("Warehouse has no idle machine!");
+            Stdout.print(this, "Warehouse has no idle machine!");
             return null;
         }
     }
@@ -95,10 +96,11 @@ public class WareHouse {
      */
     public boolean release(Machine machine){
         if(machineVector.size() < this.poolSize){
+            Stdout.print(this, "Warehouse ");
             machineVector.add(machine);
             return true;
         }else{
-            System.out.println("Warehouse has no space to place more machines!");
+            Stdout.print(this, "Warehouse has no space to place more machines!");
             return false;
         }
     }
@@ -110,7 +112,7 @@ public class WareHouse {
      */
     public void setMaxSize(int size){
         this.poolSize = size;
-        System.out.println(String.format("Set the warehouse size to %d", size));
+        Stdout.print(this, String.format("Set the warehouse size to %d", size));
     }
 
     /**

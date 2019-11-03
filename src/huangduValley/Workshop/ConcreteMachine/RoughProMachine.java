@@ -1,6 +1,7 @@
 package huangduValley.Workshop.ConcreteMachine;
 
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.Machine;
 import huangduValley.Workshop.Product.Product;
 import huangduValley.Workshop.Product.RoughProduct;
@@ -42,7 +43,7 @@ public class RoughProMachine extends Machine {
      */
     @Override
     public void switchOn(){
-        System.out.println("RoughProMachine on!");
+        Stdout.print(this, "RoughProMachine on!");
     }
 
     /**
@@ -50,7 +51,7 @@ public class RoughProMachine extends Machine {
      */
     @Override
     public void stop(){
-        System.out.println("RoughProMachine off!");
+        Stdout.print(this, "RoughProMachine off!");
     }
 
     /**
@@ -63,12 +64,12 @@ public class RoughProMachine extends Machine {
      */
     @Override
     public Vector<Items> run(Vector<Items> materialVector) throws Exception {
-        System.out.println("RoughProMachine is running!");
+        Stdout.print(this, "RoughProMachine is running!");
         Vector<Items> productVector = new Vector<>();
         for(Items items:materialVector){
             Thread.sleep(100*items.getCount());
             productVector.add(new RoughProduct(items.getName(), items.getCount()));
-            System.out.println(String.format("Rough processing machine produces %d %s",items.getCount(),items.getName()));
+            Stdout.print(this, String.format("Rough processing machine produces %d %s",items.getCount(),items.getName()));
         }
         return productVector;
     }

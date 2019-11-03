@@ -1,5 +1,6 @@
 package huangduValley.Workshop.ConcreteMachine;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.Machine;
 import huangduValley.Workshop.Product.FineProduct;
 import huangduValley.Workshop.Product.Product;
@@ -41,7 +42,7 @@ public class FineProMachine extends Machine {
      */
     @Override
     public void switchOn(){
-        System.out.println("FineProMachine on!");
+        Stdout.print(this, "FineProMachine on!");
     }
 
     /**
@@ -49,7 +50,7 @@ public class FineProMachine extends Machine {
      */
     @Override
     public void stop(){
-        System.out.println("FineProMachine off!");
+        Stdout.print(this, "FineProMachine off!");
     }
 
     /**

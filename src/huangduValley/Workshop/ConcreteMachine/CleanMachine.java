@@ -1,5 +1,6 @@
 package huangduValley.Workshop.ConcreteMachine;
 
+import huangduValley.Stdout;
 import huangduValley.farm.storage.Ingredients;
 import huangduValley.Workshop.Machine;
 import huangduValley.Workshop.Product.CleanProduct;
@@ -42,7 +43,7 @@ public class CleanMachine extends Machine {
      */
     @Override
     public void switchOn(){
-        System.out.println("CleanMachine on!");
+        Stdout.print(this, "CleanMachine on!");
     }
 
     /**
@@ -50,7 +51,7 @@ public class CleanMachine extends Machine {
      */
     @Override
     public void stop(){
-        System.out.println("CleanMachine off!");
+        Stdout.print(this, "CleanMachine off!");
     }
 
     /**
@@ -63,12 +64,12 @@ public class CleanMachine extends Machine {
      */
     @Override
     public Vector<Items> run(Vector<Items> materialVector) throws Exception {
-        System.out.println("CleanMachine is running!");
+        Stdout.print(this,"CleanMachine is running!");
         Vector<Items> productVector = new Vector<>();
         for(Items items:materialVector){
             Thread.sleep(100*items.getCount());
             productVector.add(new CleanProduct(items.getName(), items.getCount()));
-            System.out.println(String.format("Clean machine produces %d %s",items.getCount(),items.getName()));
+            Stdout.print(this, String.format("Clean machine produces %d %s",items.getCount(),items.getName()));
         }
         return productVector;
     }
@@ -83,7 +84,6 @@ public class CleanMachine extends Machine {
      */
     @Override
     public Vector<Items> accept(Visitor v) throws Exception {
-
         return v.visit(this);
     }
 }

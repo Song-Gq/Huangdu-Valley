@@ -1,5 +1,6 @@
 package huangduValley.Workshop.processFactory.factory;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.Product.Product;
 import huangduValley.Workshop.WareHouse.WareHouse;
 import huangduValley.Workshop.processFactory.workSpace.WorkSpace;
@@ -10,7 +11,6 @@ import java.util.Vector;
 //继承状态
 public class NormalFactory implements FactoryState{
     //单例模式
-    //private static NormalFactory INSTANCE=new NormalFactory();
     private NormalFactory(){}
 
     private static class NormalFactoryHolder{
@@ -29,7 +29,7 @@ public class NormalFactory implements FactoryState{
 
     @Override
     public void runFactory() throws Exception {
-        System.out.println("the Processing factory now is working .");
+        Stdout.print(this, "The Processing factory now is working!");
         for(WorkSpace workSpace:processVector){
             workSpace.doProcess();
             productsVector.add(workSpace.getIngredients());

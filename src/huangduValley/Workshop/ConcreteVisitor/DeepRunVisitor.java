@@ -1,5 +1,6 @@
 package huangduValley.Workshop.ConcreteVisitor;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.ConcreteMachine.CleanMachine;
 import huangduValley.Workshop.ConcreteMachine.FineProMachine;
 import huangduValley.Workshop.ConcreteMachine.RoughProMachine;
@@ -37,7 +38,7 @@ public class DeepRunVisitor extends Visitor {
     public Vector<Items> visit(CleanMachine cm) throws Exception {
         cm.switchOn();
         Vector<Items> products = cm.run(ingredientsVector);
-        System.out.println("Redoing cleaning!");
+        Stdout.print(this, "Redoing cleaning!");
         products = cm.run(products);
         cm.stop();
         return products;
@@ -55,7 +56,7 @@ public class DeepRunVisitor extends Visitor {
     public Vector<Items> visit(RoughProMachine rm) throws Exception {
         rm.switchOn();
         Vector<Items> products = rm.run(ingredientsVector);
-        System.out.println("Redoing rough processing!");
+        Stdout.print(this, "Redoing rough processing!");
         products = rm.run(products);
         rm.stop();
         return products;
@@ -73,7 +74,7 @@ public class DeepRunVisitor extends Visitor {
     public Vector<Items> visit(FineProMachine fm) throws Exception {
         fm.switchOn();
         Vector<Items> products = fm.run(ingredientsVector);
-        System.out.println("Redoing fine processing!");
+        Stdout.print(this, "Redoing fine processing!");
         products = fm.run(products);
         fm.stop();
         return products;
