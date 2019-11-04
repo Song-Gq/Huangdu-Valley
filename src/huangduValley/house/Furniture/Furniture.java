@@ -10,7 +10,7 @@ public class Furniture {
         this.price=price;
         this.color=color;
         this.texture=texture;
-        System.out.println("Successfully add "+name+"(price:"+price+",color:"+color+",texture:"+texture+")");
+//        System.out.println("Successfully add "+name+"(price:"+price+",color:"+color+",texture:"+texture+")");
     }
     public String getName() {
         return name;

@@ -1,7 +1,7 @@
 package huangduValley.house.test;
 
-import huangduValley.house.renovation.brick.Floorboard;
-import huangduValley.house.renovation.brick.FlyweightBrick;
+import huangduValley.house.brick.Floorboard;
+import huangduValley.house.brick.FlyweightBrick;
 
 import java.util.ArrayList;
 import java.util.Scanner;

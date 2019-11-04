@@ -1,5 +1,19 @@
 package huangduValley;
 
+import huangduValley.farm.manager.Manager;
+import huangduValley.farm.taskHandler.PlantTaskHandler;
+import huangduValley.farm.taskHandler.Request;
+import huangduValley.farm.taskHandler.TaskHandler;
+import huangduValley.house.House;
+import huangduValley.house.Rent.Client;
+import huangduValley.house.brick.Floorboard;
+import huangduValley.house.brick.FlyweightBrick;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import static huangduValley.house.HouseMain.houseDoAll;
+
 import huangduValley.farm.fence.Fence;
 import huangduValley.farm.fence.FenceBuilder;
 import huangduValley.farm.fence.ShortFenceBuilder;
@@ -21,6 +35,18 @@ public class Main {
     static boolean skip = false;
 
     public static void main(String[] args) {
+
+        // Flyweight 创建地砖
+        ArrayList<Floorboard> floorboardList = new ArrayList<Floorboard>();
+        for(int i=1;i<3;i++) {
+            for (int j = 1; j < 3; j++){
+                Floorboard floorboard = new Floorboard(FlyweightBrick.textures[0]); // 初始地砖为木质
+                floorboard.setX(i);
+                floorboard.setY(j);
+                floorboardList.add(floorboard);
+            }
+        }
+
         try {
             // taskHandler
             System.out.println("你的农场实在是太大了，对讲机传输距离不够远，你和四个合伙人连成一串，\n" +
@@ -112,7 +138,7 @@ public class Main {
                     "随后，警卫安心地睡着了");
             manager.doAll();
             skip();
-            
+
             System.out.println("你找了一个工人，准备为农场建一个栅栏\n" +
             		"由于资金的原因，我们建一个木制矮栅栏");
     		Worker worker = new Worker();
@@ -121,13 +147,22 @@ public class Main {
     		worker.buildFence();
     		Fence fence = worker.getFence();
     		skip();
+
+
+            Client.rentHouse();
+            skip();
+
+            houseDoAll();
+            skip();
+
+            System.out.println("安心地睡着了\n");
         }
         catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void skip() throws Exception {
+    public static void skip() throws Exception {
         if(!skip) {
             System.out.println("按Enter继续，或输入任意其他全部跳过\n");
 
