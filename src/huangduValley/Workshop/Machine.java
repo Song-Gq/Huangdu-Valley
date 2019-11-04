@@ -12,10 +12,10 @@ import java.util.Vector;
  * @author Leepaangsang
  * @version 2019/10/31
  */
+
+//原型模式
 public abstract class Machine implements Acceptor, Cloneable{
     public abstract String getName();
-
-    public abstract void setName(String name);
 
     /**
      * Machine on

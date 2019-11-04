@@ -25,6 +25,14 @@ public class NormalRunVisitor extends Visitor {
         this.ingredientsVector = ingredientsVector;
     }
 
+    /**
+     * Normal running of clean machine.
+     * @param cm
+     * Clean machine object.
+     * @return
+     * Vector of items that the clean machine produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> visit(CleanMachine cm) throws Exception {
         cm.switchOn();
@@ -33,6 +41,14 @@ public class NormalRunVisitor extends Visitor {
         return products;
     }
 
+    /**
+     * Normal running of rough processing machine.
+     * @param rm
+     * Rough processing machine object.
+     * @return
+     * Vector of items that the rough processing machine produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> visit(RoughProMachine rm) throws Exception {
         rm.switchOn();
@@ -41,6 +57,14 @@ public class NormalRunVisitor extends Visitor {
         return products;
     }
 
+    /**
+     * Normal running of fine processing machine.
+     * @param fm
+     * Fine processing machine object.
+     * @return
+     * Vector of items that the fine processing machine produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> visit(FineProMachine fm) throws Exception {
         fm.switchOn();

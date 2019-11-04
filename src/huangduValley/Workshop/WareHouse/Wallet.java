@@ -1,11 +1,12 @@
 package huangduValley.Workshop.WareHouse;
 
+import huangduValley.Stdout;
+
 public class Wallet {
     private double balance;
 
     private Wallet() {
         balance = 1000;
-        System.out.println("Wallet create");
     }
 
     private static class WalletHolder {
@@ -13,7 +14,6 @@ public class Wallet {
     }
 
     public static Wallet getInstance() {
-        System.out.println("Get Wallet instance");
         return WalletHolder.INSTANCE;
     }
 
@@ -23,11 +23,13 @@ public class Wallet {
 
     public void increaseBalance(double number) {
         balance += number;
+        Stdout.print(this, "The balance of wallet increase " + number);
     }
 
     public boolean decreaseBalance(double number) {
         if (balance >= number) {
             balance -= number;
+            Stdout.print(this, "The balance of wallet decrease " + number);
             return true;
         }
         else {

@@ -1,5 +1,6 @@
 package huangduValley.Workshop.processFactory.workSpace;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.ConcreteMachine.CleanMachine;
 import huangduValley.Workshop.ConcreteMachine.FineProMachine;
 import huangduValley.Workshop.ConcreteMachine.RoughProMachine;
@@ -10,12 +11,6 @@ import huangduValley.Workshop.ConcreteVisitor.NormalRunVisitor;
  * @version 2019/10/31
  */
 public class CompleteProcessing extends SequentialProcessing {
-    /**
-     * Processing in order of CleanMachine, RoughProMachine, FineProMachine
-     * @return
-     * Vector of products
-     * @throws Exception
-     */
     @Override
     protected void preProcess() throws Exception {
         for(CleanMachine cleanMachine:cleanMachines){
@@ -39,6 +34,6 @@ public class CompleteProcessing extends SequentialProcessing {
 
     @Override
     protected void exit() {
-        System.out.println("HuangduValley.Workshop.factory.processTable welcome back again :)");
+        Stdout.print(this, "Exit processing");
     }
 }

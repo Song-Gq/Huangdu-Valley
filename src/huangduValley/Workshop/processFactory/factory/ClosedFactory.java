@@ -1,5 +1,7 @@
 package huangduValley.Workshop.processFactory.factory;
 
+import huangduValley.Stdout;
+
 //继承状态，同时使用单例模式
 public class ClosedFactory implements FactoryState{
     private static ClosedFactory factory=new ClosedFactory();
@@ -9,6 +11,6 @@ public class ClosedFactory implements FactoryState{
     }
     @Override
     public void runFactory(){
-        System.out.println("Sorry,the factory has been closed");
+        Stdout.print(this, "Sorry,the factory has been closed");
     }
 }

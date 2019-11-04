@@ -8,6 +8,9 @@ import huangduValley.farm.storage.Items;
  * @version 2019/10/31
  */
 public class Product extends Items {
+    
+    private float price;
+
     /**
      *
      * @param name
@@ -16,8 +19,6 @@ public class Product extends Items {
      * Number of product
      * @throws Exception
      */
-    private float price;
-
     public Product(String name, int count)throws Exception{
         super(name, count);
     }

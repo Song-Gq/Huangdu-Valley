@@ -1,5 +1,7 @@
 package huangduValley.Workshop.processFactory.factory;
 
+import huangduValley.Stdout;
+import huangduValley.Workshop.Product.Product;
 import huangduValley.Workshop.WareHouse.Store;
 import huangduValley.Workshop.WareHouse.WareHouse;
 import huangduValley.Workshop.processFactory.workSpace.WorkSpace;
@@ -12,7 +14,6 @@ import java.util.Vector;
 //继承状态
 public class NormalFactory implements FactoryState{
     //单例模式
-    //private static NormalFactory INSTANCE=new NormalFactory();
     private NormalFactory(){
         addObservers(wareHouse);
         addObservers(store);
@@ -30,6 +31,7 @@ public class NormalFactory implements FactoryState{
 
     private Store store = Store.getInstance();
 
+
     private Vector<WorkSpace> processVector;
 
     private Vector<Vector<Items>> productsVector = new Vector<>();
@@ -39,14 +41,15 @@ public class NormalFactory implements FactoryState{
 
     @Override
     public void runFactory() throws Exception {
-        System.out.println("the Processing factory now is working .");
+        Stdout.print(this, "The Processing factory now is working!");
         for(WorkSpace workSpace:processVector){
             workSpace.doProcess();
             productsVector.add(workSpace.getIngredients());
+            //更新观察者序列
             for (Observer observer: observers) {
                 observer.update(getProductsVector());
             }
-            System.out.println("Update observers");
+            Stdout.print(this, "Update observers");
             workSpace.doExit();
         }
     }
@@ -70,4 +73,6 @@ public class NormalFactory implements FactoryState{
     public void delObservers(Observer observer) {
         observers.remove(observer);
     }
+
+
 }
