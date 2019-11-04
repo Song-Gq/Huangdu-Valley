@@ -96,7 +96,7 @@ public class WareHouse {
      */
     public boolean release(Machine machine){
         if(machineVector.size() < this.poolSize){
-            Stdout.print(this, "Warehouse ");
+            Stdout.print(this, String.format("Warehouse stores the machine:",machine.getName()));
             machineVector.add(machine);
             return true;
         }else{
