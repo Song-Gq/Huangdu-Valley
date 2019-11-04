@@ -12,7 +12,7 @@ import huangduValley.farm.plant.Potato;
  * @author CuiYanshen
  */
 
-public class Test_AbstractFactory {
+public class AbstractFactoryTest {
 	public static void main(String[] args) throws Exception {
 		Land dland = new DryLand();
 		

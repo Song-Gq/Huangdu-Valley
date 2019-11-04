@@ -15,7 +15,7 @@ import java.util.Vector;
  * @author Leepaangsang
  * @version 2019/10/31
  */
-public class Main {
+public class MainTest {
     public static void main(String[] args) throws Exception {
 
         WareHouse wareHouse = WareHouse.getInstance();
