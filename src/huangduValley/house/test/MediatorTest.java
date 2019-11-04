@@ -1,10 +1,10 @@
 package huangduValley.house.test;
 
-import huangduValley.house.Rent.HouseMediator;
-import huangduValley.house.Rent.Landlord;
-import huangduValley.house.Rent.Mediator;
-import huangduValley.house.Rent.Person;
-import huangduValley.house.Rent.Renter;
+import huangduValley.house.rent.HouseMediator;
+import huangduValley.house.rent.Landlord;
+import huangduValley.house.rent.Mediator;
+import huangduValley.house.rent.Person;
+import huangduValley.house.rent.Renter;
 
 public class MediatorTest {
 

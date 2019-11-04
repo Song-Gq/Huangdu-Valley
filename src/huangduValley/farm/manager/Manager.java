@@ -1,7 +1,7 @@
 package huangduValley.farm.manager;
 
 import huangduValley.Stdout;
-import huangduValley.Workshop.WareHouse.Wallet;
+import huangduValley.workshop.wareHouse.Wallet;
 import huangduValley.farm.land.Lands;
 import huangduValley.farm.storage.Bag;
 import huangduValley.farm.storage.Items;

@@ -1,7 +1,7 @@
 package huangduValley.house.command;
 
-import huangduValley.house.Furniture.Furniture;
-import huangduValley.house.Furniture.FurnitureRoom;
+import huangduValley.house.furniture.Furniture;
+import huangduValley.house.furniture.FurnitureRoom;
 
 public class Implement extends FurnitureRoom{
 

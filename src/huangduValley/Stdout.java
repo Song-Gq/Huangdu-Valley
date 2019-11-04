@@ -9,7 +9,7 @@ public class Stdout {
         int atIndex = str.lastIndexOf("@");
 
         // class name
-        fillSpace(str.substring(firstDotIndex + 1, atIndex) + ": ", 40);
+        fillSpace(str.substring(firstDotIndex + 1, atIndex) + ": ", 55);
 
         // object address
         fillSpace(str.substring(atIndex) + ": ", 15);

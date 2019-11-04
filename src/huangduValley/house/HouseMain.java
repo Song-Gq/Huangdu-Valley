@@ -1,13 +1,10 @@
 package huangduValley.house;
 
 import huangduValley.Main;
-import huangduValley.Stdout;
-import huangduValley.house.Rent.*;
 import huangduValley.house.brick.Floorboard;
 import huangduValley.house.brick.FlyweightBrick;
-import huangduValley.house.Furniture.Furniture;
-import huangduValley.house.Furniture.FurnitureRoom;
-import huangduValley.house.Furniture.MyIterator;
+import huangduValley.house.furniture.Furniture;
+import huangduValley.house.furniture.FurnitureRoom;
 import huangduValley.house.memento.CareTaker;
 import huangduValley.house.memento.Originator;
 import huangduValley.house.memento.UndoOrRedo;
@@ -16,9 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static huangduValley.Main.skip;
-import static huangduValley.house.Furniture.FurnitureRoom.changeFurniture;
-import static huangduValley.house.Furniture.FurnitureRoom.displayFurniture;
+import static huangduValley.house.furniture.FurnitureRoom.displayFurniture;
 import static huangduValley.house.House.*;
 
 public class HouseMain {
