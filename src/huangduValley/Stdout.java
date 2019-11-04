@@ -15,7 +15,7 @@ public class Stdout {
         fillSpace(str.substring(atIndex) + ": ", 15);
 
         // method name
-        fillSpace(Thread.currentThread().getStackTrace()[2].getMethodName() + "(): ", 20);
+        fillSpace(Thread.currentThread().getStackTrace()[2].getMethodName() + "(): ", 30);
 
         // action description
         System.out.println(description);
