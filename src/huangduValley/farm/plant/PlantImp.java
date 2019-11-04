@@ -3,6 +3,7 @@ package huangduValley.farm.plant;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Bridge Pattern
  * the implementation of Plant
  * @author :zdy
  */

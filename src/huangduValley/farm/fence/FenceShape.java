@@ -1,6 +1,7 @@
 package huangduValley.farm.fence;
 
 /**
+ * @pattern Adapter Pattern
  * The interface used by client to display the outline of fence
  * it requires coordinate of the left-down point and width and height of fence which is defined by client.
  */

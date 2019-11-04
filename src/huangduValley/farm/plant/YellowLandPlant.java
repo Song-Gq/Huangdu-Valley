@@ -3,6 +3,7 @@ package huangduValley.farm.plant;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Bridge Pattern
  * implementation of plants on YellowLand whose growing time is normal
  */
 

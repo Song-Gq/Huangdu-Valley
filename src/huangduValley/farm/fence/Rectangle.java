@@ -3,6 +3,7 @@ package huangduValley.farm.fence;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Adapter Pattern
  * the rectangle shape: display using coordinates of two points on the diagonal.
  * This way is accurate and definite
  * (x1,y1,x2,y2)----(x1,y1)left-down point,(x2,y2)right-upper point

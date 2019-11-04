@@ -3,6 +3,7 @@ package huangduValley.farm.plant;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Bridge Pattern
  * implementation of plants on RedLand whose growing time is eighty percent of normal ones.
  */
 

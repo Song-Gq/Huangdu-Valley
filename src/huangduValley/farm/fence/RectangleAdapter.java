@@ -3,6 +3,7 @@ package huangduValley.farm.fence;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Adapter Pattern
  * the adapter to adapter a Rectangle method to FenceShape method
  * so that we can reuse the existing method or interface.
  */

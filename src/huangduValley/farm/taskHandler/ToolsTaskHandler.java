@@ -3,6 +3,7 @@ package huangduValley.farm.taskHandler;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Chain Of Responsibility Pattern
  * ToolsTaskHandler:the handler to handle the task in tools domain.
  */
 public class ToolsTaskHandler extends TaskHandler {

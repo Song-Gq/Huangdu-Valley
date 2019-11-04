@@ -1,5 +1,8 @@
 package huangduValley.farm.plant;
 
+/**
+ * @pattern Bridge Pattern
+ */
 public class FruitPlant extends Plant {
 /*    public FruitPlant()
     {

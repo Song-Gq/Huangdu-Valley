@@ -3,6 +3,7 @@ package huangduValley.farm.taskHandler;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Chain Of Responsibility Pattern
  * the Request class:each task will be expressed as a request
  * before the request is parsed,nobody knows its type so that we cannot be ware of the handler
  * to handle it.

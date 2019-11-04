@@ -4,6 +4,7 @@ import huangduValley.Stdout;
 import huangduValley.farm.storage.Explorer;
 
 /**
+ * @pattern Chain Of Responsibility Pattern
  * StorageTaskHandler:the handler to handle the task in storage domain.
  */
 public class StorageTaskHandler extends TaskHandler {

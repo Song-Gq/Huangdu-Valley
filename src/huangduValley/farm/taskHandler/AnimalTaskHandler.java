@@ -3,6 +3,7 @@ package huangduValley.farm.taskHandler;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Chain Of Responsibility Pattern
  * AnimalTaskHandler:the handler to handle the task in animal domain.
  */
 public class AnimalTaskHandler extends TaskHandler {

@@ -3,6 +3,7 @@ package huangduValley.farm.plant;
 import huangduValley.Stdout;
 
 /**
+ * @pattern Bridge Pattern
  * base class of abstract hierarchy
  * implement function by calling methods of PlantImp.
  * @author :zdy
