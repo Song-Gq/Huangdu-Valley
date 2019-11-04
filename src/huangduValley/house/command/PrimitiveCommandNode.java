@@ -1,6 +1,6 @@
 package huangduValley.house.command;
-import huangduValley.house.Furniture.Furniture;
-import huangduValley.house.Furniture.*;
+import huangduValley.house.furniture.Furniture;
+
 // <primitive command> ::= go | right | left
 public class PrimitiveCommandNode extends Node {
     private String name;

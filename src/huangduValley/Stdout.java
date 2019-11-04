@@ -9,13 +9,13 @@ public class Stdout {
         int atIndex = str.lastIndexOf("@");
 
         // class name
-        fillSpace(str.substring(firstDotIndex + 1, atIndex) + ": ", 40);
+        fillSpace(str.substring(firstDotIndex + 1, atIndex) + ": ", 55);
 
         // object address
         fillSpace(str.substring(atIndex) + ": ", 15);
 
         // method name
-        fillSpace(Thread.currentThread().getStackTrace()[2].getMethodName() + "(): ", 20);
+        fillSpace(Thread.currentThread().getStackTrace()[2].getMethodName() + "(): ", 30);
 
         // action description
         System.out.println(description);

@@ -2,7 +2,7 @@ package huangduValley.house.command;
 
 import java.util.*;
 
-import huangduValley.house.Furniture.FurnitureRoom;
+import huangduValley.house.furniture.FurnitureRoom;
 
 public class Context {
     private StringTokenizer tokenizer;

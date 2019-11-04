@@ -9,10 +9,8 @@ import huangduValley.Stdout;
  */
 
 public class StrongCarrot extends Carrot {
-	
 	public StrongCarrot(String landType) {
 		super(landType);
 		Stdout.print(this, "StrongCarrot is created");
 	}
-	
 }

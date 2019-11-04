@@ -10,9 +10,10 @@ public class MementoTest {
     public static void main(String[] args) {
         System.out.println("****************************  Test Memento Pattren *****************************");
         // Memento
-        int index=0;
+        int index=-1;
         Originator originator=new Originator();
         CareTaker careTaker=new CareTaker();
+        int count=0;
 
         for (; ; ) {
             System.out.println("[1]展示当前房屋名称 [2]修改房屋名称 [3]退出");
@@ -22,7 +23,7 @@ public class MementoTest {
                 if (changeToTexture == 1) {
                     House.showHouseName(); // 展示当前房屋名称
                 } else if (changeToTexture == 2) {
-                    House.changeHouseName(); // 修改房屋名称
+                    House.changeHouseName(index,originator,careTaker); // 修改房屋名称
                 }
                 else if (changeToTexture == 3) {
                     break;
