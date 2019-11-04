@@ -13,7 +13,7 @@ import java.util.Vector;
  * @author Leepaangsang
  * @version 2019/10/31
  */
-public class FineProMachine extends Machine {
+public class FineProMachine extends Machine implements Prototype {
     private String name;
 
     /**
@@ -88,11 +88,16 @@ public class FineProMachine extends Machine {
         return v.visit(this);
     }
 
-    //原型模式
+    /**
+     * Prototype Pattern
+     * Clone the fine process machine
+     * @return
+     * @throws CloneNotSupportedException
+     */
     @Override
     public Object clone() throws CloneNotSupportedException {
         Stdout.print(this, "Clone a fine process machine.");
-        return super.clone();
+        return new FineProMachine(this.name);
     }
 
 }

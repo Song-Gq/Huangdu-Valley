@@ -14,7 +14,7 @@ import java.util.Vector;
  * @author Leepaangsang
  * @version 2019/10/31
  */
-public class RoughProMachine extends Machine {
+public class RoughProMachine extends Machine implements Prototype{
     private String name;
 
     /**
@@ -89,10 +89,15 @@ public class RoughProMachine extends Machine {
         return v.visit(this);
     }
 
-    //原型模式
+    /**
+     * Prototype Pattern
+     * Clone the rough process machine
+     * @return
+     * @throws CloneNotSupportedException
+     */
     @Override
     public Object clone() throws CloneNotSupportedException {
         Stdout.print(this, "Clone a rough process machine.");
-        return super.clone();
+        return new RoughProMachine(this.name);
     }
 }

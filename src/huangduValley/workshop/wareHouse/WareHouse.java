@@ -45,7 +45,11 @@ public class WareHouse implements Observer, Proxy {
         return WareHouseHolder.INSTANCE;
     }
 
-    //观察者模式
+    /**
+     * Observer Pattern
+     * Update the products vector
+     * @param products: the products vector of factory
+     */
     @Override
     public void update(Vector<Vector<Items>> products) {
         int length = products.size();
@@ -65,7 +69,13 @@ public class WareHouse implements Observer, Proxy {
         return productsVector;
     }
 
-    //代理模式
+    /**
+     * Proxy Pattern
+     * Real buy things
+     * @param name: the thing's name that you want to buy
+     * @return
+     * @throws Exception
+     */
     public boolean buy(String name) throws Exception {
         int length = productsVector.size();
         boolean flag = false;

@@ -7,6 +7,10 @@ import huangduValley.farm.storage.Items;
 
 import java.util.Vector;
 
+/**
+ * Observer Pattern, Proxy Pattern
+ */
+
 public class Store implements Observer,Proxy {
     private Vector<Vector<Product>> productsVector = new Vector<>();
 
@@ -14,6 +18,9 @@ public class Store implements Observer,Proxy {
         Stdout.print(this, "Store create.");
     }
 
+    /**
+     * Singleton Pattern
+     */
     private static class StoreHolder {
         private static final Store INSTANCE = new Store();
     }
@@ -25,14 +32,27 @@ public class Store implements Observer,Proxy {
 
     private WareHouse wareHouse = WareHouse.getInstance();
 
+    /**
+     * Proxy Pattern
+     * Start proxy
+     */
     private void preRequest() {
         Stdout.print(this, "Buy product proxy start.");
     }
 
+    /**
+     * Proxy Pattern
+     * Finish proxy
+     */
     private void postRequest() {
         Stdout.print(this, "Buy product proxy finish.");
     }
 
+    /**
+     * Observer Pattern
+     * Update the products vector in store
+     * @param products: the products vector of factory
+     */
     @Override
     public void update(Vector<Vector<Items>> products) {
         int length = products.size();
@@ -45,7 +65,13 @@ public class Store implements Observer,Proxy {
         }
     }
 
-    //代理模式
+    /**
+     * Proxy Pattern
+     * Buy things through proxy
+     * @param name: the thing's name that you want to buy
+     * @return boolean
+     * @throws Exception
+     */
     @Override
     public boolean buy(String name) throws Exception {
         boolean flag;

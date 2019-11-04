@@ -2,6 +2,9 @@ package huangduValley.workshop.wareHouse;
 
 import huangduValley.Stdout;
 
+/**
+ * The wallet of the Huangdu Valley
+ */
 public class Wallet {
     private double balance;
 

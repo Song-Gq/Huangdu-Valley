@@ -12,7 +12,7 @@ import java.util.Vector;
  */
 
 //原型模式
-public abstract class Machine implements Acceptor, Cloneable{
+public abstract class Machine implements Acceptor {
     public abstract String getName();
 
     /**

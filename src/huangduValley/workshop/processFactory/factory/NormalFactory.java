@@ -35,16 +35,21 @@ public class NormalFactory implements FactoryState{
 
     private Vector<Vector<Items>> productsVector = new Vector<>();
 
-    //观察者模式
+    //The list of observers
     private List<Observer> observers = new ArrayList<Observer>();
 
+    /**
+     * Observer Pattern
+     * Update the observers
+     * @throws Exception
+     */
     @Override
     public void runFactory() throws Exception {
         Stdout.print(this, "The Processing factory now is working!");
         for(WorkSpace workSpace:processVector){
             workSpace.doProcess();
             productsVector.add(workSpace.getIngredients());
-            //更新观察者序列
+            //Update the observer list
             for (Observer observer: observers) {
                 observer.update(getProductsVector());
             }

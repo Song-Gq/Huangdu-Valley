@@ -235,9 +235,9 @@ public class Main {
             factoryState=ClosedFactory.getInstance();
             context.setState(factoryState);
             skip();
-            System.out.println("离开工厂之后，你在管家的陪同下来到了旁边的商店");
-            System.out.println("你看着商店中琳琅满目的商品,一时有些眼花。\n管家,你有什么推荐吗");
-            System.out.println("你好，先生，你可以试一试我们工厂中刚刚生产出的土豆\n好的，就来一个这个");
+            System.out.println("离开工厂之后，你在管家的陪同下来到了旁边的商店。");
+            System.out.println("你看着商店中琳琅满目的商品,一时有些眼花。\n管家,你有什么推荐吗？");
+            System.out.println("你好，先生，你可以试一试我们工厂中刚刚生产出的土豆。\n好的，就来一个这个。");
             Store store = Store.getInstance();
             store.buy("potato");
             System.out.println("嗯，口感还不错！好了，我们去看看别的地方吧！");
