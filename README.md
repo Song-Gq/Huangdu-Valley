@@ -2,10 +2,10 @@
 Design Pattern Course Project  
 **Scene "Farm"**  
 **Branch By Song Guanqun, Zhang Dongya, Cui Yanshen**  
-**Scene "WorkShop"**
-**Branch By Li Pengsheng, Yu Weihong, Chang Guying**
-**Scene "House"**
-**Branch By Huang Yulin, Fan Siqi**
+**Scene "WorkShop"**  
+**Branch By Li Pengsheng, Yu Weihong, Chang Guying**  
+**Scene "House"**  
+**Branch By Huang Yulin, Fan Siqi**  
 ## Todo  
 * (done)中介者设计模式  
 * (done)金钱相关  

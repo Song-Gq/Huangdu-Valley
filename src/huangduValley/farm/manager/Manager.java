@@ -77,22 +77,29 @@ public class Manager {
 
     // plant carrots on all lands
     public void plantCarrotAll() throws Exception {
-        // decrease balance by one
         Wallet wallet = Wallet.getInstance();
-        wallet.decreaseBalance(1);
 
-        lands.plantCarrotAll();
-        Stdout.print(this, "Succeeds. Wallet balance - 1");
+        // decrease balance by one
+        if(wallet.decreaseBalance(1)) {
+            lands.plantCarrotAll();
+            Stdout.print(this, "Succeeds. Wallet balance - 1");
+        }
+        else
+            Stdout.print(this, "Failed. Wallet balance is not enough");
     }
 
     // plant potatoes on all lands
     public void plantPotatoAll() throws Exception {
-        // decrease balance by one
         Wallet wallet = Wallet.getInstance();
-        wallet.decreaseBalance(1);
 
-        lands.plantPotatoAll();
-        Stdout.print(this, "Succeeds. Wallet balance - 1");
+        // decrease balance by one
+        if(wallet.decreaseBalance(1)) {
+            lands.plantPotatoAll();
+            Stdout.print(this, "Succeeds. Wallet balance - 1");
+        }
+        else
+            Stdout.print(this, "Failed. Wallet balance is not enough");
+
     }
 
     // add a piece of dry land
@@ -110,15 +117,18 @@ public class Manager {
     // upgrade a piece of land by index by one grade
     // index starts from 0
     public void upgradeLand(int... index) throws Exception {
-        for(int i: index) {
-            lands.upgradeLand(i);
-        }
+        Wallet wallet = Wallet.getInstance();
 
         // decrease balance by one
-        Wallet wallet = Wallet.getInstance();
-        wallet.decreaseBalance(1);
+        if(wallet.decreaseBalance(1)) {
+            for(int i: index) {
+                lands.upgradeLand(i);
+            }
+            Stdout.print(this, "Succeeds. Wallet balance - 1");
+        }
+        else
+            Stdout.print(this, "Failed. Wallet balance is not enough");
 
-        Stdout.print(this, "Succeeds. Wallet balance - 1");
     }
 
     // this consumes water
