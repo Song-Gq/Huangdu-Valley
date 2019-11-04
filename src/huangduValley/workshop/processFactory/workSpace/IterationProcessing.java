@@ -9,7 +9,7 @@ import huangduValley.farm.storage.Items;
 import java.util.Vector;
 
 /**
- *
+ * Iteration Processing  (Template Method Design Pattern)
  * @author Leepaangsang
  * @version 2019/11/1
  */

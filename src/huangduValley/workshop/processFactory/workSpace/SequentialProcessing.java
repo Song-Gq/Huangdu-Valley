@@ -9,7 +9,7 @@ import huangduValley.farm.storage.Items;
 import java.util.Vector;
 
 /**
- * Template Method and Strategy design pattern
+ * Sequential Processing  (Template Method Design Pattern)
  */
 public abstract class SequentialProcessing implements WorkSpace{
     Vector<CleanMachine> cleanMachines;

@@ -9,7 +9,7 @@ import huangduValley.farm.storage.Items;
 import java.util.Vector;
 
 /**
- *
+ * Normal Run Operation(Visitor Design Pattern)
  * @author Leepaangsang
  * @version 2019/10/31
  */

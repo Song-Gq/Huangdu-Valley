@@ -9,7 +9,7 @@ import huangduValley.farm.storage.Items;
 import java.util.Vector;
 
 /**
- *
+ * Object Pool Design Pattern
  * @author Leepaangsang
  * @version 2019/10/30
  */
@@ -156,7 +156,7 @@ public class WareHouse implements Observer, Proxy {
     }
 
     /**
-     * Release idle machine to warehouse.
+     * Release idle machine to warehouse.(Object Pool Design Pattern)
      * @param machine
      * Machine that is going to store in warehouse.
      * @return
