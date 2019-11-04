@@ -2,7 +2,7 @@ package huangduValley.farm.land;
 
 /**
  * @ClassName:ICommand
- * @Description:used for huangduValley.farm.command
+ * @Description:used for "Command" design pattern
  * @author CuiYanshen
  */
 

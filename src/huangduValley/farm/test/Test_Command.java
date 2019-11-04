@@ -9,29 +9,34 @@ import huangduValley.farm.land.LandCommand;
 
 /**
  * @ClassName:CommandTest
- * @Description:to test design pattern huangduValley.farm.command
+ * @Description:to test "Command" design pattern
  * @author CuiYanshen
  */
 
 public class Test_Command {
 	
-	public static void excuteCommand(List<LandCommand> queue) {
+	//execute a list of commands
+	public static void executeCommand(List<LandCommand> queue) {
 		for (LandCommand lc:queue) {
 			lc.excute();
 		}
 	}
 	
 	public static void main(String[] args) {
+		//create an operation object
 		Land land = new DryLand();
 		
+		//new a list
 		List<LandCommand> queue = new ArrayList<>();
 		
+		//add some commands
 		queue.add(new LandCommand(land, "water"));
 		queue.add(new LandCommand(land, "fertilize"));
 		queue.add(new LandCommand(land, "water"));
 		queue.add(new LandCommand(land, "fertilize"));
 		
-		excuteCommand(queue);
+		//now execute them
+		executeCommand(queue);
 	}
 	
 }

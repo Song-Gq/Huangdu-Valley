@@ -4,14 +4,16 @@ import java.lang.reflect.Method;
 
 /**
  * @ClassName:LandCommand
- * @Description:used for huangduValley.farm.command, water or fertilize
+ * @Description:used for "Command" design pattern, water or fertilize
  * @author CuiYanshen
  */
 
 public class LandCommand implements ICommand {
 	
+	//operation objects
 	private Land land;
-	//the method name only can be "water" or "fertilize"
+	//the method name can be "water" or "fertilize"
+	//it will throw an exception if use a wrong method name
 	private String methodName = "";
 	
 	public LandCommand(Land l, String m) {
@@ -22,7 +24,6 @@ public class LandCommand implements ICommand {
 	@Override
 	public void excute() {
 		//use reflection to get method object
-		
 		try{
 			Method method = Land.class.getMethod(methodName);
 			
