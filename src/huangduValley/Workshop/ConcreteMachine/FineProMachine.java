@@ -1,5 +1,6 @@
 package huangduValley.Workshop.ConcreteMachine;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.Machine;
 import huangduValley.Workshop.Product.FineProduct;
 import huangduValley.Workshop.Product.Product;
@@ -26,6 +27,11 @@ public class FineProMachine extends Machine {
         this.name = name;
     }
 
+    /**
+     * Get name of rough processing machine
+     * @return
+     * name of rough processing machine
+     */
     @Override
     public String getName(){
         return this.name;
@@ -35,14 +41,20 @@ public class FineProMachine extends Machine {
         this.name = name;
     }
 
+    /**
+     * Switch on machine.
+     */
     @Override
     public void switchOn(){
-        System.out.println("FineProMachine on!");
+        Stdout.print(this, "FineProMachine on!");
     }
 
+    /**
+     * Turn off machine.
+     */
     @Override
     public void stop(){
-        System.out.println("FineProMachine off!");
+        Stdout.print(this, "FineProMachine off!");
     }
 
     /**
@@ -55,24 +67,34 @@ public class FineProMachine extends Machine {
      */
     @Override
     public Vector<Items> run(Vector<Items> materialVector) throws Exception {
-        System.out.println("FineProMachine is running!");
+        Stdout.print(this, "FineProMachine is running!");
         Vector<Items> productVector = new Vector<>();
         for(Items items:materialVector){
             Thread.sleep(100*items.getCount());
             productVector.add(new FineProduct(items.getName(), items.getCount()));
-            System.out.println(String.format("Fine processing machine produces %d %s",items.getCount(),items.getName()));
+            Stdout.print(this, String.format("Fine processing machine produces %d %s",items.getCount(),items.getName()));
         }
         return productVector;
     }
 
+    /**
+     *
+     * @param v
+     * Visitor operation object.
+     * @return
+     * Vector of items that the operation produces.
+     * @throws Exception
+     */
     @Override
     public Vector<Items> accept(Visitor v) throws Exception {
         return v.visit(this);
     }
 
+    //原型模式
     @Override
     public Object clone() throws CloneNotSupportedException {
-        System.out.println("Clone a fine process machine");
+        Stdout.print(this, "Clone a fine process machine.");
         return super.clone();
     }
+
 }

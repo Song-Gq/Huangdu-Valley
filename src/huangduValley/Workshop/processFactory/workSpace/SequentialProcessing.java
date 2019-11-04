@@ -21,6 +21,10 @@ public abstract class SequentialProcessing implements WorkSpace{
 
     protected Vector<Items> ingredients;
 
+    /**
+     * Start Processing.
+     * @throws Exception
+     */
     @Override
     public void doProcess() throws Exception {
         preProcess();
@@ -64,11 +68,19 @@ public abstract class SequentialProcessing implements WorkSpace{
         }
     }
 
+    /**
+     * End processing
+     */
     @Override
     public void doExit(){
         exit();
     }
 
+    /**
+     * Get process items at the current.
+     * @return
+     * Vector of items.
+     */
     @Override
     public Vector<Items> getIngredients() {
         return ingredients;
@@ -80,6 +92,10 @@ public abstract class SequentialProcessing implements WorkSpace{
 
     protected abstract void exit();
 
+    /**
+     * Initialize machinesVector.
+     * @param machines
+     */
     private void addCleanMachine(Vector<Machine> machines){
     for(Machine machine:machines){
         cleanMachines.add((CleanMachine) machine);

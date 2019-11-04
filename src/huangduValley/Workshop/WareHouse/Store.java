@@ -1,5 +1,6 @@
 package huangduValley.Workshop.WareHouse;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.Product.Product;
 import huangduValley.Workshop.processFactory.factory.Observer;
 import huangduValley.farm.storage.Items;
@@ -7,10 +8,10 @@ import huangduValley.farm.storage.Items;
 import java.util.Vector;
 
 public class Store implements Observer,Proxy {
-    private Vector<Vector<Items>> productsVector = new Vector<>();
+    private Vector<Vector<Product>> productsVector = new Vector<>();
 
     private Store() {
-        System.out.println("Store create");
+        Stdout.print(this, "Store create.");
     }
 
     private static class StoreHolder {
@@ -18,25 +19,33 @@ public class Store implements Observer,Proxy {
     }
 
     public static Store getInstance() {
-        System.out.println("Get store instance");
+        Stdout.print(StoreHolder.INSTANCE.toString(), "Get store instance.");
         return StoreHolder.INSTANCE;
     }
 
     private WareHouse wareHouse = WareHouse.getInstance();
 
     private void preRequest() {
-        System.out.println("Buy product proxy start.");
+        Stdout.print(this, "Buy product proxy start.");
     }
 
     private void postRequest() {
-        System.out.println("Buy product proxy finish.");
+        Stdout.print(this, "Buy product proxy finish.");
     }
 
     @Override
     public void update(Vector<Vector<Items>> products) {
-        productsVector = products;
+        int length = products.size();
+        for (int indexA = 0; indexA < length; indexA++) {
+            Vector<Product> temp = new Vector<>();
+            for (int indexB = 0; indexB < products.elementAt(indexA).size(); indexB++) {
+                temp.add((Product) products.elementAt(indexA).elementAt(indexB));
+            }
+            productsVector.add(temp);
+        }
     }
 
+    //代理模式
     @Override
     public boolean buy(String name) throws Exception {
         boolean flag;
@@ -46,7 +55,7 @@ public class Store implements Observer,Proxy {
         return flag;
     }
 
-    public Vector<Vector<Items>> getProductsVector() {
+    public Vector<Vector<Product>> getProductsVector() {
         return productsVector;
     }
 }

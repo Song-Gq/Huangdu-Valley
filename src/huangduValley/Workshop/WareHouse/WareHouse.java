@@ -1,5 +1,6 @@
 package huangduValley.Workshop.WareHouse;
 
+import huangduValley.Stdout;
 import huangduValley.Workshop.Machine;
 import huangduValley.Workshop.Product.Product;
 import huangduValley.Workshop.processFactory.factory.Observer;
@@ -13,54 +14,75 @@ import java.util.Vector;
  * @version 2019/10/30
  */
 public class WareHouse implements Observer, Proxy {
+
     private WareHouse(){
-        System.out.println("Warehouse create");
+        Stdout.print(this, "Warehouse create!");
         this.machineVector = new Vector<Machine>();
     }
-
-    private Vector<Vector<Items>> productsVector = new Vector<Vector<Items>>();
 
     private Vector<Machine> machineVector;
 
     private Wallet wallet = Wallet.getInstance();
 
+    private Vector<Vector<Product>> productsVector = new Vector<>();
+
     private int poolSize;
 
+    /**
+     * Singleton Object
+     */
     private static class WareHouseHolder{
         private static final WareHouse INSTANCE = new WareHouse();
     }
 
+    /**
+     * Get singleton object warehouse.
+     * @return
+     * WareHouse
+     */
     public static WareHouse getInstance(){
-        System.out.println("Get warehouse instance!");
+        Stdout.print(WareHouseHolder.INSTANCE.toString(), "Get warehouse instance!");
         return WareHouseHolder.INSTANCE;
     }
 
+    //观察者模式
     @Override
     public void update(Vector<Vector<Items>> products) {
-        productsVector = products;
+        int length = products.size();
+        for (int indexA = 0; indexA < length; indexA++) {
+            Vector<Product> temp = new Vector<>();
+            for (int indexB = 0; indexB < products.elementAt(indexA).size(); indexB++) {
+                Product product = (Product) products.elementAt(indexA).elementAt(indexB);
+                product.setPrice((int)(Math.random()*100));
+                temp.add(product);
+            }
+            productsVector.add(temp);
+        }
+
     }
 
-    public Vector<Vector<Items>> getProductsVector() {
+    public Vector<Vector<Product>> getProductsVector() {
         return productsVector;
     }
 
+    //代理模式
     public boolean buy(String name) throws Exception {
         int length = productsVector.size();
         boolean flag = false;
-        
+
         Product product = null;
-        
+
         int indexA = -1, indexB = -1;
         for (indexA = 0; indexA < length; indexA++) {
             indexB = -1;
-            Vector<Items> vector = productsVector.elementAt(indexA);
+            Vector<Product> vector = productsVector.elementAt(indexA);
             for (int i = 0; i < vector.size(); i++) {
                 if (vector.elementAt(i).getName() == name) {
                     indexB = i;
-                    product = (Product) vector.elementAt(i);
+                    product = vector.elementAt(i);
                 }
             }
-            
+
             if (indexB != -1) {
                 flag = true;
                 break;
@@ -73,11 +95,14 @@ public class WareHouse implements Observer, Proxy {
             productsVector.elementAt(indexA).elementAt(indexB).setCount(count - 1);
 
             wallet.increaseBalance(product.getPrice());
-            
-            return flag;
+
+            Stdout.print(this, "You bought " + name);
+            Stdout.print(this, "The price of " + name + "is "+ product.getPrice());
+
+            return true;
         }
         else {
-            return flag;
+            return false;
         }
 
     }
@@ -96,7 +121,7 @@ public class WareHouse implements Observer, Proxy {
         if(!machineVector.isEmpty()){
             for(Machine machine:machineVector){
                 if(machine.getName().equals(name) && machine.getClass().getSimpleName().equals(machineType)){
-                    System.out.println("Occupy one machine!");
+                    Stdout.print(this, "Occupy one machine!");
                     machineVector.remove(machine);
                     return machine;
                 }
@@ -125,7 +150,7 @@ public class WareHouse implements Observer, Proxy {
             return null;
         }
         else{
-            System.out.println("Warehouse has no idle machine!");
+            Stdout.print(this, "Warehouse has no idle machine!");
             return null;
         }
     }
@@ -140,19 +165,30 @@ public class WareHouse implements Observer, Proxy {
      */
     public boolean release(Machine machine){
         if(machineVector.size() < this.poolSize){
+            Stdout.print(this, String.format("Warehouse stores the machine:",machine.getName()));
             machineVector.add(machine);
             return true;
         }else{
-            System.out.println("Warehouse has no space to place more machines!");
+            Stdout.print(this, "Warehouse has no space to place more machines!");
             return false;
         }
     }
 
+    /**
+     * Set the pool size
+     * @param size
+     * Max size of the object pool
+     */
     public void setMaxSize(int size){
         this.poolSize = size;
-        System.out.println(String.format("Set the warehouse size to %d", size));
+        Stdout.print(this, String.format("Set the warehouse size to %d", size));
     }
 
+    /**
+     * Get the pool size
+     * @return
+     * Max size of the object pool
+     */
     public int getPoolSize(){
         return this.poolSize;
     }
