@@ -1,5 +1,6 @@
 package huangduValley.house;
 
+import huangduValley.Stdout;
 import huangduValley.house.memento.CareTaker;
 import huangduValley.house.memento.Originator;
 import huangduValley.house.memento.UndoOrRedo;
@@ -14,10 +15,6 @@ import java.util.Scanner;
  **/
 public class House implements Serializable {
 
-    // Memento
-    private static int index=-1;
-    private static Originator originator=new Originator();
-    private static CareTaker careTaker=new CareTaker();
 //
 //    public int index=-1;
 //    public Originator originator=new Originator();
@@ -38,14 +35,14 @@ public class House implements Serializable {
     }
 
     // house name
-    public static String houseName="尚未设置房屋名称";
+    public static String houseName="小屋还没有名字哦，快点给它取个名字吧～";
 
     public static String getHouseName(){
         return houseName;
     }
 
     public static void showHouseName(){
-        System.out.println("房屋的名称为："+ houseName);
+        Stdout.print("huangduValley.house.House.showHouseName@static","小屋现在的名字是："+ houseName+"！");
     }
 
     public static void setHouseName(String newHouseName){
@@ -53,25 +50,25 @@ public class House implements Serializable {
        showHouseName();
     }
     public static void setHouseName(){  // for mementoTest
-        System.out.println("请输入修改后房屋名称:");
+//        System.out.println("请输入修改后房屋名称:");
+        System.out.println("乌拉！请给您的小屋取个名字吧:");
         Scanner input1 = new Scanner(System.in);
         String newHouseName = input1.nextLine();
         houseName = newHouseName;
         showHouseName();
     }
 
-    public static void changeHouseName(){
-        System.out.println("请输入修改后房屋名称:");
+    public static void changeHouseName(int index,Originator originator,CareTaker careTaker){
+        System.out.println("乌拉！请给您的小屋取个名字吧:");
         Scanner input1 = new Scanner(System.in);
         String newHouseName = input1.nextLine();
         setHouseName(newHouseName);
-        System.out.println("MementoPattern:originator:setHouseName:Save HouseName to originator");
         originator.setHouseName(House.getHouseName());
-        System.out.println("MementoPattern:careTaker:add:add originator'HouseName to careTaker, careTaker[1] is " + originator.getHouseName());
         careTaker.addMemento(originator.saveHouseNameToMemento());
-        System.out.println("成功修改房屋名称！");
         index++;
+        System.out.println("乌拉！成功修改小屋名字！小屋现在的名字是："+getHouseName()+"！");
 
-        UndoOrRedo.undoOrRedo(index,originator,careTaker);
+        UndoOrRedo.undoOrRedo(index, originator, careTaker);
     }
+
 }
