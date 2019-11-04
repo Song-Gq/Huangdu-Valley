@@ -2,33 +2,37 @@ package huangduValley.farm.test;
 
 import huangduValley.farm.land.DryLand;
 import huangduValley.farm.land.FertileLand;
-import huangduValley.farm.land.ILand;
+import huangduValley.farm.land.Land;
 import huangduValley.farm.plant.Carrot;
 import huangduValley.farm.plant.Potato;
 
 /**
  * @ClassName:AbstractFactoryTest
- * @Description:test design pattern abstract factory 
+ * @Description:test "abstract factory"  design pattern 
  * @author CuiYanshen
  */
 
 public class Test_AbstractFactory {
 	public static void main(String[] args) throws Exception {
-		ILand dryLand = new DryLand();
+		Land dland = new DryLand();
 		
-		Carrot commonCarrot = dryLand.plantCarrot();
-		dryLand.harvest();
+		//DryLand can create plants with prefix "common" 
+		Carrot commonCarrot = dland.plantCarrot();
+		dland.harvest();
 		
-		Potato commonPotato = dryLand.plantPotato();
-		dryLand.harvest();
+		//must harvest before planting another one
+		Potato commonPotato = dland.plantPotato();
+		dland.harvest();
 		
-		ILand fertileLand = new FertileLand();
+		Land fland = new FertileLand();
 		
-		Carrot strongCarrot = fertileLand.plantCarrot();
-		fertileLand.harvest();
+		//FertileLand can create plants with prefix "strong"
+		Carrot strongCarrot = fland.plantCarrot();
+		fland.harvest();
 		
-		Potato strongPotato = fertileLand.plantPotato();
-		fertileLand.harvest();
+		//don't forget to harvest
+		Potato strongPotato = fland.plantPotato();
+		fland.harvest();
 		
 	}
 }

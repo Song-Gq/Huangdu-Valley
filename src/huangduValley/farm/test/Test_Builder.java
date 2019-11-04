@@ -4,7 +4,7 @@ import huangduValley.farm.fence.*;
 
 /**
  * @ClassName:BuilderTest
- * @Description:test design pattern huangduValley.farm.builder
+ * @Description:test "builder" design pattern
  * @author CuiYanshen
  */
 
@@ -14,8 +14,9 @@ public class Test_Builder {
 		
 		//create a worker
 		Worker worker = new Worker();
+		
+		//create a short fence builder
 		FenceBuilder shortfb = new ShortFenceBuilder();
-		FenceBuilder tallfb = new TallFenceBuilder();
 		
 		//set a short fence huangduValley.farm.builder
 		worker.setFenceBuilder(shortfb);

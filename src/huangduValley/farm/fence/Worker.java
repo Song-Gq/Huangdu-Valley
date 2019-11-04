@@ -4,7 +4,7 @@ import huangduValley.Stdout;
 
 /**
  * @ClassName:Worker
- * @Description:used for huangduValley.farm.builder, to build a fence
+ * @Description:used for "builder" design pattern, to build a fence
  * @author CuiYanshen
  */
 

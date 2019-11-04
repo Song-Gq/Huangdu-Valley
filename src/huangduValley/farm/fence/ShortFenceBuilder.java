@@ -2,7 +2,7 @@ package huangduValley.farm.fence;
 
 /**
  * @ClassName:ShortFenceBuilder
- * @Description:used for huangduValley.farm.builder
+ * @Description:used for "builder" design pattern
  * @author CuiYanshen
  */
 
