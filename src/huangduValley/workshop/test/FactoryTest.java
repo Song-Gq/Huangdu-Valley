@@ -66,7 +66,12 @@ public class FactoryTest {
         CompleteProcessing processing1 = new CompleteProcessing();
         Vector<Machine> machineVector = new Vector<>();
         machineVector.add(cm);
-        processing1.doInit(ingredientsVector, machineVector);
+        machineVector.add(cm2);
+        Vector<Machine> machineVector1 = new Vector<>();
+        machineVector1.add(rm);
+        Vector<Machine> machineVector2 = new Vector<>();
+        machineVector2.add(fm);
+        processing1.doInit(ingredientsVector, machineVector, machineVector1, machineVector2);
         processVector.add(processing1);
         ((NormalFactory) factory).setProcessVector(processVector);
 
